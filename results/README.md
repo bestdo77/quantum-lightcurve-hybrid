@@ -29,11 +29,14 @@ Intervals do not include seed, model-search, or multiplicity variance.
 
 - The hybrid beats the same-parameter pure MLP and the fixed 500-tree RF on both
   audited seeds (42, 44), intervals excluding zero.
-- A separate fixed-fusion model slightly exceeds the approximately leaf-budget-matched
-  LightGBM on the pooled 35,000-object validation/report/extra set
-  (**Macro-F1 +0.0108 pp**, ACC −0.0571 pp); see
-  `audited/lgbm_leaf_budget_pooled_comparison.json`. This is an approximate
-  leaf-output budget match, not a comparison with the strongest full-budget trees.
+- A separate fixed-fusion model beats the approximately leaf-budget-matched LightGBM
+  on validation Macro-F1 and ACC, and on extra-split Macro-F1. On the official
+  report+extra merged test, however, LightGBM is slightly ahead (quantum minus
+  LightGBM: **−0.0353 pp F1**, −0.1640 pp ACC). Against the same-architecture
+  classical fusion, the quantum model is ahead on merged-test Macro-F1 by
+  **+0.2831 pp** (ACC −0.0280 pp). See
+  `audited/lgbm_leaf_budget_pooled_comparison.json`. The LightGBM comparison is an
+  approximate leaf-output budget match, not a comparison with the strongest trees.
 - The full-budget class-weighted LightGBM beats the 44,238-parameter hybrid on both
   audited seeds, intervals excluding zero.
 - Against the same-parameter MLP replacement branch, seed 44 has a positive F1

@@ -13,13 +13,13 @@ The released training pool contains 633,034 objects.
 readout (9 qubits, 12 layers, angle re-uploading; 44,238 parameters in total) beats a
 same-parameter pure MLP and a 500-tree random forest on the 65,631-object development
 set, with paired bootstrap intervals excluding zero on two audited seeds. A separate
-fixed-fusion configuration (55,581 parameters) also records a small Macro-F1 win over
-an approximately leaf-budget-matched LightGBM on the pooled 35,000-object
-validation/report/extra set (92.6418% vs. 92.6309%), and some identical-architecture
-comparisons favour the quantum branch over same-parameter classical replacements.
-These gains are small and split- or seed-dependent; the strongest full-budget
-LightGBM remains ahead on the expanded development set, and ACC is not uniformly
-higher. **No general quantum advantage is claimed.** All experiments are exact
+fixed-fusion configuration (55,581 parameters) beats an approximately
+leaf-budget-matched LightGBM on validation Macro-F1 and ACC, and on extra-split
+Macro-F1; it also beats the same-architecture classical fusion on the official
+report+extra merged-test Macro-F1 by +0.2831 pp. The budget-matched LightGBM itself
+is slightly ahead on that merged test, and the strongest full-budget LightGBM remains
+ahead on the expanded development set, so these gains are split- and seed-dependent.
+**No general quantum advantage is claimed.** All experiments are exact
 classical state-vector simulations (CPU/GPU); no quantum hardware was used.
 
 ## Repository layout
