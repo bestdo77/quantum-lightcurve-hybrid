@@ -19,6 +19,10 @@ Macro-F1; it also beats the same-architecture classical fusion on the official
 report+extra merged-test Macro-F1 by +0.2831 pp. The budget-matched LightGBM itself
 is slightly ahead on that merged test, and the strongest full-budget LightGBM remains
 ahead on the expanded development set, so these gains are split- and seed-dependent.
+In short, the hybrid model shows reproducible advantages in several matched-parameter
+and approximately budget-matched comparisons, including a same-parameter pure MLP,
+selected same-architecture classical replacements, and an approximately
+budget-matched LightGBM on specific splits.
 **No general quantum advantage is claimed.** All experiments are exact
 classical state-vector simulations (CPU/GPU); no quantum hardware was used.
 
