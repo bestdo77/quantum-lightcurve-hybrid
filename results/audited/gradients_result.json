@@ -1,0 +1,376 @@
+{
+  "status": "passed",
+  "plan_sha256": "ac8070caba7ea3bd340f8af6e6906d4f5b798ab9cbc7a2ade1ec1012a5869ee1",
+  "gradient_gate": {
+    "status": "passed",
+    "objects": 64,
+    "rows": [
+      {
+        "condition": "zero_final_head",
+        "loss": 0.1961575597524643,
+        "gradients": {
+          "readout.theta": {
+            "parameters": 324,
+            "l2_norm": 0.0,
+            "rms": 0.0,
+            "max_abs": 0.0,
+            "exact_zero_fraction": 1.0,
+            "finite": true
+          },
+          "readout.frequency": {
+            "parameters": 108,
+            "l2_norm": 0.0,
+            "rms": 0.0,
+            "max_abs": 0.0,
+            "exact_zero_fraction": 1.0,
+            "finite": true
+          },
+          "readout.shift": {
+            "parameters": 108,
+            "l2_norm": 0.0,
+            "rms": 0.0,
+            "max_abs": 0.0,
+            "exact_zero_fraction": 1.0,
+            "finite": true
+          },
+          "fusion_head.0.weight": {
+            "parameters": 18816,
+            "l2_norm": 0.0,
+            "rms": 0.0,
+            "max_abs": 0.0,
+            "exact_zero_fraction": 1.0,
+            "finite": true
+          },
+          "fusion_head.2.weight": {
+            "parameters": 1280,
+            "l2_norm": 0.29690438508987427,
+            "rms": 0.008298730477690697,
+            "max_abs": 0.06471466273069382,
+            "exact_zero_fraction": 0.0,
+            "finite": true
+          }
+        },
+        "residual_max_abs": 0.0
+      },
+      {
+        "condition": "only_final_head_std0p01",
+        "loss": 0.19762293994426727,
+        "gradients": {
+          "readout.theta": {
+            "parameters": 324,
+            "l2_norm": 0.007448142394423485,
+            "rms": 0.0004137856885790825,
+            "max_abs": 0.0016233348287642002,
+            "exact_zero_fraction": 0.0,
+            "finite": true
+          },
+          "readout.frequency": {
+            "parameters": 108,
+            "l2_norm": 0.0010472710710018873,
+            "rms": 0.00010077370097860694,
+            "max_abs": 0.000316901394398883,
+            "exact_zero_fraction": 0.0,
+            "finite": true
+          },
+          "readout.shift": {
+            "parameters": 108,
+            "l2_norm": 0.0033782196696847677,
+            "rms": 0.0003250693262089044,
+            "max_abs": 0.0010657093953341246,
+            "exact_zero_fraction": 0.0,
+            "finite": true
+          },
+          "fusion_head.0.weight": {
+            "parameters": 18816,
+            "l2_norm": 0.05602211132645607,
+            "rms": 0.00040840948349796236,
+            "max_abs": 0.004762697499245405,
+            "exact_zero_fraction": 0.0,
+            "finite": true
+          },
+          "fusion_head.2.weight": {
+            "parameters": 1280,
+            "l2_norm": 0.29760995507240295,
+            "rms": 0.00831845123320818,
+            "max_abs": 0.06503547728061676,
+            "exact_zero_fraction": 0.0,
+            "finite": true
+          }
+        },
+        "residual_max_abs": 0.14476078748703003
+      }
+    ],
+    "interpretation": "Zero final residual weights block the initial supervised quantum gradient algebraically. Opening the head restores gradients at these same circuit parameters."
+  },
+  "physical_gradient": {
+    "status": "passed",
+    "objects": 1,
+    "readout_parameters_checked": 540,
+    "all_gradient_checks": [
+      {
+        "parameter": "theta",
+        "max_abs_error": 2.2510081537641113e-07,
+        "gradient": {
+          "parameters": 324,
+          "l2_norm": 0.5022207498550415,
+          "rms": 0.02790115214884281,
+          "max_abs": 0.15753179788589478,
+          "exact_zero_fraction": 0.0,
+          "finite": true
+        }
+      },
+      {
+        "parameter": "frequency",
+        "max_abs_error": 4.861231599206928e-08,
+        "gradient": {
+          "parameters": 108,
+          "l2_norm": 0.08622086048126221,
+          "rms": 0.008296606130897999,
+          "max_abs": 0.0337095633149147,
+          "exact_zero_fraction": 0.0,
+          "finite": true
+        }
+      },
+      {
+        "parameter": "shift",
+        "max_abs_error": 9.696226452998724e-08,
+        "gradient": {
+          "parameters": 108,
+          "l2_norm": 0.21512097120285034,
+          "rms": 0.02070002630352974,
+          "max_abs": 0.0684518963098526,
+          "exact_zero_fraction": 0.0,
+          "finite": true
+        }
+      }
+    ],
+    "manual_shift_checks": [
+      {
+        "parameter": "theta",
+        "index": [
+          0,
+          0,
+          1
+        ],
+        "shift_derivative": -0.005684148785670265,
+        "adjoint_error": 1.8735013540549517e-16
+      },
+      {
+        "parameter": "theta",
+        "index": [
+          5,
+          4,
+          0
+        ],
+        "shift_derivative": 0.012163971157951647,
+        "adjoint_error": 2.42861286636753e-16
+      },
+      {
+        "parameter": "theta",
+        "index": [
+          11,
+          8,
+          2
+        ],
+        "shift_derivative": -0.0035857625521161507,
+        "adjoint_error": 2.3418766925686896e-17
+      },
+      {
+        "parameter": "shift",
+        "index": [
+          0,
+          0
+        ],
+        "shift_derivative": -0.005874842572543643,
+        "adjoint_error": 3.365363543395006e-16
+      },
+      {
+        "parameter": "frequency",
+        "index": [
+          0,
+          0
+        ],
+        "shift_derivative": -0.0028931029857558813,
+        "adjoint_error": 1.6566609195578508e-16
+      },
+      {
+        "parameter": "shift",
+        "index": [
+          5,
+          4
+        ],
+        "shift_derivative": -0.0008488757027891869,
+        "adjoint_error": 1.1275702593849246e-17
+      },
+      {
+        "parameter": "frequency",
+        "index": [
+          5,
+          4
+        ],
+        "shift_derivative": -0.00025862668721009815,
+        "adjoint_error": 3.469446951953614e-18
+      },
+      {
+        "parameter": "shift",
+        "index": [
+          11,
+          8
+        ],
+        "shift_derivative": -0.009069132360543714,
+        "adjoint_error": 4.5102810375396984e-17
+      },
+      {
+        "parameter": "frequency",
+        "index": [
+          11,
+          8
+        ],
+        "shift_derivative": 0.0034372574566534837,
+        "adjoint_error": 1.734723475976807e-17
+      }
+    ],
+    "forward_max_error": 9.216471219541944e-08,
+    "versions": {
+      "torch": "2.10.0+cu128",
+      "pennylane": "0.42.3"
+    },
+    "scope": "One deterministic training input and scalar linear readout probe; verifies derivatives, not generalization or absence of barren plateaus."
+  },
+  "cpu_cost": {
+    "status": "complete",
+    "device": "CPU",
+    "torch_threads": 4,
+    "rows": [
+      {
+        "kind": "quantum",
+        "parameters": 44238,
+        "batch_size": 64,
+        "forward_seconds": [
+          0.04050894547253847,
+          0.040560586377978325,
+          0.04216882772743702,
+          0.040793648920953274,
+          0.040478745475411415,
+          0.040179427713155746,
+          0.04059882741421461,
+          0.04036003444343805,
+          0.0405437583103776,
+          0.04058448504656553,
+          0.040782355703413486,
+          0.040419990196824074,
+          0.04029953479766846,
+          0.040239203721284866,
+          0.040615614503622055
+        ],
+        "forward_median_seconds": 0.0405437583103776,
+        "forward_backward_seconds": [
+          0.13189952727407217,
+          0.13104023691266775,
+          0.13233692850917578,
+          0.1312067536637187,
+          0.13111474085599184
+        ],
+        "forward_backward_median_seconds": 0.1312067536637187
+      },
+      {
+        "kind": "matched_mlp",
+        "parameters": 44238,
+        "batch_size": 64,
+        "forward_seconds": [
+          0.002021913416683674,
+          0.002069256268441677,
+          0.002034822478890419,
+          0.002028157003223896,
+          0.002010362222790718,
+          0.0020148735493421555,
+          0.002021889202296734,
+          0.0020049186423420906,
+          0.002006964758038521,
+          0.002043752931058407,
+          0.0019738152623176575,
+          0.0020234324038028717,
+          0.0019652722403407097,
+          0.0020428067073225975,
+          0.001976701430976391
+        ],
+        "forward_median_seconds": 0.002021889202296734,
+        "forward_backward_seconds": [
+          0.005754395388066769,
+          0.005678064189851284,
+          0.0057046497240662575,
+          0.005674354732036591,
+          0.005707079544663429
+        ],
+        "forward_backward_median_seconds": 0.0057046497240662575
+      },
+      {
+        "kind": "pure_mlp",
+        "parameters": 44238,
+        "batch_size": 64,
+        "forward_seconds": [
+          0.0001635272055864334,
+          0.00015813205391168594,
+          0.00016245432198047638,
+          0.0001664683222770691,
+          0.0001664198935031891,
+          0.0001701144501566887,
+          0.00016035977751016617,
+          0.00016311369836330414,
+          0.00016024243086576462,
+          0.0001590438187122345,
+          0.00017412938177585602,
+          0.00015818607062101364,
+          0.00015805847942829132,
+          0.00015998352319002151,
+          0.00015622936189174652
+        ],
+        "forward_median_seconds": 0.00016035977751016617,
+        "forward_backward_seconds": [
+          0.0006898296996951103,
+          0.0006615770980715752,
+          0.0006765257567167282,
+          0.000652647577226162,
+          0.0006488459184765816
+        ],
+        "forward_backward_median_seconds": 0.0006615770980715752
+      },
+      {
+        "kind": "strong_mlp",
+        "parameters": 56109,
+        "batch_size": 64,
+        "forward_seconds": [
+          0.0017093084752559662,
+          0.001694047823548317,
+          0.0016943495720624924,
+          0.0016975533217191696,
+          0.0016982322558760643,
+          0.0016773082315921783,
+          0.0016901521012187004,
+          0.0016803722828626633,
+          0.0016674455255270004,
+          0.0017060237005352974,
+          0.001708822324872017,
+          0.0017535705119371414,
+          0.0016781874001026154,
+          0.0016726898029446602,
+          0.001668809913098812
+        ],
+        "forward_median_seconds": 0.001694047823548317,
+        "forward_backward_seconds": [
+          0.005435926839709282,
+          0.005444875918328762,
+          0.005432339385151863,
+          0.005432452075183392,
+          0.005437993444502354
+        ],
+        "forward_backward_median_seconds": 0.005435926839709282
+      }
+    ],
+    "scope": "Initial-weight architecture timing on shared CPU under concurrent training; includes encoding/backbone/fusion, excludes optimizer and quantum hardware."
+  },
+  "platform": "Linux-5.15.0-185-generic-x86_64-with-glibc2.35",
+  "training_or_selection_performed": false,
+  "confirmation_accessed": false,
+  "finished_utc": "2026-10-14T06:19:52.933832+00:00"
+}

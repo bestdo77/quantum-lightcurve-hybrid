@@ -1,0 +1,45 @@
+{
+  "objects": 65631,
+  "quantum": {
+    "macro_f1": 0.9187672401819912,
+    "accuracy": 0.9488046807149061
+  },
+  "control": {
+    "macro_f1": 0.9207965260465795,
+    "accuracy": 0.9493074918864561
+  },
+  "quantum_minus_control": {
+    "macro_f1": -0.0020292858645882816,
+    "accuracy": -0.0005028111715500438
+  },
+  "interval95": {
+    "macro_f1": [
+      -0.00408308701974836,
+      -0.0001995840931408821
+    ],
+    "accuracy": [
+      -0.0012798829821273339,
+      0.00027426063902724894
+    ]
+  },
+  "quantum_only_correct": 309,
+  "control_only_correct": 342,
+  "exact_mcnemar_accuracy_p": 0.20974364968288697,
+  "draws": 10000,
+  "key": "s45_best_acc_matched_mlp_development",
+  "seed": 45,
+  "selection": "best_acc",
+  "control_family": "matched_mlp",
+  "cohort": "development",
+  "quantum_proof": {
+    "name": "quantum_s45",
+    "checkpoint_sha256": "b65c3b8468b81285482049b5be66d2e78030bb863f3540fd1b38b22b1fd47515",
+    "predictions_sha256": "d7159fb102406fe49fbc37f25437457d8de1dee306530ff4a86da8b85ea7b6d7"
+  },
+  "control_proof": {
+    "name": "matched_mlp_s45",
+    "checkpoint_sha256": "d0ce1a158412a4b0f14b622cc023d9d5a8c8b4e1fba396ef5a451bd4fa57621d",
+    "predictions_sha256": "8dfa213e1cbfdf2924a63ed1ae92b335b07be02b6a47cdb0677a65d7c8e9c492"
+  },
+  "plan_sha256": "ef9e98d52a89d11a30a135970fc67bff572319044982170b3ccbc2f17b6904a9"
+}

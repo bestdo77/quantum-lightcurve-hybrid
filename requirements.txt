@@ -1,0 +1,4 @@
+numpy>=1.24
+torch>=2.0
+# Optional, only for the independent physical cross-check in verification/mechanism:
+# pennylane>=0.33

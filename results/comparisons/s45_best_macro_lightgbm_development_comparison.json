@@ -1,0 +1,45 @@
+{
+  "objects": 65631,
+  "quantum": {
+    "macro_f1": 0.9185931842972964,
+    "accuracy": 0.948637076991056
+  },
+  "control": {
+    "macro_f1": 0.9279078283461614,
+    "accuracy": 0.9543660770062927
+  },
+  "quantum_minus_control": {
+    "macro_f1": -0.00931464404886495,
+    "accuracy": -0.005729000015236685
+  },
+  "interval95": {
+    "macro_f1": [
+      -0.013257891930107013,
+      -0.005450176719878159
+    ],
+    "accuracy": [
+      -0.006963172890859459,
+      -0.0044643537352775375
+    ]
+  },
+  "quantum_only_correct": 681,
+  "control_only_correct": 1057,
+  "exact_mcnemar_accuracy_p": 1.7141306592145149e-19,
+  "draws": 10000,
+  "key": "s45_best_macro_lightgbm_development",
+  "seed": 45,
+  "selection": "best_macro",
+  "control_family": "lightgbm",
+  "cohort": "development",
+  "quantum_proof": {
+    "name": "quantum_s45",
+    "checkpoint_sha256": "d5a579e17f966299f5051d8ae80b4380d1c8a9437432faa31bfacb86fe171887",
+    "predictions_sha256": "9a9778ea4fa30c390a2b7b030e2c1c2a164978fac5d33e8a3340508af4f53e61"
+  },
+  "control_proof": {
+    "name": "lgbm359_full_balanced_seed42",
+    "alpha": 0.5,
+    "predictions_sha256": "84de17271b98425fc231ddc5ff6352e2bd7a0142086ad6e51ffd83d6b1213db7"
+  },
+  "plan_sha256": "ef9e98d52a89d11a30a135970fc67bff572319044982170b3ccbc2f17b6904a9"
+}

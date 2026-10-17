@@ -1,0 +1,82 @@
+{
+  "classes": [
+    "CEP",
+    "DSCT",
+    "EA",
+    "EW",
+    "M",
+    "Non-var",
+    "ROT",
+    "RRAB",
+    "RRC",
+    "SR"
+  ],
+  "feature_dim": 359,
+  "preprocessing": "median/scale standardisation frozen from the original 50K training subset, non-finite values replaced by the median, clipped to [-10,10], float32",
+  "development_cohorts": {
+    "report": 5000,
+    "extra": 20000,
+    "previously_unused": 40631
+  },
+  "sealed_confirmation_set": "confirmation2 is NOT included: no features, labels, ids or predictions. It remains sealed for the final independent check.",
+  "id_meaning": "ids are row indices into the authors internal feature bank; for provenance only.",
+  "splits": [
+    {
+      "split": "fit",
+      "objects": 633034,
+      "features": 359,
+      "archive": "fit.npz",
+      "sha256": "c1d53b3e1ea144d11b311c084422e2fd2aba62bc5931bca510a57eef3eb65d38",
+      "class_counts": [
+        1462,
+        11219,
+        28454,
+        200564,
+        11263,
+        80540,
+        71353,
+        24967,
+        11098,
+        192114
+      ]
+    },
+    {
+      "split": "validation",
+      "objects": 105297,
+      "features": 359,
+      "archive": "validation.npz",
+      "sha256": "420a9f1b8e582955e6bd41165f225365bdd57391296b1e8677c6d082a0f55205",
+      "class_counts": [
+        258,
+        1888,
+        4633,
+        33184,
+        1876,
+        13330,
+        11859,
+        4087,
+        1922,
+        32260
+      ]
+    },
+    {
+      "split": "development",
+      "objects": 65631,
+      "features": 359,
+      "archive": "development.npz",
+      "sha256": "d9353457271a7e2dc1bcdf6abf874b5be923d1cc84712574882247551cf65727",
+      "class_counts": [
+        148,
+        1107,
+        2992,
+        20696,
+        1154,
+        8420,
+        7407,
+        2612,
+        1172,
+        19923
+      ]
+    }
+  ]
+}

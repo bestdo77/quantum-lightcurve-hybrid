@@ -1,0 +1,50 @@
+{
+  "objects": 65631,
+  "quantum": {
+    "macro_f1": 0.9189934711091805,
+    "accuracy": 0.9486218402888879
+  },
+  "control": {
+    "macro_f1": 0.9279078283461614,
+    "accuracy": 0.9543660770062927
+  },
+  "quantum_minus_control": {
+    "macro_f1": -0.008914357236980863,
+    "accuracy": -0.005744236717404871
+  },
+  "interval95": {
+    "macro_f1": [
+      -0.012884267630164323,
+      -0.005032432699087648
+    ],
+    "accuracy": [
+      -0.006993646295195832,
+      -0.004479590437445724
+    ]
+  },
+  "quantum_only_correct": 680,
+  "control_only_correct": 1057,
+  "exact_mcnemar_accuracy_p": 1.3398139414244363e-19,
+  "draws": 10000,
+  "key": "s42_best_macro_lightgbm_development",
+  "seed": 42,
+  "selection": "best_macro",
+  "control_family": "lightgbm",
+  "cohort": "development",
+  "quantum_proof": {
+    "name": "quantum_s42",
+    "selection": "best_macro",
+    "checkpoint_sha256": "bcc60e82a5516820dd8f6101393a29e738a989d2cc82c02e0883b51e1d019a0b",
+    "predictions_sha256": "c4423ac2c4848dfe02eefd1fb92ab7da61d3d56364d7aa25e459a3cfd0592775",
+    "development_result_sha256": "3ee1c8ddeb71a6ce78f0eb956bc1b3b5facbaa36ba2ab21ba97f5e0d68b3e5f4"
+  },
+  "control_proof": {
+    "name": "lgbm359_full_balanced_seed42",
+    "selection": "best_macro",
+    "alpha": 0.5,
+    "checkpoint_sha256": "1efbe5e2554012356083a0f4d41ba9307b488e748a6b5412f5d2e5504f0e5877",
+    "predictions_sha256": "84de17271b98425fc231ddc5ff6352e2bd7a0142086ad6e51ffd83d6b1213db7",
+    "tree_selection_sha256": "920830223fbbcc39ea25872ef15812caaf44f96af5f0bc2f97f7dcb6e6a3f079"
+  },
+  "plan_sha256": "24d3aca4dc69305fbece2115fd1bf9f3c48fe8fba2ae75ef73f2aaafad057ffc"
+}

@@ -1,0 +1,45 @@
+{
+  "objects": 65631,
+  "quantum": {
+    "macro_f1": 0.9185931842972964,
+    "accuracy": 0.948637076991056
+  },
+  "control": {
+    "macro_f1": 0.9084604547717744,
+    "accuracy": 0.9434870716582103
+  },
+  "quantum_minus_control": {
+    "macro_f1": 0.010132729525522022,
+    "accuracy": 0.0051500053328457085
+  },
+  "interval95": {
+    "macro_f1": [
+      0.00533528343885937,
+      0.015141348157911688
+    ],
+    "accuracy": [
+      0.0037787021377093666,
+      0.006521308527982161
+    ]
+  },
+  "quantum_only_correct": 1215,
+  "control_only_correct": 877,
+  "exact_mcnemar_accuracy_p": 1.5385936663477566e-13,
+  "draws": 10000,
+  "key": "s45_best_macro_rf_development",
+  "seed": 45,
+  "selection": "best_macro",
+  "control_family": "rf",
+  "cohort": "development",
+  "quantum_proof": {
+    "name": "quantum_s45",
+    "checkpoint_sha256": "d5a579e17f966299f5051d8ae80b4380d1c8a9437432faa31bfacb86fe171887",
+    "predictions_sha256": "9a9778ea4fa30c390a2b7b030e2c1c2a164978fac5d33e8a3340508af4f53e61"
+  },
+  "control_proof": {
+    "name": "rf359_full_unweighted_seed42",
+    "alpha": 0.0,
+    "predictions_sha256": "cfb87cabc9c073b0cce5d380248bfa5c8d93c7a32ab361332eedc2a916fc2f4c"
+  },
+  "plan_sha256": "ef9e98d52a89d11a30a135970fc67bff572319044982170b3ccbc2f17b6904a9"
+}

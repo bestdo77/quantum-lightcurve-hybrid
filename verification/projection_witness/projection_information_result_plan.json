@@ -1,0 +1,14 @@
+{
+  "status": "fixed_before_synthetic_outputs",
+  "seed": 20261015,
+  "pairs": 16,
+  "direction_l2": 0.7,
+  "identity_tolerance": 1e-10,
+  "classical_FP32_tolerance": 5e-05,
+  "physical_reference_tolerance": 5e-06,
+  "separation_threshold": 0.0001,
+  "parameters_sha256": "efbcfe7723976e1260c144eac264b0543e91d72f6d57ac527563fd2fd687f492",
+  "source_sha256": "3a24231bfad8c2a982c2be178546a32411a98ad62bd5d218d36afc5593ad3c43",
+  "readout_source_sha256": "d437d8e5f5786c03e58f422dfc5247d8f156992b72384910830ce8928cb0bcc7",
+  "scope": "Exploratory deterministic synthetic branch-level representation audit; no dataset or classification claim."
+}

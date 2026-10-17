@@ -1,0 +1,23 @@
+{
+  "name": "transformer_p46648",
+  "parameters": 46648,
+  "checkpoint": "/mnt/nvme/home/yxh/gtp_qml_search_20261009/transformer_global_hybrid_20261012/models/transformer_p46648/best_macro.pt",
+  "checkpoint_sha256": "67c5b543bb0396ff82beafdfa5418cd6bf3efe8afb8b7df1fd4398d1a817e55f",
+  "training_plan_sha256": "6cd32bf22d6dc690c8f77e435c4cc6320fdaa524a344f7d87f1e85937bbc92ec",
+  "training_audit_sha256": "d74da32562868da082556877f08b999d364eced3a5d533290e3514be85648810",
+  "epoch": 47,
+  "alpha": 1.0,
+  "expanded_plan_sha256": "852ecde19d12c65662c60df505ac1bb793672b915722db3dd75e18808c0c18aa",
+  "data_sha256": {
+    "x.npy": "c40609ff7a0f9e66eca1a302b94851cb72220ffbcc3d90d3d3b5b0f0b2a9f9a2",
+    "y.npy": "cbef6ac87d49b3b076153436d7687d659c7e436b6ba5d19e034ae4d73c30775e",
+    "cohort_ids.npz": "1de06e889e4d5dc544f3a3f37357148585c41ecfa43d56a876e5f7c710792228"
+  },
+  "source_sha256": "e1f2505be5d337fddee71eba979f89a699bd38629c146a84b65328b6ae13a903",
+  "objects": 65631,
+  "historical_subset_objects": 40631,
+  "selection": "Existing checkpoint and alpha frozen on original 10,000-object validation; no reselection.",
+  "comparison_limit": "Other new neural rows were selected using expanded 105,297-object validation; selection protocols differ.",
+  "inference": "CPU FP32, 4 threads, batch256; two independently reloaded full passes.",
+  "confirmation_accessed": false
+}

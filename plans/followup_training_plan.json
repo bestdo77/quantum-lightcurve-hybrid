@@ -1,0 +1,245 @@
+{
+  "status": "frozen",
+  "revision": 1,
+  "seed": 42,
+  "batch_size": 256,
+  "checkpoint_every_batches": 128,
+  "priority_order": [
+    1,
+    4,
+    2,
+    3,
+    5
+  ],
+  "main_result_models": [
+    "frozen_quantum_s44",
+    "no_cnot_s44",
+    "quantum_s45",
+    "matched_mlp_s45",
+    "pure_mlp_s45_lr0p001",
+    "pure_mlp_s45_lr0p003"
+  ],
+  "jobs": [
+    {
+      "name": "frozen_quantum_s44",
+      "priority_direction": 1,
+      "device": "cuda",
+      "epochs": 40,
+      "objective": "standard",
+      "backbone_warmup_epochs": 10,
+      "learning_rate": null,
+      "spec": {
+        "kind": "frozen_quantum",
+        "seed": 44
+      }
+    },
+    {
+      "name": "no_cnot_s44",
+      "priority_direction": 1,
+      "device": "cuda",
+      "epochs": 40,
+      "objective": "standard",
+      "backbone_warmup_epochs": 10,
+      "learning_rate": null,
+      "spec": {
+        "kind": "no_cnot",
+        "seed": 44
+      }
+    },
+    {
+      "name": "quantum_s45",
+      "priority_direction": 1,
+      "device": "cuda",
+      "epochs": 40,
+      "objective": "standard",
+      "backbone_warmup_epochs": 10,
+      "learning_rate": null,
+      "spec": {
+        "kind": "quantum",
+        "seed": 45
+      }
+    },
+    {
+      "name": "matched_mlp_s45",
+      "priority_direction": 1,
+      "device": "cuda",
+      "epochs": 40,
+      "objective": "standard",
+      "backbone_warmup_epochs": 10,
+      "learning_rate": null,
+      "spec": {
+        "kind": "matched_mlp",
+        "seed": 45
+      }
+    },
+    {
+      "name": "pure_mlp_s45_lr0p001",
+      "priority_direction": 1,
+      "device": "cuda",
+      "epochs": 80,
+      "objective": "standard",
+      "backbone_warmup_epochs": 0,
+      "learning_rate": 0.001,
+      "spec": {
+        "kind": "pure_mlp",
+        "seed": 45
+      }
+    },
+    {
+      "name": "pure_mlp_s45_lr0p003",
+      "priority_direction": 1,
+      "device": "cuda",
+      "epochs": 80,
+      "objective": "standard",
+      "backbone_warmup_epochs": 0,
+      "learning_rate": 0.003,
+      "spec": {
+        "kind": "pure_mlp",
+        "seed": 45
+      }
+    }
+  ],
+  "counts": {
+    "frozen_quantum_s44": {
+      "total": 44238,
+      "quantum": 324,
+      "quantum_encoding": 216,
+      "classical": 43698,
+      "pretrained_backbone": 23170,
+      "simultaneous_coherent_qubits": 9,
+      "independent_registers": 1,
+      "circuit_depth": 12,
+      "variant": "adamw_branchfirst",
+      "all_parameters_trainable_or_explicitly_frozen_by_protocol": true
+    },
+    "no_cnot_s44": {
+      "total": 44238,
+      "quantum": 324,
+      "quantum_encoding": 216,
+      "classical": 43698,
+      "pretrained_backbone": 23170,
+      "simultaneous_coherent_qubits": 9,
+      "independent_registers": 1,
+      "circuit_depth": 12,
+      "variant": "adamw_branchfirst",
+      "all_parameters_trainable_or_explicitly_frozen_by_protocol": true
+    },
+    "quantum_s45": {
+      "total": 44238,
+      "quantum": 324,
+      "quantum_encoding": 216,
+      "classical": 43698,
+      "pretrained_backbone": 23170,
+      "simultaneous_coherent_qubits": 9,
+      "independent_registers": 1,
+      "circuit_depth": 12,
+      "variant": "adamw_branchfirst",
+      "all_parameters_trainable_or_explicitly_frozen_by_protocol": true
+    },
+    "matched_mlp_s45": {
+      "total": 44238,
+      "quantum": 0,
+      "quantum_encoding": 0,
+      "classical": 44238,
+      "pretrained_backbone": 23170,
+      "simultaneous_coherent_qubits": 0,
+      "independent_registers": 0,
+      "circuit_depth": 0,
+      "variant": "classical_residual_control",
+      "all_parameters_trainable_or_explicitly_frozen_by_protocol": true
+    },
+    "pure_mlp_s45_lr0p001": {
+      "total": 44238,
+      "quantum": 0,
+      "quantum_encoding": 0,
+      "classical": 44238,
+      "pretrained_backbone": 0,
+      "variant": "pure_mlp",
+      "full_input_features": 359,
+      "hidden_widths": [
+        73,
+        207
+      ],
+      "layernorm_layers": 2,
+      "fixed_random_projection": false
+    },
+    "pure_mlp_s45_lr0p003": {
+      "total": 44238,
+      "quantum": 0,
+      "quantum_encoding": 0,
+      "classical": 44238,
+      "pretrained_backbone": 0,
+      "variant": "pure_mlp",
+      "full_input_features": 359,
+      "hidden_widths": [
+        73,
+        207
+      ],
+      "layernorm_layers": 2,
+      "fixed_random_projection": false
+    }
+  },
+  "prior_alpha_grid": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "selection": "Original strict CPU/GPU grid and prediction audit retained. Each checkpoint/alpha and pureMLP learning rate use validation105297 only.",
+  "optimizer": "SafeCapturableAdamW with independent backbone/theta/encoding/branch rates. Frequency and shift have zero weight decay.",
+  "direction_1": "q9d12 branch-first AdamW: backbone frozen 10 epochs, then joint training.",
+  "direction_4": "Frozen M8 plus q9d12 residual correction with error/uncertainty focus; exact 540-parameter classical readout control.",
+  "direction_2": "Warm-start 12->18->24. Added layers are forward/reverse entangler identity pairs; 6/18/24 measurements enter zero-gated residual fusion.",
+  "direction_3": "Four q9d6 modules with distinct permutations, circuit seeds and encoding scales; module dropout and decorrelation penalty.",
+  "direction_5": "Four q9d4 class-group experts with uncertainty-conditioned sparse gate, entropy sparsity and usage balance.",
+  "training_data_only": "All optimization and validation checkpoint selection use fit/validation. Report and extra open only after each checkpoint is frozen.",
+  "limitations": "Single seed exploratory scaling study; report/extra remain exposed development cohorts; confirmation2 is not accessed.",
+  "data_manifest_sha256": "352245994d3e2704dd68fe48eb1472b162fc664795664f53e60e62610869981b",
+  "initial_backbone_sha256": "9b0f8b2c19473f66dbdc8aedb088d4e683ebeda709a9ebbd04aa0c75000979e6",
+  "source_sha256": {
+    "priority_14235_models.py": "e7b83cac6de5fde41b782a489aac081d821474573ec4afb9d0e6af488ba4f4ae",
+    "train_priority_14235.py": "d9ead3635cab3eb57abc5b0b07eff03b24b36537f5ede91959b2a08a885c2435",
+    "schedule_priority_14235.py": "3350bb8d8e9f22e147e32e830ded97e6afe6fa23a49366c8d8d8a87486cfa276",
+    "safe_capturable_adamw.py": "153b6a5a710b8638f965f265c38f376fbef4adb8aeea051cdf64b8bf53c1b033",
+    "natural_source_order.py": "c61e3ce14f79306e5c3c901d79c6ef251d60bbe94ca730768c790bd9613dfa66",
+    "representation_fusion_models.py": "c0ac52aedd98354bdd2dc7ef23c907e5b3a3a0c9270910908da16084d8e8892f",
+    "global_hybrid_transformer_models.py": "258cd8b6702b8faae95ae512e9edbbd1a12abcb9f276394d097d2e9cad5cfade",
+    "multiscale_phase_models.py": "7d5d4848ae31dcbc44550974bb20c668c928e1d641354f251525f115bd9164cb",
+    "paper_evidence_neural.py": "5ebb10e59f04a3d868de739fc4339e7e96c19494c30db18866f1c82e30c2d3f3",
+    "p1_matched_classical_comparison.py": "248645c4d3adf3bd60565e033c5ce3123670271816cc279686a319f0b9c5a8b8",
+    "audit_priority_14235_results.py": "5ffb6233f3ff50ef8860615ea687b273418c6dbde0b98a606935bb18226b3357",
+    "paper_evidence_followup.py": "986788c15860dfae3def04dd0e5bd75ea37d932ea31985fcdb54479cf89f918e"
+  },
+  "preflight_v1_plan_sha256": "7283f18fbaafa9ce289bf1d1f38cb3e8e34baffd9f1e1f4a522801f99e43e1e7",
+  "preflight_v1_note": "No training launched; corrected elementwise dropout to whole-module dropout before preflight.",
+  "authorization": "Active user goal: gather superiority, pureMLP/RF, mechanism and paper-ready transparent evidence.",
+  "confirmation_accessed": false,
+  "reference_plan_sha256": "f5ac950ae5af5fa4528e1add53dd07774b9d4ec4910f8e85fd5d8f654c9bc380",
+  "pretrained_M8_sha256": "9b0f8b2c19473f66dbdc8aedb088d4e683ebeda709a9ebbd04aa0c75000979e6",
+  "inference_scope": "Expanded validation105297 used for every checkpoint/alpha and pure-MLP-LR choice. Development union65631 excludes validation; all development rows already exposed. Confirmation2 remains sealed.",
+  "primary_endpoint": "Macro-F1; ACC also independently selected and completely reported.",
+  "seed_replicates": [
+    42,
+    43,
+    44,
+    45
+  ],
+  "replication_scope": "New branch initialization and fine-tuning object order vary by seed; shared M8 pretraining remains seed42. Pure dense models start fresh and train80epochs. Do not claim independent M8 re-pretraining.",
+  "training_order_seed": "2026101100+model_seed; paired hybrid models have identical epoch ordering.",
+  "pure_MLP_selection": "For each seed and endpoint select between the two predeclared LRs using expanded validation only; report both raw runs.",
+  "mechanism_screen": "Single-seed42 exploratory trained controls: no CNOT in variational circuit, frozen quantum readout, stronger learned dense359->32->27 classical branch, fixed bilinear features with540 learned weights. Amplitude input may remain entangled even with no CNOT.",
+  "optimization_scope": "Quantum-frozen control uses zero theta/encoding learning rates and exactly unchanged readout weights; optimizer moments may accumulate. Stored parameter count remains44238, effectively updated parameters43698.",
+  "output_storage": "/mnt/hdd/yxh/qml_paper_evidence_20261014/followup_seed44_seed45",
+  "original_neural_plan_sha256": "7a94001fe61846f105a460cedb3804673f26a7e8b1bb4ceab13cb13c38e72ee7",
+  "created_utc": "2026-10-14T10:25:24.687086+00:00",
+  "supplement_design": "Two seed44 mechanism controls and an additional predeclared seed45 quantum/matched/pureMLP pair. Existing seed43 original audit failure remains excluded and reported.",
+  "seed45_rationale": "A further fixed seed after a numerical audit failure; not selected from development performance. Report all attempted seeds including failed43.",
+  "primary_comparisons": [
+    "quantum_s44 vs frozen_quantum_s44",
+    "quantum_s44 vs no_cnot_s44",
+    "quantum_s45 vs matched_mlp_s45",
+    "quantum_s45 vs validation-selected pure_mlp_s45"
+  ],
+  "unchanged": "Same factories, data, 40/80 epochs, optimizer schedules, initialization, and ordering as original study."
+}

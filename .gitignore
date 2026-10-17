@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.DS_Store
+# Large data archives are distributed as release assets, not in git:
+*.npz
+*.npy

@@ -1,0 +1,45 @@
+{
+  "objects": 40631,
+  "quantum": {
+    "macro_f1": 0.9165754526364951,
+    "accuracy": 0.9493736309714258
+  },
+  "control": {
+    "macro_f1": 0.9185938819730902,
+    "accuracy": 0.9501365952105535
+  },
+  "quantum_minus_control": {
+    "macro_f1": -0.002018429336595129,
+    "accuracy": -0.0007629642391276947
+  },
+  "interval95": {
+    "macro_f1": [
+      -0.004047631744997493,
+      -9.572475192154594e-05
+    ],
+    "accuracy": [
+      -0.0017228224754497479,
+      0.00019689399719424738
+    ]
+  },
+  "quantum_only_correct": 185,
+  "control_only_correct": 216,
+  "exact_mcnemar_accuracy_p": 0.13399928761577298,
+  "draws": 10000,
+  "key": "s44_best_acc_frozen_quantum_previously_unused",
+  "seed": 44,
+  "selection": "best_acc",
+  "control_family": "frozen_quantum",
+  "cohort": "previously_unused",
+  "quantum_proof": {
+    "name": "quantum_s44",
+    "checkpoint_sha256": "fb44137dafecf37ecf30da0e8274cbfe82184627ba06668f6f0984f3b498e565",
+    "predictions_sha256": "ea51186a6a42f32109e793d847a186def63126d91c235e1e4384d29b4dec6eef"
+  },
+  "control_proof": {
+    "name": "frozen_quantum_s44",
+    "checkpoint_sha256": "2d5f140cfe046b9c4da10cc5beccd6023e470f10bfbfd1e49e70879bcb54827a",
+    "predictions_sha256": "9e7fd500b2af27082d25a3c1c9a03014e35f4c889517f6cbf34b201e62fd8516"
+  },
+  "plan_sha256": "ef9e98d52a89d11a30a135970fc67bff572319044982170b3ccbc2f17b6904a9"
+}

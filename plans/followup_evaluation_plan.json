@@ -1,0 +1,22 @@
+{
+  "status": "frozen_before_supplement_performance",
+  "source_sha256": "73ba5ed1735090e466a44248d25098f24c75037f73090ceedb43006a4e5e3ca9",
+  "supplement_train_plan_sha256": "8fce3b618bb8ed92015825019aa3f21902c66f52f658c5ca50b3e8ef5604ce48",
+  "original_development_plan_sha256": "293eef107c3ae584c50dd1bebbd1b298d826312562fa3e992df1f0145ccd781f",
+  "tree_plan_sha256": "27bbc0e956d5818550db3e083c31e96f188af7f14b7881e2caa4e8e95d13dffd",
+  "data_sha256": {
+    "x.npy": "c40609ff7a0f9e66eca1a302b94851cb72220ffbcc3d90d3d3b5b0f0b2a9f9a2",
+    "y.npy": "cbef6ac87d49b3b076153436d7687d659c7e436b6ba5d19e034ae4d73c30775e",
+    "cohort_ids.npz": "1de06e889e4d5dc544f3a3f37357148585c41ecfa43d56a876e5f7c710792228"
+  },
+  "original_statistics_plan_sha256": "24d3aca4dc69305fbece2115fd1bf9f3c48fe8fba2ae75ef73f2aaafad057ffc",
+  "bootstrap_helper_sha256": "8229bfeda6e8a7b76f5b79228096daa5ce679a3615d03e3b138a941e2ba6f8bc",
+  "draws": 10000,
+  "inference": "CPU FP32, 4threads, batch256; complete independent reload repeat for both endpoints.",
+  "comparisons": "seed44quantum vs seed44frozen/noCNOT; seed45quantum vs seed45matched/pureMLP and fixed reselectedRF/LightGBM; both endpoints and nested scopes.",
+  "expected_comparisons": 24,
+  "pureMLP_selection": "Two predeclared LRs selected only on105297 validation per endpoint.",
+  "interval_scope": "Pointwise exploratory paired-object percentile intervals, fixed model pairs, no search uncertainty or multiplicity correction.",
+  "seed_summary": "All attempts42/43/44/45 disclosed; original43 excluded after numerical audit failure. Descriptive mean/sampleSD of audited42/44/45, conditional on shared M8.",
+  "confirmation_accessed": false
+}

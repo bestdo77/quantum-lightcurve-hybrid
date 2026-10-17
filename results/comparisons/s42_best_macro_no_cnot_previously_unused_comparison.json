@@ -1,0 +1,49 @@
+{
+  "objects": 40631,
+  "quantum": {
+    "macro_f1": 0.9176555220494438,
+    "accuracy": 0.9495951367182693
+  },
+  "control": {
+    "macro_f1": 0.9176720165476026,
+    "accuracy": 0.9496197484679186
+  },
+  "quantum_minus_control": {
+    "macro_f1": -1.649449815877002e-05,
+    "accuracy": -2.46117496492948e-05
+  },
+  "interval95": {
+    "macro_f1": [
+      -0.0010908787495565897,
+      0.0010771370505259028
+    ],
+    "accuracy": [
+      -0.0006645172405306266,
+      0.0006399054908813318
+    ]
+  },
+  "quantum_only_correct": 89,
+  "control_only_correct": 90,
+  "exact_mcnemar_accuracy_p": 1.0,
+  "draws": 10000,
+  "key": "s42_best_macro_no_cnot_previously_unused",
+  "seed": 42,
+  "selection": "best_macro",
+  "control_family": "no_cnot",
+  "cohort": "previously_unused",
+  "quantum_proof": {
+    "name": "quantum_s42",
+    "selection": "best_macro",
+    "checkpoint_sha256": "bcc60e82a5516820dd8f6101393a29e738a989d2cc82c02e0883b51e1d019a0b",
+    "predictions_sha256": "c4423ac2c4848dfe02eefd1fb92ab7da61d3d56364d7aa25e459a3cfd0592775",
+    "development_result_sha256": "3ee1c8ddeb71a6ce78f0eb956bc1b3b5facbaa36ba2ab21ba97f5e0d68b3e5f4"
+  },
+  "control_proof": {
+    "name": "no_cnot_s42",
+    "selection": "best_macro",
+    "checkpoint_sha256": "439e35f940d1729a2f03c6ab12317bd772b8cb0c9257f0041d4360754dba92f6",
+    "predictions_sha256": "16b9724176e0b70c264a4f5badc305a05e5980d4edf82491c26bb0bb22722fa7",
+    "development_result_sha256": "971596bcaa1eb9c7c211fcd2aabb3def180d55f18e468357a5f53546ead5a34e"
+  },
+  "plan_sha256": "24d3aca4dc69305fbece2115fd1bf9f3c48fe8fba2ae75ef73f2aaafad057ffc"
+}

@@ -1,0 +1,135 @@
+{
+  "status": "passed",
+  "objects": 1,
+  "readout_parameters_checked": 540,
+  "all_gradient_checks": [
+    {
+      "parameter": "theta",
+      "max_abs_error": 2.2510081537641113e-07,
+      "gradient": {
+        "parameters": 324,
+        "l2_norm": 0.5022207498550415,
+        "rms": 0.02790115214884281,
+        "max_abs": 0.15753179788589478,
+        "exact_zero_fraction": 0.0,
+        "finite": true
+      }
+    },
+    {
+      "parameter": "frequency",
+      "max_abs_error": 4.861231599206928e-08,
+      "gradient": {
+        "parameters": 108,
+        "l2_norm": 0.08622086048126221,
+        "rms": 0.008296606130897999,
+        "max_abs": 0.0337095633149147,
+        "exact_zero_fraction": 0.0,
+        "finite": true
+      }
+    },
+    {
+      "parameter": "shift",
+      "max_abs_error": 9.696226452998724e-08,
+      "gradient": {
+        "parameters": 108,
+        "l2_norm": 0.21512097120285034,
+        "rms": 0.02070002630352974,
+        "max_abs": 0.0684518963098526,
+        "exact_zero_fraction": 0.0,
+        "finite": true
+      }
+    }
+  ],
+  "manual_shift_checks": [
+    {
+      "parameter": "theta",
+      "index": [
+        0,
+        0,
+        1
+      ],
+      "shift_derivative": -0.005684148785670265,
+      "adjoint_error": 1.8735013540549517e-16
+    },
+    {
+      "parameter": "theta",
+      "index": [
+        5,
+        4,
+        0
+      ],
+      "shift_derivative": 0.012163971157951647,
+      "adjoint_error": 2.42861286636753e-16
+    },
+    {
+      "parameter": "theta",
+      "index": [
+        11,
+        8,
+        2
+      ],
+      "shift_derivative": -0.0035857625521161507,
+      "adjoint_error": 2.3418766925686896e-17
+    },
+    {
+      "parameter": "shift",
+      "index": [
+        0,
+        0
+      ],
+      "shift_derivative": -0.005874842572543643,
+      "adjoint_error": 3.365363543395006e-16
+    },
+    {
+      "parameter": "frequency",
+      "index": [
+        0,
+        0
+      ],
+      "shift_derivative": -0.0028931029857558813,
+      "adjoint_error": 1.6566609195578508e-16
+    },
+    {
+      "parameter": "shift",
+      "index": [
+        5,
+        4
+      ],
+      "shift_derivative": -0.0008488757027891869,
+      "adjoint_error": 1.1275702593849246e-17
+    },
+    {
+      "parameter": "frequency",
+      "index": [
+        5,
+        4
+      ],
+      "shift_derivative": -0.00025862668721009815,
+      "adjoint_error": 3.469446951953614e-18
+    },
+    {
+      "parameter": "shift",
+      "index": [
+        11,
+        8
+      ],
+      "shift_derivative": -0.009069132360543714,
+      "adjoint_error": 4.5102810375396984e-17
+    },
+    {
+      "parameter": "frequency",
+      "index": [
+        11,
+        8
+      ],
+      "shift_derivative": 0.0034372574566534837,
+      "adjoint_error": 1.734723475976807e-17
+    }
+  ],
+  "forward_max_error": 9.216471219541944e-08,
+  "versions": {
+    "torch": "2.10.0+cu128",
+    "pennylane": "0.42.3"
+  },
+  "scope": "One deterministic training input and scalar linear readout probe; verifies derivatives, not generalization or absence of barren plateaus."
+}

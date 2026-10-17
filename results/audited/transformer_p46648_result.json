@@ -1,0 +1,321 @@
+{
+  "status": "passed",
+  "name": "transformer_p46648",
+  "parameters": 46648,
+  "checkpoint": "/mnt/nvme/home/yxh/gtp_qml_search_20261009/transformer_global_hybrid_20261012/models/transformer_p46648/best_macro.pt",
+  "checkpoint_sha256": "67c5b543bb0396ff82beafdfa5418cd6bf3efe8afb8b7df1fd4398d1a817e55f",
+  "training_plan_sha256": "6cd32bf22d6dc690c8f77e435c4cc6320fdaa524a344f7d87f1e85937bbc92ec",
+  "training_audit_sha256": "d74da32562868da082556877f08b999d364eced3a5d533290e3514be85648810",
+  "epoch": 47,
+  "alpha": 1.0,
+  "expanded_plan_sha256": "852ecde19d12c65662c60df505ac1bb793672b915722db3dd75e18808c0c18aa",
+  "data_sha256": {
+    "x.npy": "c40609ff7a0f9e66eca1a302b94851cb72220ffbcc3d90d3d3b5b0f0b2a9f9a2",
+    "y.npy": "cbef6ac87d49b3b076153436d7687d659c7e436b6ba5d19e034ae4d73c30775e",
+    "cohort_ids.npz": "1de06e889e4d5dc544f3a3f37357148585c41ecfa43d56a876e5f7c710792228"
+  },
+  "source_sha256": "e1f2505be5d337fddee71eba979f89a699bd38629c146a84b65328b6ae13a903",
+  "objects": 65631,
+  "historical_subset_objects": 40631,
+  "selection": "Existing checkpoint and alpha frozen on original 10,000-object validation; no reselection.",
+  "comparison_limit": "Other new neural rows were selected using expanded 105,297-object validation; selection protocols differ.",
+  "inference": "CPU FP32, 4 threads, batch256; two independently reloaded full passes.",
+  "confirmation_accessed": false,
+  "metrics": {
+    "development": {
+      "macro_f1": 0.9194478152044205,
+      "accuracy": 0.9459858908137923,
+      "objects": 65631,
+      "correct": 62086,
+      "class_f1": [
+        0.8424908424908425,
+        0.853625170998632,
+        0.9639730639730639,
+        0.9484729609395682,
+        0.9633066216786166,
+        0.953518628030751,
+        0.8684961282434451,
+        0.9737242955064738,
+        0.8543689320388349,
+        0.9725015081439775
+      ],
+      "confusion_matrix": [
+        [
+          115,
+          0,
+          0,
+          1,
+          0,
+          0,
+          25,
+          4,
+          0,
+          3
+        ],
+        [
+          0,
+          936,
+          0,
+          124,
+          0,
+          11,
+          30,
+          2,
+          0,
+          4
+        ],
+        [
+          0,
+          0,
+          2863,
+          55,
+          0,
+          49,
+          5,
+          3,
+          0,
+          17
+        ],
+        [
+          1,
+          69,
+          21,
+          19705,
+          1,
+          37,
+          659,
+          11,
+          103,
+          89
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1142,
+          1,
+          0,
+          0,
+          0,
+          11
+        ],
+        [
+          0,
+          17,
+          43,
+          42,
+          1,
+          8062,
+          23,
+          4,
+          0,
+          228
+        ],
+        [
+          8,
+          62,
+          2,
+          719,
+          0,
+          45,
+          6393,
+          18,
+          5,
+          155
+        ],
+        [
+          0,
+          0,
+          1,
+          17,
+          0,
+          0,
+          14,
+          2557,
+          17,
+          6
+        ],
+        [
+          0,
+          1,
+          0,
+          161,
+          0,
+          0,
+          4,
+          35,
+          968,
+          3
+        ],
+        [
+          1,
+          1,
+          18,
+          31,
+          73,
+          285,
+          162,
+          6,
+          1,
+          19345
+        ]
+      ]
+    },
+    "previously_unused": {
+      "macro_f1": 0.9201949177415166,
+      "accuracy": 0.947306244000886,
+      "objects": 40631,
+      "correct": 38490,
+      "class_f1": [
+        0.8402366863905325,
+        0.8590405904059041,
+        0.9637898175878029,
+        0.9494423502895115,
+        0.9618528610354223,
+        0.9547144627705215,
+        0.8747938880949764,
+        0.9721627408993576,
+        0.8528571428571429,
+        0.9730586370839936
+      ],
+      "confusion_matrix": [
+        [
+          71,
+          0,
+          0,
+          1,
+          0,
+          0,
+          14,
+          3,
+          0,
+          3
+        ],
+        [
+          0,
+          582,
+          0,
+          77,
+          0,
+          7,
+          16,
+          1,
+          0,
+          3
+        ],
+        [
+          0,
+          0,
+          1770,
+          35,
+          0,
+          29,
+          3,
+          3,
+          0,
+          12
+        ],
+        [
+          0,
+          44,
+          13,
+          12216,
+          0,
+          28,
+          386,
+          10,
+          67,
+          48
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          706,
+          1,
+          0,
+          0,
+          0,
+          7
+        ],
+        [
+          0,
+          12,
+          27,
+          31,
+          1,
+          5007,
+          9,
+          2,
+          0,
+          123
+        ],
+        [
+          5,
+          29,
+          1,
+          428,
+          0,
+          24,
+          3979,
+          15,
+          4,
+          101
+        ],
+        [
+          0,
+          0,
+          1,
+          12,
+          0,
+          0,
+          7,
+          1589,
+          5,
+          3
+        ],
+        [
+          0,
+          1,
+          0,
+          100,
+          0,
+          0,
+          2,
+          24,
+          597,
+          2
+        ],
+        [
+          1,
+          1,
+          9,
+          21,
+          47,
+          181,
+          95,
+          5,
+          1,
+          11973
+        ]
+      ]
+    }
+  },
+  "old_prediction_checks": {
+    "report": {
+      "objects": 5000,
+      "prediction_disagreements": 0
+    },
+    "extra": {
+      "objects": 20000,
+      "prediction_disagreements": 0
+    }
+  },
+  "complete_reload_prediction_disagreements": 0,
+  "plan_sha256": "4ec52b36b5a22eec49434ffb24186636a848fcd1741a4a1ffbaf20387ef379c7",
+  "predictions_sha256": "c9166b92cd2dc606a708735d946f161bbe9fd51c48e897dcd7ddf74a9188a661",
+  "elapsed_seconds": 16.703964258544147,
+  "finished_utc": "2026-10-14T10:10:37.425317+00:00"
+}

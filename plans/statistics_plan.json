@@ -1,0 +1,20 @@
+{
+  "status": "frozen_before_new_quantum_comparison",
+  "created_utc": "2026-10-14T06:47:41.198087+00:00",
+  "source_sha256": "89cc16d9c0410e748e11ddf974a48d7d0705b98797e9220818b14ede7cf1e3c8",
+  "neural_plan_sha256": "7a94001fe61846f105a460cedb3804673f26a7e8b1bb4ceab13cb13c38e72ee7",
+  "development_plan_sha256": "293eef107c3ae584c50dd1bebbd1b298d826312562fa3e992df1f0145ccd781f",
+  "tree_plan_sha256": "27bbc0e956d5818550db3e083c31e96f188af7f14b7881e2caa4e8e95d13dffd",
+  "bootstrap_helper_sha256": "8229bfeda6e8a7b76f5b79228096daa5ce679a3615d03e3b138a941e2ba6f8bc",
+  "draws": 10000,
+  "seed_rule": "20261014 xor first16hex(SHA256(comparison_key)); independent of job completion order.",
+  "comparisons": "For three seeds:quantum vs validation-selected pureMLP,matchedMLP,reselectedRF,reselectedLightGBM. Also seed42 vs noCNOT,frozenQuantum,strongMLP,quadratic. Both selectors and both nested development scopes.",
+  "expected_comparisons": 64,
+  "cohorts": {
+    "development": 0,
+    "previously_unused": 25000
+  },
+  "interval_scope": "Pointwise paired-object 95% percentile intervals, conditional on each frozen model pair. No search uncertainty or multiplicity correction; exploratory.",
+  "seed_summary": "Mean and sample SD of paired differences across three conditional fine-tuning seeds. Object n is not multiplied by3; no CI for seed mean inferred from object CIs.",
+  "confirmation_accessed": false
+}

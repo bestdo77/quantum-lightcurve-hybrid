@@ -1,0 +1,101 @@
+{
+  "status": "passed",
+  "objects": 64,
+  "rows": [
+    {
+      "condition": "zero_final_head",
+      "loss": 0.1961575597524643,
+      "gradients": {
+        "readout.theta": {
+          "parameters": 324,
+          "l2_norm": 0.0,
+          "rms": 0.0,
+          "max_abs": 0.0,
+          "exact_zero_fraction": 1.0,
+          "finite": true
+        },
+        "readout.frequency": {
+          "parameters": 108,
+          "l2_norm": 0.0,
+          "rms": 0.0,
+          "max_abs": 0.0,
+          "exact_zero_fraction": 1.0,
+          "finite": true
+        },
+        "readout.shift": {
+          "parameters": 108,
+          "l2_norm": 0.0,
+          "rms": 0.0,
+          "max_abs": 0.0,
+          "exact_zero_fraction": 1.0,
+          "finite": true
+        },
+        "fusion_head.0.weight": {
+          "parameters": 18816,
+          "l2_norm": 0.0,
+          "rms": 0.0,
+          "max_abs": 0.0,
+          "exact_zero_fraction": 1.0,
+          "finite": true
+        },
+        "fusion_head.2.weight": {
+          "parameters": 1280,
+          "l2_norm": 0.29690438508987427,
+          "rms": 0.008298730477690697,
+          "max_abs": 0.06471466273069382,
+          "exact_zero_fraction": 0.0,
+          "finite": true
+        }
+      },
+      "residual_max_abs": 0.0
+    },
+    {
+      "condition": "only_final_head_std0p01",
+      "loss": 0.19762293994426727,
+      "gradients": {
+        "readout.theta": {
+          "parameters": 324,
+          "l2_norm": 0.007448142394423485,
+          "rms": 0.0004137856885790825,
+          "max_abs": 0.0016233348287642002,
+          "exact_zero_fraction": 0.0,
+          "finite": true
+        },
+        "readout.frequency": {
+          "parameters": 108,
+          "l2_norm": 0.0010472710710018873,
+          "rms": 0.00010077370097860694,
+          "max_abs": 0.000316901394398883,
+          "exact_zero_fraction": 0.0,
+          "finite": true
+        },
+        "readout.shift": {
+          "parameters": 108,
+          "l2_norm": 0.0033782196696847677,
+          "rms": 0.0003250693262089044,
+          "max_abs": 0.0010657093953341246,
+          "exact_zero_fraction": 0.0,
+          "finite": true
+        },
+        "fusion_head.0.weight": {
+          "parameters": 18816,
+          "l2_norm": 0.05602211132645607,
+          "rms": 0.00040840948349796236,
+          "max_abs": 0.004762697499245405,
+          "exact_zero_fraction": 0.0,
+          "finite": true
+        },
+        "fusion_head.2.weight": {
+          "parameters": 1280,
+          "l2_norm": 0.29760995507240295,
+          "rms": 0.00831845123320818,
+          "max_abs": 0.06503547728061676,
+          "exact_zero_fraction": 0.0,
+          "finite": true
+        }
+      },
+      "residual_max_abs": 0.14476078748703003
+    }
+  ],
+  "interpretation": "Zero final residual weights block the initial supervised quantum gradient algebraically. Opening the head restores gradients at these same circuit parameters."
+}

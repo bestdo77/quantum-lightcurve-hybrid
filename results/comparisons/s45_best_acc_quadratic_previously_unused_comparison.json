@@ -1,0 +1,45 @@
+{
+  "objects": 40631,
+  "quantum": {
+    "macro_f1": 0.9174602290821013,
+    "accuracy": 0.9499643129630085
+  },
+  "control": {
+    "macro_f1": 0.9181456266970599,
+    "accuracy": 0.9499643129630085
+  },
+  "quantum_minus_control": {
+    "macro_f1": -0.0006853976149585606,
+    "accuracy": 0.0
+  },
+  "interval95": {
+    "macro_f1": [
+      -0.0032345735653195847,
+      0.0017538109206325396
+    ],
+    "accuracy": [
+      -0.000984469985971348,
+      0.000984469985971348
+    ]
+  },
+  "quantum_only_correct": 213,
+  "control_only_correct": 213,
+  "exact_mcnemar_accuracy_p": 1.0,
+  "draws": 10000,
+  "key": "s45_best_acc_quadratic_previously_unused",
+  "seed": 45,
+  "selection": "best_acc",
+  "cohort": "previously_unused",
+  "control_family": "quadratic",
+  "quantum_proof": {
+    "name": "quantum_s45",
+    "checkpoint_sha256": "b65c3b8468b81285482049b5be66d2e78030bb863f3540fd1b38b22b1fd47515",
+    "predictions_sha256": "d7159fb102406fe49fbc37f25437457d8de1dee306530ff4a86da8b85ea7b6d7"
+  },
+  "control_proof": {
+    "name": "quadratic_s45",
+    "checkpoint_sha256": "9f1dca1731bd8c5163364fb9bb95b5b942df32428be9dcd377f74da10da236ba",
+    "predictions_sha256": "d2744d120a39ed44f3220df0c9e7d77cc155d9e1ff30ce59a2f4581be92daa09"
+  },
+  "plan_sha256": "10ddaaf526054b400c41d4c0778a85bebe5819ef3cbafe68603b2d41813c1028"
+}

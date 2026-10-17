@@ -1,0 +1,464 @@
+{
+  "status": "passed",
+  "plan_sha256": "d6193ad161368bf760af65cf7cf22701f895d5f6c705ccdbcaa4cca0e25f2da1",
+  "initial_parameters_identical": true,
+  "initial_probe_logit_max_error": 0.0,
+  "trajectory": [
+    {
+      "step": 1,
+      "custom_loss": 0.13005252182483673,
+      "pennylane_loss": 0.13005252182483673,
+      "loss_abs_error": 0.0,
+      "parameter_max_error": 3.486638888716698e-08,
+      "custom_update_seconds": 0.4265319174155593,
+      "pennylane_update_seconds": 0.6586557421833277
+    },
+    {
+      "step": 2,
+      "custom_loss": 0.15982432663440704,
+      "pennylane_loss": 0.15982431173324585,
+      "loss_abs_error": 1.4901161193847656e-08,
+      "parameter_max_error": 4.101544618606567e-06,
+      "custom_update_seconds": 0.288963939063251,
+      "pennylane_update_seconds": 0.5932636763900518
+    },
+    {
+      "step": 3,
+      "custom_loss": 0.09249092638492584,
+      "pennylane_loss": 0.09249091893434525,
+      "loss_abs_error": 7.450580596923828e-09,
+      "parameter_max_error": 4.101544618606567e-06,
+      "custom_update_seconds": 0.4990326538681984,
+      "pennylane_update_seconds": 0.6084290267899632
+    },
+    {
+      "step": 4,
+      "custom_loss": 0.05766450986266136,
+      "pennylane_loss": 0.05766450986266136,
+      "loss_abs_error": 0.0,
+      "parameter_max_error": 4.101544618606567e-06,
+      "custom_update_seconds": 0.25549317244440317,
+      "pennylane_update_seconds": 0.590231497772038
+    },
+    {
+      "step": 5,
+      "custom_loss": 0.1553412228822708,
+      "pennylane_loss": 0.15534120798110962,
+      "loss_abs_error": 1.4901161193847656e-08,
+      "parameter_max_error": 4.105269908905029e-06,
+      "custom_update_seconds": 0.25475421361625195,
+      "pennylane_update_seconds": 0.6092423805966973
+    },
+    {
+      "step": 6,
+      "custom_loss": 0.10231050848960876,
+      "pennylane_loss": 0.10231050848960876,
+      "loss_abs_error": 0.0,
+      "parameter_max_error": 4.105269908905029e-06,
+      "custom_update_seconds": 0.26622513215988874,
+      "pennylane_update_seconds": 0.6040340615436435
+    },
+    {
+      "step": 7,
+      "custom_loss": 0.13029132783412933,
+      "pennylane_loss": 0.13029132783412933,
+      "loss_abs_error": 0.0,
+      "parameter_max_error": 4.0940940380096436e-06,
+      "custom_update_seconds": 0.25516598019748926,
+      "pennylane_update_seconds": 0.6176083637401462
+    },
+    {
+      "step": 8,
+      "custom_loss": 0.11997196823358536,
+      "pennylane_loss": 0.11997196823358536,
+      "loss_abs_error": 0.0,
+      "parameter_max_error": 4.08664345741272e-06,
+      "custom_update_seconds": 0.25815801694989204,
+      "pennylane_update_seconds": 0.5949600096791983
+    },
+    {
+      "step": 9,
+      "custom_loss": 0.08681371808052063,
+      "pennylane_loss": 0.08681371808052063,
+      "loss_abs_error": 0.0,
+      "parameter_max_error": 4.082918167114258e-06,
+      "custom_update_seconds": 0.2581823682412505,
+      "pennylane_update_seconds": 0.612050705589354
+    },
+    {
+      "step": 10,
+      "custom_loss": 0.1298394799232483,
+      "pennylane_loss": 0.1298394799232483,
+      "loss_abs_error": 0.0,
+      "parameter_max_error": 4.079192876815796e-06,
+      "custom_update_seconds": 0.2618415504693985,
+      "pennylane_update_seconds": 0.6083868881687522
+    },
+    {
+      "step": 11,
+      "custom_loss": 0.05291938781738281,
+      "pennylane_loss": 0.05291938781738281,
+      "loss_abs_error": 0.0,
+      "parameter_max_error": 4.071742296218872e-06,
+      "custom_update_seconds": 0.2547864057123661,
+      "pennylane_update_seconds": 0.6149775357916951
+    },
+    {
+      "step": 12,
+      "custom_loss": 0.14391624927520752,
+      "pennylane_loss": 0.1439162641763687,
+      "loss_abs_error": 1.4901161193847656e-08,
+      "parameter_max_error": 4.071742296218872e-06,
+      "custom_update_seconds": 0.2632794389501214,
+      "pennylane_update_seconds": 0.5944875562563539
+    },
+    {
+      "step": 13,
+      "custom_loss": 0.08936958760023117,
+      "pennylane_loss": 0.08936958760023117,
+      "loss_abs_error": 0.0,
+      "parameter_max_error": 4.071742296218872e-06,
+      "custom_update_seconds": 0.26052735559642315,
+      "pennylane_update_seconds": 0.6016569146886468
+    },
+    {
+      "step": 14,
+      "custom_loss": 0.12923826277256012,
+      "pennylane_loss": 0.12923826277256012,
+      "loss_abs_error": 0.0,
+      "parameter_max_error": 4.071742296218872e-06,
+      "custom_update_seconds": 0.26074150670319796,
+      "pennylane_update_seconds": 0.5950764426961541
+    },
+    {
+      "step": 15,
+      "custom_loss": 0.10207906365394592,
+      "pennylane_loss": 0.10207906365394592,
+      "loss_abs_error": 0.0,
+      "parameter_max_error": 4.071742296218872e-06,
+      "custom_update_seconds": 0.25872487761080265,
+      "pennylane_update_seconds": 0.5900711612775922
+    },
+    {
+      "step": 16,
+      "custom_loss": 0.11765626817941666,
+      "pennylane_loss": 0.11765626817941666,
+      "loss_abs_error": 0.0,
+      "parameter_max_error": 4.071742296218872e-06,
+      "custom_update_seconds": 0.1993671404197812,
+      "pennylane_update_seconds": 0.44296198058873415
+    },
+    {
+      "step": 17,
+      "custom_loss": 0.11979849636554718,
+      "pennylane_loss": 0.11979849636554718,
+      "loss_abs_error": 0.0,
+      "parameter_max_error": 4.06801700592041e-06,
+      "custom_update_seconds": 0.18819314241409302,
+      "pennylane_update_seconds": 0.4282142957672477
+    },
+    {
+      "step": 18,
+      "custom_loss": 0.08501443266868591,
+      "pennylane_loss": 0.08501442521810532,
+      "loss_abs_error": 7.450580596923828e-09,
+      "parameter_max_error": 4.06801700592041e-06,
+      "custom_update_seconds": 0.1870057387277484,
+      "pennylane_update_seconds": 0.42830410972237587
+    },
+    {
+      "step": 19,
+      "custom_loss": 0.10996051877737045,
+      "pennylane_loss": 0.10996051877737045,
+      "loss_abs_error": 0.0,
+      "parameter_max_error": 4.06801700592041e-06,
+      "custom_update_seconds": 0.18800286203622818,
+      "pennylane_update_seconds": 0.4297506893053651
+    },
+    {
+      "step": 20,
+      "custom_loss": 0.08163297176361084,
+      "pennylane_loss": 0.08163297176361084,
+      "loss_abs_error": 0.0,
+      "parameter_max_error": 4.06801700592041e-06,
+      "custom_update_seconds": 0.19448318798094988,
+      "pennylane_update_seconds": 0.5040160352364182
+    }
+  ],
+  "steps_each": 20,
+  "optimizer_group_steps": [
+    {
+      "backbone": [
+        20
+      ],
+      "theta": [
+        20
+      ],
+      "encoding": [
+        20
+      ],
+      "branch": [
+        20
+      ]
+    },
+    {
+      "backbone": [
+        20
+      ],
+      "theta": [
+        20
+      ],
+      "encoding": [
+        20
+      ],
+      "branch": [
+        20
+      ]
+    }
+  ],
+  "backbone_frozen_and_identical": true,
+  "final_training_probe_objects": 512,
+  "final_probe_logit_max_error": 1.9073486328125e-06,
+  "final_probe_prediction_disagreements": 0,
+  "same_state_gradient_audit": {
+    "max_abs_error": 1.7695128917694092e-08,
+    "scaled_max_error": 1.7695128917694092e-08,
+    "parameter_tensors": [
+      {
+        "name": "backbone.network.stem.w1",
+        "max_abs_error": 7.450580596923828e-09,
+        "scaled_max_error": 7.450580596923828e-09
+      },
+      {
+        "name": "backbone.network.stem.b1",
+        "max_abs_error": 7.450580596923828e-09,
+        "scaled_max_error": 7.450580596923828e-09
+      },
+      {
+        "name": "backbone.network.stem.w2",
+        "max_abs_error": 3.725290298461914e-09,
+        "scaled_max_error": 3.725290298461914e-09
+      },
+      {
+        "name": "backbone.network.stem.b2",
+        "max_abs_error": 5.820766091346741e-09,
+        "scaled_max_error": 5.820766091346741e-09
+      },
+      {
+        "name": "backbone.network.attention.0.w1",
+        "max_abs_error": 5.587935447692871e-09,
+        "scaled_max_error": 5.587935447692871e-09
+      },
+      {
+        "name": "backbone.network.attention.0.b1",
+        "max_abs_error": 2.0954757928848267e-09,
+        "scaled_max_error": 2.0954757928848267e-09
+      },
+      {
+        "name": "backbone.network.attention.0.w2",
+        "max_abs_error": 5.587935447692871e-09,
+        "scaled_max_error": 5.587935447692871e-09
+      },
+      {
+        "name": "backbone.network.attention.0.b2",
+        "max_abs_error": 3.725290298461914e-09,
+        "scaled_max_error": 3.725290298461914e-09
+      },
+      {
+        "name": "backbone.network.attention.1.w1",
+        "max_abs_error": 3.725290298461914e-09,
+        "scaled_max_error": 3.725290298461914e-09
+      },
+      {
+        "name": "backbone.network.attention.1.b1",
+        "max_abs_error": 1.6298145055770874e-09,
+        "scaled_max_error": 1.6298145055770874e-09
+      },
+      {
+        "name": "backbone.network.attention.1.w2",
+        "max_abs_error": 2.7939677238464355e-09,
+        "scaled_max_error": 2.7939677238464355e-09
+      },
+      {
+        "name": "backbone.network.attention.1.b2",
+        "max_abs_error": 1.6880221664905548e-09,
+        "scaled_max_error": 1.6880221664905548e-09
+      },
+      {
+        "name": "backbone.network.ffn.0.w1",
+        "max_abs_error": 1.629359758226201e-09,
+        "scaled_max_error": 1.629359758226201e-09
+      },
+      {
+        "name": "backbone.network.ffn.0.b1",
+        "max_abs_error": 6.984919309616089e-10,
+        "scaled_max_error": 6.984919309616089e-10
+      },
+      {
+        "name": "backbone.network.ffn.0.w2",
+        "max_abs_error": 1.862645149230957e-09,
+        "scaled_max_error": 1.862645149230957e-09
+      },
+      {
+        "name": "backbone.network.ffn.0.b2",
+        "max_abs_error": 2.0954757928848267e-09,
+        "scaled_max_error": 2.0954757928848267e-09
+      },
+      {
+        "name": "backbone.network.ffn.1.w1",
+        "max_abs_error": 1.862645149230957e-09,
+        "scaled_max_error": 1.862645149230957e-09
+      },
+      {
+        "name": "backbone.network.ffn.1.b1",
+        "max_abs_error": 1.7462298274040222e-09,
+        "scaled_max_error": 1.7462298274040222e-09
+      },
+      {
+        "name": "backbone.network.ffn.1.w2",
+        "max_abs_error": 1.7462298274040222e-09,
+        "scaled_max_error": 1.7462298274040222e-09
+      },
+      {
+        "name": "backbone.network.ffn.1.b2",
+        "max_abs_error": 2.0954757928848267e-09,
+        "scaled_max_error": 2.0954757928848267e-09
+      },
+      {
+        "name": "backbone.network.attn_norm.0.weight",
+        "max_abs_error": 2.7939677238464355e-09,
+        "scaled_max_error": 2.7939677238464355e-09
+      },
+      {
+        "name": "backbone.network.attn_norm.0.bias",
+        "max_abs_error": 3.259629011154175e-09,
+        "scaled_max_error": 3.259629011154175e-09
+      },
+      {
+        "name": "backbone.network.attn_norm.1.weight",
+        "max_abs_error": 2.7939677238464355e-09,
+        "scaled_max_error": 2.7939677238464355e-09
+      },
+      {
+        "name": "backbone.network.attn_norm.1.bias",
+        "max_abs_error": 1.979060471057892e-09,
+        "scaled_max_error": 1.979060471057892e-09
+      },
+      {
+        "name": "backbone.network.ffn_norm.0.weight",
+        "max_abs_error": 3.725290298461914e-09,
+        "scaled_max_error": 3.725290298461914e-09
+      },
+      {
+        "name": "backbone.network.ffn_norm.0.bias",
+        "max_abs_error": 2.2118911147117615e-09,
+        "scaled_max_error": 2.2118911147117615e-09
+      },
+      {
+        "name": "backbone.network.ffn_norm.1.weight",
+        "max_abs_error": 1.280568540096283e-09,
+        "scaled_max_error": 1.280568540096283e-09
+      },
+      {
+        "name": "backbone.network.ffn_norm.1.bias",
+        "max_abs_error": 2.561137080192566e-09,
+        "scaled_max_error": 2.561137080192566e-09
+      },
+      {
+        "name": "backbone.network.reduce.w1",
+        "max_abs_error": 3.725290298461914e-09,
+        "scaled_max_error": 3.725290298461914e-09
+      },
+      {
+        "name": "backbone.network.reduce.b1",
+        "max_abs_error": 1.862645149230957e-09,
+        "scaled_max_error": 1.862645149230957e-09
+      },
+      {
+        "name": "backbone.network.reduce.w2",
+        "max_abs_error": 3.725290298461914e-09,
+        "scaled_max_error": 3.725290298461914e-09
+      },
+      {
+        "name": "backbone.network.reduce.b2",
+        "max_abs_error": 3.725290298461914e-09,
+        "scaled_max_error": 3.725290298461914e-09
+      },
+      {
+        "name": "backbone.network.head.weight",
+        "max_abs_error": 7.450580596923828e-09,
+        "scaled_max_error": 7.450580596923828e-09
+      },
+      {
+        "name": "backbone.network.head.bias",
+        "max_abs_error": 1.3969838619232178e-09,
+        "scaled_max_error": 1.3969838619232178e-09
+      },
+      {
+        "name": "classical_norm.weight",
+        "max_abs_error": 1.7462298274040222e-10,
+        "scaled_max_error": 1.7462298274040222e-10
+      },
+      {
+        "name": "classical_norm.bias",
+        "max_abs_error": 1.1641532182693481e-10,
+        "scaled_max_error": 1.1641532182693481e-10
+      },
+      {
+        "name": "readout.theta",
+        "max_abs_error": 1.3969838619232178e-09,
+        "scaled_max_error": 1.3969838619232178e-09
+      },
+      {
+        "name": "readout.frequency",
+        "max_abs_error": 5.484253051690757e-10,
+        "scaled_max_error": 5.484253051690757e-10
+      },
+      {
+        "name": "readout.shift",
+        "max_abs_error": 1.2005330063402653e-09,
+        "scaled_max_error": 1.2005330063402653e-09
+      },
+      {
+        "name": "representation_norm.weight",
+        "max_abs_error": 1.04046193882823e-09,
+        "scaled_max_error": 1.04046193882823e-09
+      },
+      {
+        "name": "representation_norm.bias",
+        "max_abs_error": 6.548361852765083e-11,
+        "scaled_max_error": 6.548361852765083e-11
+      },
+      {
+        "name": "fusion_head.0.weight",
+        "max_abs_error": 2.35741026699543e-09,
+        "scaled_max_error": 2.35741026699543e-09
+      },
+      {
+        "name": "fusion_head.0.bias",
+        "max_abs_error": 1.6916601452976465e-10,
+        "scaled_max_error": 1.6916601452976465e-10
+      },
+      {
+        "name": "fusion_head.2.weight",
+        "max_abs_error": 1.7695128917694092e-08,
+        "scaled_max_error": 1.7695128917694092e-08
+      },
+      {
+        "name": "fusion_head.2.bias",
+        "max_abs_error": 1.3969838619232178e-09,
+        "scaled_max_error": 1.3969838619232178e-09
+      }
+    ]
+  },
+  "pennylane_raw_dtype": "torch.float64",
+  "custom_checkpoint_sha256": "b5be0d3aec17aee220b71694fe0ce62f228a6a7abb54ddc520c2cf51d3b01a6e",
+  "pennylane_checkpoint_sha256": "e00ff204d25b8598b8ecab8fbcac7ed242a357abdff1834cefdee19f47fcc0b7",
+  "versions": {
+    "torch": "2.10.0+cu128",
+    "pennylane": "0.42.3"
+  },
+  "confirmation_accessed": false,
+  "full_package_training_completed": false,
+  "finished_utc": "2026-10-14T07:55:21.673253+00:00"
+}

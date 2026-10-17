@@ -1,0 +1,80 @@
+{
+  "status": "frozen_before_expanded_validation_inference",
+  "created_utc": "2026-10-14T06:39:33.105827+00:00",
+  "models": [
+    {
+      "name": "rf359_full_unweighted_seed42",
+      "kind": "rf",
+      "checkpoint": "/mnt/hdd/yxh/gtp_rf_full_reference_20261012/rf359_full_unweighted_seed42.joblib",
+      "checkpoint_sha256": "dc1c34caea35ba01a19d0803c3da600b4d8cd8124724df2bfa52b4ded18a1f70",
+      "trees": 500,
+      "old_alpha": 0.0,
+      "old_prediction_folder": "/mnt/nvme/home/yxh/gtp_qml_search_20261009/rf_full_reference_20261012/rf359_full_unweighted_seed42"
+    },
+    {
+      "name": "rf359_full_balanced_seed42",
+      "kind": "rf",
+      "checkpoint": "/mnt/hdd/yxh/gtp_rf_full_reference_20261012/rf359_full_balanced_seed42.joblib",
+      "checkpoint_sha256": "2e4a61760e3d70cbd4d31407ed80b5cb6e60095e66f894e0701a56bfdfc3cfaf",
+      "trees": 500,
+      "old_alpha": 0.0,
+      "old_prediction_folder": "/mnt/nvme/home/yxh/gtp_qml_search_20261009/rf_full_reference_20261012/rf359_full_balanced_seed42"
+    },
+    {
+      "name": "lgbm359_full_unweighted_seed42",
+      "kind": "lightgbm",
+      "checkpoint": "/mnt/nvme/home/yxh/gtp_qml_search_20261009/lgbm_full_fusion_reference/models/lgbm359_full_unweighted_seed42/best.txt",
+      "checkpoint_sha256": "6b24b15cd97f066b61c0befa9a60b8ee1be4f36c226255fa6109ff3677cde7c5",
+      "trees": 3620,
+      "best_iteration": 362,
+      "old_alpha": 0.0,
+      "old_prediction_folder": "/mnt/nvme/home/yxh/gtp_qml_search_20261009/lgbm_full_fusion_reference/models/lgbm359_full_unweighted_seed42"
+    },
+    {
+      "name": "lgbm359_full_balanced_seed42",
+      "kind": "lightgbm",
+      "checkpoint": "/mnt/nvme/home/yxh/gtp_qml_search_20261009/lgbm_full_fusion_reference/models/lgbm359_full_balanced_seed42/best.txt",
+      "checkpoint_sha256": "1efbe5e2554012356083a0f4d41ba9307b488e748a6b5412f5d2e5504f0e5877",
+      "trees": 8850,
+      "best_iteration": 885,
+      "old_alpha": 0.5,
+      "old_prediction_folder": "/mnt/nvme/home/yxh/gtp_qml_search_20261009/lgbm_full_fusion_reference/models/lgbm359_full_balanced_seed42"
+    }
+  ],
+  "source_sha256": "48e9a91eaaa033110f29a94af33b53cf41311508a6f1e1ada89eee209c69d4e0",
+  "neural_plan_sha256": "7a94001fe61846f105a460cedb3804673f26a7e8b1bb4ceab13cb13c38e72ee7",
+  "validation_data_sha256": {
+    "val_x.npy": "2662f526b0f9e06354ac3b4bd847d955889aad93832170aad4e8be3ae430f048",
+    "val_y.npy": "85aad08649190d9071cac1189014469b5a6c43d2fadd0c175f5c7824a3683322",
+    "val_ids.npy": "28b99a2f996d4e89075d6025268554e70c2eafb5e4eddc55aaa774cdeea11508",
+    "fit_y.npy": "d4d6726e4b976b09fe373a50b19ef772d6258c384bcdc556eff848086aadf753"
+  },
+  "development_data_sha256": {
+    "x.npy": "c40609ff7a0f9e66eca1a302b94851cb72220ffbcc3d90d3d3b5b0f0b2a9f9a2",
+    "y.npy": "cbef6ac87d49b3b076153436d7687d659c7e436b6ba5d19e034ae4d73c30775e",
+    "cohort_ids.npz": "1de06e889e4d5dc544f3a3f37357148585c41ecfa43d56a876e5f7c710792228"
+  },
+  "alpha_grid": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "selector_rules": {
+    "best_macro": [
+      "macro_f1",
+      "accuracy"
+    ],
+    "best_acc": [
+      "accuracy",
+      "macro_f1"
+    ]
+  },
+  "validation_scope": "105297 objects, the same expanded part1 validation used by new neural models.",
+  "selection_scope": "Two fixed historical variants per tree family, five alphas each; ties keep declared model order then smaller alpha.",
+  "tree_checkpoint_scope": "Existing trees frozen, including historical LightGBM early-stopping iteration selected on old validation; no new iterations searched.",
+  "development_scope": "65631 exposed development objects excluding validation; previously-unused40631 reported separately.",
+  "training_performed": false,
+  "confirmation_accessed": false
+}

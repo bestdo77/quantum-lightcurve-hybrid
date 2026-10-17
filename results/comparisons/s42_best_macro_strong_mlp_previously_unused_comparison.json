@@ -1,0 +1,49 @@
+{
+  "objects": 40631,
+  "quantum": {
+    "macro_f1": 0.9176555220494438,
+    "accuracy": 0.9495951367182693
+  },
+  "control": {
+    "macro_f1": 0.9175783782088891,
+    "accuracy": 0.9498166424651129
+  },
+  "quantum_minus_control": {
+    "macro_f1": 7.714384055468315e-05,
+    "accuracy": -0.00022150574684354218
+  },
+  "interval95": {
+    "macro_f1": [
+      -0.0009207119840714484,
+      0.0010779550607905308
+    ],
+    "accuracy": [
+      -0.0008121877384263954,
+      0.000369176244739311
+    ]
+  },
+  "quantum_only_correct": 73,
+  "control_only_correct": 82,
+  "exact_mcnemar_accuracy_p": 0.5206333734262375,
+  "draws": 10000,
+  "key": "s42_best_macro_strong_mlp_previously_unused",
+  "seed": 42,
+  "selection": "best_macro",
+  "control_family": "strong_mlp",
+  "cohort": "previously_unused",
+  "quantum_proof": {
+    "name": "quantum_s42",
+    "selection": "best_macro",
+    "checkpoint_sha256": "bcc60e82a5516820dd8f6101393a29e738a989d2cc82c02e0883b51e1d019a0b",
+    "predictions_sha256": "c4423ac2c4848dfe02eefd1fb92ab7da61d3d56364d7aa25e459a3cfd0592775",
+    "development_result_sha256": "3ee1c8ddeb71a6ce78f0eb956bc1b3b5facbaa36ba2ab21ba97f5e0d68b3e5f4"
+  },
+  "control_proof": {
+    "name": "strong_mlp_s42",
+    "selection": "best_macro",
+    "checkpoint_sha256": "e839a0ba43f382cad6e9ce7c1486ba793b4d243e4280f9913eca04e0229c2bf4",
+    "predictions_sha256": "ff218cd3886f2de4bc4d08bb158aa6f70a48f7db82618c38ec6c6e101bc148c6",
+    "development_result_sha256": "d42e6e4bdc13328780374e9976cddf644df1e80647c98ca39cea943286cf78ff"
+  },
+  "plan_sha256": "24d3aca4dc69305fbece2115fd1bf9f3c48fe8fba2ae75ef73f2aaafad057ffc"
+}
