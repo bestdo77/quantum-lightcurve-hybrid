@@ -1,0 +1,149 @@
+{
+  "status": "passed",
+  "analysis_type": "post_hoc_pooled_recomputation_from_original_predictions",
+  "budget_definition": "LightGBM cumulative scalar leaf outputs; split-node features/thresholds excluded; approximate capacity match, not exact neural-parameter equivalence",
+  "lightgbm": {
+    "num_leaves": 15,
+    "boosting_rounds": 370,
+    "class_trees": 3700,
+    "leaf_values": 55500,
+    "split_nodes": 51800
+  },
+  "quantum_fixed_fusion_parameters": 55581,
+  "classical_fixed_fusion_parameters": 54631,
+  "metrics": {
+    "lgbm_budget": {
+      "validation": {
+        "objects": 10000,
+        "macro_f1": 0.9308788551710755,
+        "accuracy": 0.9494
+      },
+      "report": {
+        "objects": 5000,
+        "macro_f1": 0.9323674840416529,
+        "accuracy": 0.9508
+      },
+      "extra": {
+        "objects": 20000,
+        "macro_f1": 0.9222044765576903,
+        "accuracy": 0.94865
+      },
+      "report_plus_extra": {
+        "objects": 25000,
+        "macro_f1": 0.9241934877476655,
+        "accuracy": 0.94908
+      },
+      "pooled_validation_report_extra": {
+        "objects": 35000,
+        "macro_f1": 0.9263092681912888,
+        "accuracy": 0.9491714285714286
+      }
+    },
+    "quantum_plus_mlp": {
+      "validation": {
+        "objects": 10000,
+        "macro_f1": 0.9321731871308382,
+        "accuracy": 0.9515
+      },
+      "report": {
+        "objects": 5000,
+        "macro_f1": 0.9257774740136728,
+        "accuracy": 0.9474
+      },
+      "extra": {
+        "objects": 20000,
+        "macro_f1": 0.9233706150690499,
+        "accuracy": 0.94745
+      },
+      "report_plus_extra": {
+        "objects": 25000,
+        "macro_f1": 0.9238403086786804,
+        "accuracy": 0.94744
+      },
+      "pooled_validation_report_extra": {
+        "objects": 35000,
+        "macro_f1": 0.9264177203535443,
+        "accuracy": 0.9486
+      }
+    },
+    "mlp_plus_mlp": {
+      "validation": {
+        "objects": 10000,
+        "macro_f1": 0.9306598489450172,
+        "accuracy": 0.9511
+      },
+      "report": {
+        "objects": 5000,
+        "macro_f1": 0.9191415934039112,
+        "accuracy": 0.9486
+      },
+      "extra": {
+        "objects": 20000,
+        "macro_f1": 0.9215103067885092,
+        "accuracy": 0.9475
+      },
+      "report_plus_extra": {
+        "objects": 25000,
+        "macro_f1": 0.9210091905949307,
+        "accuracy": 0.94772
+      },
+      "pooled_validation_report_extra": {
+        "objects": 35000,
+        "macro_f1": 0.9239889153665442,
+        "accuracy": 0.9486857142857142
+      }
+    }
+  },
+  "source_sha256": {
+    "plan.json": "c7b3a68d2cc33a8b8cf76aa116157f799d7dbd4f26a452c41737c7dc38e03ec8",
+    "complete.json": "2125b0117be1e664891583431b95d3eb1b1caa08c0fb28379e2f0cbbffc1cc4d",
+    "score_fusion_result.json": "628a924685b877136f86e60ca66eff5e268126af4bc70e04cefc86b8054b2e23"
+  },
+  "quantum_minus": {
+    "lgbm_budget": {
+      "validation": {
+        "macro_f1_pp": 0.12943319597626957,
+        "accuracy_pp": 0.20999999999999908
+      },
+      "report": {
+        "macro_f1_pp": -0.6590010027980098,
+        "accuracy_pp": -0.33999999999999586
+      },
+      "extra": {
+        "macro_f1_pp": 0.11661385113596046,
+        "accuracy_pp": -0.11999999999999789
+      },
+      "report_plus_extra": {
+        "macro_f1_pp": -0.03531790689851322,
+        "accuracy_pp": -0.16400000000000858
+      },
+      "pooled_validation_report_extra": {
+        "macro_f1_pp": 0.010845216225552345,
+        "accuracy_pp": -0.05714285714285561
+      }
+    },
+    "mlp_plus_mlp": {
+      "validation": {
+        "macro_f1_pp": 0.15133381858210004,
+        "accuracy_pp": 0.0400000000000067
+      },
+      "report": {
+        "macro_f1_pp": 0.6635880609761613,
+        "accuracy_pp": -0.11999999999999789
+      },
+      "extra": {
+        "macro_f1_pp": 0.18603082805407345,
+        "accuracy_pp": -0.004999999999999449
+      },
+      "report_plus_extra": {
+        "macro_f1_pp": 0.2831118083749695,
+        "accuracy_pp": -0.028000000000005798
+      },
+      "pooled_validation_report_extra": {
+        "macro_f1_pp": 0.2428804987000155,
+        "accuracy_pp": -0.008571428571424455
+      }
+    }
+  },
+  "confirmation_accessed": false
+}

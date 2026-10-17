@@ -1,0 +1,568 @@
+{
+  "status": "exploratory_complete",
+  "models": {
+    "quantum_plus_mlp": {
+      "selection": {
+        "secondary": {
+          "run": "top10_newdata",
+          "name": "quantum_rank02_projected359_quantum_xyz_ru1_wd4",
+          "parameters": 32410,
+          "quantum_gate_parameters": 12960,
+          "selected": {
+            "criterion": "macro",
+            "alpha": 0.75
+          },
+          "optimizer": {
+            "lr_start": 0.001,
+            "lr_end": 0.0001,
+            "eps": 1e-08,
+            "weight_decay": 0.0001
+          },
+          "updates": 98920,
+          "epochs": 40,
+          "sample_presentations": 25321360,
+          "config_sha256": "dde7f196c7e4f548b09749c23c59b93dbba2bc3e1ea2d27922c7f5878aaeb9d4",
+          "result_sha256": "f1676602aa7a876d8d523f200dc47adc98f1b2027d196db5bb0662b49c5c3efa",
+          "prior_sha256": "5f162cfbab4b39fee6b7cae7119ed1ed69a523344bd550c8d1433f62d149a7cd",
+          "checkpoint_sha256": "eb7e95753ab36c27e381f4b18777fdcdc4cd57c5e15307af02e54679f13fb70a",
+          "source_prediction_sha256": {
+            "val": "eccafe15b4741af39bf862103c3d123f47d31dcf91a1e8da4168c1156d3f248f",
+            "report": "ddabd3fed665e7f6eb3df75fee10ecff5dc20f6a51ef44f3b93a4ebaddef570b",
+            "extra": "a5f1c4ad7b7b36cf65b93c77b30d9bc0e2ff149ea44c34c817d2140ac4a6e9b1"
+          }
+        },
+        "selected": {
+          "method": "corrected_logits",
+          "coefficient": 0.5,
+          "metrics": {
+            "accuracy": 0.9515,
+            "macro_f1": 0.9321731871308382,
+            "weighted_f1": 0.9513077576388841
+          }
+        },
+        "validation_grid": [
+          {
+            "method": "corrected_logits",
+            "coefficient": 0.0,
+            "metrics": {
+              "accuracy": 0.9495,
+              "macro_f1": 0.9276538715098773,
+              "weighted_f1": 0.9492570563386993
+            }
+          },
+          {
+            "method": "corrected_logits",
+            "coefficient": 0.1,
+            "metrics": {
+              "accuracy": 0.9499,
+              "macro_f1": 0.9275878572369056,
+              "weighted_f1": 0.9496351637941453
+            }
+          },
+          {
+            "method": "corrected_logits",
+            "coefficient": 0.2,
+            "metrics": {
+              "accuracy": 0.9502,
+              "macro_f1": 0.9276200806435705,
+              "weighted_f1": 0.9499619799947207
+            }
+          },
+          {
+            "method": "corrected_logits",
+            "coefficient": 0.3,
+            "metrics": {
+              "accuracy": 0.9509,
+              "macro_f1": 0.9285425167962661,
+              "weighted_f1": 0.9506926035414761
+            }
+          },
+          {
+            "method": "corrected_logits",
+            "coefficient": 0.4,
+            "metrics": {
+              "accuracy": 0.9512,
+              "macro_f1": 0.9312687127370985,
+              "weighted_f1": 0.9510227409725852
+            }
+          },
+          {
+            "method": "corrected_logits",
+            "coefficient": 0.5,
+            "metrics": {
+              "accuracy": 0.9515,
+              "macro_f1": 0.9321731871308382,
+              "weighted_f1": 0.9513077576388841
+            }
+          },
+          {
+            "method": "corrected_logits",
+            "coefficient": 0.6,
+            "metrics": {
+              "accuracy": 0.9497,
+              "macro_f1": 0.92728139483283,
+              "weighted_f1": 0.9495186439673861
+            }
+          },
+          {
+            "method": "corrected_logits",
+            "coefficient": 0.7,
+            "metrics": {
+              "accuracy": 0.9479,
+              "macro_f1": 0.9262751634488409,
+              "weighted_f1": 0.9477667008217079
+            }
+          },
+          {
+            "method": "corrected_logits",
+            "coefficient": 0.8,
+            "metrics": {
+              "accuracy": 0.9464,
+              "macro_f1": 0.9232204155750419,
+              "weighted_f1": 0.9462629703901977
+            }
+          },
+          {
+            "method": "corrected_logits",
+            "coefficient": 0.9,
+            "metrics": {
+              "accuracy": 0.943,
+              "macro_f1": 0.9177865195049769,
+              "weighted_f1": 0.9428796491780591
+            }
+          },
+          {
+            "method": "corrected_logits",
+            "coefficient": 1.0,
+            "metrics": {
+              "accuracy": 0.9396,
+              "macro_f1": 0.9122874126751401,
+              "weighted_f1": 0.9394779674469861
+            }
+          },
+          {
+            "method": "corrected_probabilities",
+            "coefficient": 0.0,
+            "metrics": {
+              "accuracy": 0.9495,
+              "macro_f1": 0.9276538715098773,
+              "weighted_f1": 0.9492570563386993
+            }
+          },
+          {
+            "method": "corrected_probabilities",
+            "coefficient": 0.1,
+            "metrics": {
+              "accuracy": 0.9498,
+              "macro_f1": 0.9274407973372588,
+              "weighted_f1": 0.9495460289272074
+            }
+          },
+          {
+            "method": "corrected_probabilities",
+            "coefficient": 0.2,
+            "metrics": {
+              "accuracy": 0.95,
+              "macro_f1": 0.927205186123879,
+              "weighted_f1": 0.949743080894097
+            }
+          },
+          {
+            "method": "corrected_probabilities",
+            "coefficient": 0.3,
+            "metrics": {
+              "accuracy": 0.9504,
+              "macro_f1": 0.9279038846133483,
+              "weighted_f1": 0.950174203651173
+            }
+          },
+          {
+            "method": "corrected_probabilities",
+            "coefficient": 0.4,
+            "metrics": {
+              "accuracy": 0.9508,
+              "macro_f1": 0.9288504062170496,
+              "weighted_f1": 0.9506228273201166
+            }
+          },
+          {
+            "method": "corrected_probabilities",
+            "coefficient": 0.5,
+            "metrics": {
+              "accuracy": 0.9508,
+              "macro_f1": 0.9309469380120762,
+              "weighted_f1": 0.9506078512958553
+            }
+          },
+          {
+            "method": "corrected_probabilities",
+            "coefficient": 0.6,
+            "metrics": {
+              "accuracy": 0.9487,
+              "macro_f1": 0.9261925698016871,
+              "weighted_f1": 0.9485400282329323
+            }
+          },
+          {
+            "method": "corrected_probabilities",
+            "coefficient": 0.7,
+            "metrics": {
+              "accuracy": 0.9473,
+              "macro_f1": 0.9236946742677379,
+              "weighted_f1": 0.9471423916822576
+            }
+          },
+          {
+            "method": "corrected_probabilities",
+            "coefficient": 0.8,
+            "metrics": {
+              "accuracy": 0.9447,
+              "macro_f1": 0.9188304798244161,
+              "weighted_f1": 0.9445639885989309
+            }
+          },
+          {
+            "method": "corrected_probabilities",
+            "coefficient": 0.9,
+            "metrics": {
+              "accuracy": 0.9419,
+              "macro_f1": 0.9175682862632101,
+              "weighted_f1": 0.9417926561458684
+            }
+          },
+          {
+            "method": "corrected_probabilities",
+            "coefficient": 1.0,
+            "metrics": {
+              "accuracy": 0.9396,
+              "macro_f1": 0.9122874126751401,
+              "weighted_f1": 0.9394779674469861
+            }
+          }
+        ],
+        "configured_parameters": 55581,
+        "active_parameters": 55581,
+        "active_quantum_gate_parameters": 12960
+      },
+      "metrics": {
+        "val": {
+          "accuracy": 0.9515,
+          "macro_f1": 0.9321731871308382,
+          "weighted_f1": 0.9513077576388841
+        },
+        "report": {
+          "accuracy": 0.9474,
+          "macro_f1": 0.9257774740136728,
+          "weighted_f1": 0.9472204194094956
+        },
+        "extra": {
+          "accuracy": 0.94745,
+          "macro_f1": 0.9233706150690499,
+          "weighted_f1": 0.9472608267014546
+        }
+      }
+    },
+    "mlp_plus_mlp": {
+      "selection": {
+        "secondary": {
+          "run": "dense_cpu_matched",
+          "name": "dense359_h85_atan_historicopt",
+          "parameters": 31460,
+          "quantum_gate_parameters": 0,
+          "selected": {
+            "criterion": "macro",
+            "alpha": 1.0
+          },
+          "optimizer": {
+            "lr_start": 0.003,
+            "lr_end": 0.0003,
+            "eps": 1e-08,
+            "weight_decay": 0.0001
+          },
+          "updates": 98920,
+          "epochs": 40,
+          "sample_presentations": 25321360,
+          "config_sha256": "855c21c774fb5fded2dcd885f58c8285d3a0ba56e1396de163ee74b9e2f17f07",
+          "result_sha256": "2e7e5b88bc3325af87e9cc3d077923cab2653d6b5c8c835079ef16cf29e4efe6",
+          "prior_sha256": "23c095b3be8253231704e0f72880b53836c64b6cad98bbc7280f9f500b1d237b",
+          "checkpoint_sha256": "4b601df3af0e7966cc27c46071e184351be621bc357675afe35769576ad02912",
+          "source_prediction_sha256": {
+            "val": "de0b1a9acef163ea3f77413fed931e36cff719235fb2bea0d35045b35c0b44e3",
+            "report": "1a993587389655767418ab6e62bf2bd12738031afea3c887d75215368362602f",
+            "extra": "e2772bf6e4593119fb87bc58970fe754bea8207ebf7a5f3adb9cbd4f411c3783"
+          }
+        },
+        "selected": {
+          "method": "corrected_probabilities",
+          "coefficient": 0.4,
+          "metrics": {
+            "accuracy": 0.9511,
+            "macro_f1": 0.9306598489450172,
+            "weighted_f1": 0.950850481419774
+          }
+        },
+        "validation_grid": [
+          {
+            "method": "corrected_logits",
+            "coefficient": 0.0,
+            "metrics": {
+              "accuracy": 0.9495,
+              "macro_f1": 0.9276538715098773,
+              "weighted_f1": 0.9492570563386993
+            }
+          },
+          {
+            "method": "corrected_logits",
+            "coefficient": 0.1,
+            "metrics": {
+              "accuracy": 0.9501,
+              "macro_f1": 0.928096256278917,
+              "weighted_f1": 0.9498479733545613
+            }
+          },
+          {
+            "method": "corrected_logits",
+            "coefficient": 0.2,
+            "metrics": {
+              "accuracy": 0.9502,
+              "macro_f1": 0.9283827884828426,
+              "weighted_f1": 0.9499134166289961
+            }
+          },
+          {
+            "method": "corrected_logits",
+            "coefficient": 0.3,
+            "metrics": {
+              "accuracy": 0.9505,
+              "macro_f1": 0.9287065165385686,
+              "weighted_f1": 0.9502330354051108
+            }
+          },
+          {
+            "method": "corrected_logits",
+            "coefficient": 0.4,
+            "metrics": {
+              "accuracy": 0.9516,
+              "macro_f1": 0.928002254843934,
+              "weighted_f1": 0.9513358117173362
+            }
+          },
+          {
+            "method": "corrected_logits",
+            "coefficient": 0.5,
+            "metrics": {
+              "accuracy": 0.9513,
+              "macro_f1": 0.9293065748982936,
+              "weighted_f1": 0.9510305388476968
+            }
+          },
+          {
+            "method": "corrected_logits",
+            "coefficient": 0.6,
+            "metrics": {
+              "accuracy": 0.9504,
+              "macro_f1": 0.9278591219378368,
+              "weighted_f1": 0.950087513437773
+            }
+          },
+          {
+            "method": "corrected_logits",
+            "coefficient": 0.7,
+            "metrics": {
+              "accuracy": 0.9488,
+              "macro_f1": 0.9251970477707843,
+              "weighted_f1": 0.948524987983436
+            }
+          },
+          {
+            "method": "corrected_logits",
+            "coefficient": 0.8,
+            "metrics": {
+              "accuracy": 0.9475,
+              "macro_f1": 0.9238244689296404,
+              "weighted_f1": 0.9471698769900422
+            }
+          },
+          {
+            "method": "corrected_logits",
+            "coefficient": 0.9,
+            "metrics": {
+              "accuracy": 0.9454,
+              "macro_f1": 0.921596012791419,
+              "weighted_f1": 0.9450779050433881
+            }
+          },
+          {
+            "method": "corrected_logits",
+            "coefficient": 1.0,
+            "metrics": {
+              "accuracy": 0.9413,
+              "macro_f1": 0.9133768413380633,
+              "weighted_f1": 0.9409225545736892
+            }
+          },
+          {
+            "method": "corrected_probabilities",
+            "coefficient": 0.0,
+            "metrics": {
+              "accuracy": 0.9495,
+              "macro_f1": 0.9276538715098773,
+              "weighted_f1": 0.9492570563386993
+            }
+          },
+          {
+            "method": "corrected_probabilities",
+            "coefficient": 0.1,
+            "metrics": {
+              "accuracy": 0.95,
+              "macro_f1": 0.9280382747020862,
+              "weighted_f1": 0.9497438035193724
+            }
+          },
+          {
+            "method": "corrected_probabilities",
+            "coefficient": 0.2,
+            "metrics": {
+              "accuracy": 0.9497,
+              "macro_f1": 0.9280533662759524,
+              "weighted_f1": 0.9494138469558202
+            }
+          },
+          {
+            "method": "corrected_probabilities",
+            "coefficient": 0.3,
+            "metrics": {
+              "accuracy": 0.9504,
+              "macro_f1": 0.9285536498198994,
+              "weighted_f1": 0.9501257563237033
+            }
+          },
+          {
+            "method": "corrected_probabilities",
+            "coefficient": 0.4,
+            "metrics": {
+              "accuracy": 0.9511,
+              "macro_f1": 0.9306598489450172,
+              "weighted_f1": 0.950850481419774
+            }
+          },
+          {
+            "method": "corrected_probabilities",
+            "coefficient": 0.5,
+            "metrics": {
+              "accuracy": 0.9511,
+              "macro_f1": 0.9293722796838267,
+              "weighted_f1": 0.9508369505348991
+            }
+          },
+          {
+            "method": "corrected_probabilities",
+            "coefficient": 0.6,
+            "metrics": {
+              "accuracy": 0.9497,
+              "macro_f1": 0.924604001043317,
+              "weighted_f1": 0.9494106451716654
+            }
+          },
+          {
+            "method": "corrected_probabilities",
+            "coefficient": 0.7,
+            "metrics": {
+              "accuracy": 0.9483,
+              "macro_f1": 0.9221602929179159,
+              "weighted_f1": 0.9480042286945513
+            }
+          },
+          {
+            "method": "corrected_probabilities",
+            "coefficient": 0.8,
+            "metrics": {
+              "accuracy": 0.9462,
+              "macro_f1": 0.9204620254578308,
+              "weighted_f1": 0.9458675635929694
+            }
+          },
+          {
+            "method": "corrected_probabilities",
+            "coefficient": 0.9,
+            "metrics": {
+              "accuracy": 0.945,
+              "macro_f1": 0.9182927487999075,
+              "weighted_f1": 0.9446569716298585
+            }
+          },
+          {
+            "method": "corrected_probabilities",
+            "coefficient": 1.0,
+            "metrics": {
+              "accuracy": 0.9413,
+              "macro_f1": 0.9133768413380633,
+              "weighted_f1": 0.9409225545736892
+            }
+          }
+        ],
+        "configured_parameters": 54631,
+        "active_parameters": 54631,
+        "active_quantum_gate_parameters": 0
+      },
+      "metrics": {
+        "val": {
+          "accuracy": 0.9511,
+          "macro_f1": 0.9306598489450172,
+          "weighted_f1": 0.950850481419774
+        },
+        "report": {
+          "accuracy": 0.9486,
+          "macro_f1": 0.9191415934039112,
+          "weighted_f1": 0.9482298919281033
+        },
+        "extra": {
+          "accuracy": 0.9475,
+          "macro_f1": 0.9215103067885092,
+          "weighted_f1": 0.9471617702777309
+        }
+      }
+    }
+  },
+  "paired_uncertainty": {
+    "val": {
+      "delta": 0.0015133381858210004,
+      "ci95": [
+        -0.0027776208152305525,
+        0.006720356166349177
+      ],
+      "draws": 10000,
+      "seed": 20261011,
+      "method": "Paired true-class-stratified multinomial resampling of joint prediction cells; percentile interval",
+      "scope": "Conditional on fixed models and exposed objects; does not include selection or training-seed uncertainty"
+    },
+    "report": {
+      "delta": 0.006635880609761613,
+      "ci95": [
+        -0.0017452560725151472,
+        0.016368927882309373
+      ],
+      "draws": 10000,
+      "seed": 20261011,
+      "method": "Paired true-class-stratified multinomial resampling of joint prediction cells; percentile interval",
+      "scope": "Conditional on fixed models and exposed objects; does not include selection or training-seed uncertainty"
+    },
+    "extra": {
+      "delta": 0.0018603082805407345,
+      "ci95": [
+        -0.002846065984590085,
+        0.006700095318752661
+      ],
+      "draws": 10000,
+      "seed": 20261011,
+      "method": "Paired true-class-stratified multinomial resampling of joint prediction cells; percentile interval",
+      "scope": "Conditional on fixed models and exposed objects; does not include selection or training-seed uncertainty"
+    }
+  },
+  "plan_sha256": "6d65d2ccc4ee3c41e6368f99a29b78fd220fcb71409d37d1427d6e170160099f",
+  "selection_sha256": "11b5e76b3bdbdf5380c5920119d96ab7914b29a8e49adfc2a74a22f80ec79718",
+  "code_sha256": "f1564304f33faf098e105b81928707adcb0ea335189b5b4922aa31ee6209101d",
+  "confirmation_accessed": false,
+  "quantum_fusion_beats_classical_fusion_on_validation": true,
+  "scope": "Cached prediction fusion, zero new source-training updates; pretrained budgets retained; exploratory single-seed exposed cohorts only"
+}

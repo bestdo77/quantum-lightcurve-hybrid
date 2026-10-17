@@ -12,11 +12,15 @@ The released training pool contains 633,034 objects.
 **Headline result — and its boundary.** A hybrid model with a 540-parameter quantum
 readout (9 qubits, 12 layers, angle re-uploading; 44,238 parameters in total) beats a
 same-parameter pure MLP and a 500-tree random forest on the 65,631-object development
-set, with paired bootstrap intervals excluding zero on two audited seeds. It remains
-**clearly below a class-weighted LightGBM baseline**, and it does **not** consistently
-beat same-parameter classical replacement branches inside the identical architecture.
-**No general quantum advantage is claimed.** All experiments are exact classical
-state-vector simulations (CPU/GPU); no quantum hardware was used.
+set, with paired bootstrap intervals excluding zero on two audited seeds. A separate
+fixed-fusion configuration (55,581 parameters) also records a small Macro-F1 win over
+an approximately leaf-budget-matched LightGBM on the pooled 35,000-object
+validation/report/extra set (92.6418% vs. 92.6309%), and some identical-architecture
+comparisons favour the quantum branch over same-parameter classical replacements.
+These gains are small and split- or seed-dependent; the strongest full-budget
+LightGBM remains ahead on the expanded development set, and ACC is not uniformly
+higher. **No general quantum advantage is claimed.** All experiments are exact
+classical state-vector simulations (CPU/GPU); no quantum hardware was used.
 
 ## Repository layout
 
@@ -74,9 +78,9 @@ SHA-256 proofs. Negative results and the failed seed-43 audit are retained.
 ## Status
 
 Seed-45 replication and the full-input classical-interaction controls
-(`quadratic_s44/s45`) are still running under the frozen plans in `plans/`;
-their audited results will be appended to `results/` without altering existing
-files. The sealed-set final confirmation has not been performed.
+(`quadratic_s44/s45`) have completed under the frozen plans in `plans/`; their
+audited results are included in `results/`. The sealed-set final confirmation has
+not been performed.
 
 ## License
 
