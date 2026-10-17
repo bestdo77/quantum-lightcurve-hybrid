@@ -42,8 +42,9 @@ python verify_projection_information.py
 
 ## Data
 
-Download the three archives from the release page and verify against
-`data/data_checksums.csv`:
+Download the three archives from the
+[v1.0.0 release page](https://github.com/bestdo77/quantum-lightcurve-hybrid/releases/tag/v1.0.0)
+and verify against `data/data_checksums.csv`:
 
 | Archive | Objects | Arrays |
 |---|---|---|

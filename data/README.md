@@ -1,8 +1,10 @@
 # Data
 
-Three compressed NumPy archives, distributed as release assets (they are too
-large for the git tree). `splits.json` records object counts, per-class counts,
-and SHA-256 of each archive; `data_checksums.csv` is the flat checksum table.
+Three compressed NumPy archives, distributed as
+[v1.0.0 release assets](https://github.com/bestdo77/quantum-lightcurve-hybrid/releases/tag/v1.0.0)
+(they are too large for the git tree). `splits.json` records object counts,
+per-class counts, and SHA-256 of each archive; `data_checksums.csv` is the flat
+checksum table.
 
 | Split | Objects | Role in the study |
 |---|---|---|
