@@ -1,0 +1,160 @@
+{
+  "name": "lgbm_leaf_budget",
+  "kind": "lightgbm",
+  "selection": "Original validation-selected leaf budget",
+  "status": "passed",
+  "test_objects": 20000,
+  "trees": 3700,
+  "leaf_values": 55500,
+  "checkpoint_sha256": "83f8af1d03f76c077310cf7ad7358cbafc60a3ef0f101b44207cbad3e0eef19c",
+  "source_predictions_sha256": null,
+  "source_prediction_origin": "Fresh CPU loaded-booster inference on the published test features; exact recorded confusion-matrix agreement.",
+  "prediction_key": "lgbm_leaf_budget",
+  "test_prediction_array_sha256": "9bedbf006cc7c83cb52fc4a75f76759acdf8ac163dff37f48671c6476cadda97",
+  "cohort": "test20000",
+  "metrics": {
+    "objects": 20000,
+    "correct": 18973,
+    "macro_f1": 0.9222044765576903,
+    "accuracy": 0.94865,
+    "class_f1": [
+      0.8333333333333334,
+      0.8645357686453576,
+      0.9712389380530974,
+      0.9474265866750868,
+      0.975886524822695,
+      0.9673556113579294,
+      0.8586907449209932,
+      0.9773584905660377,
+      0.849478390461997,
+      0.9767403767403767
+    ],
+    "confusion_matrix": [
+      [
+        35,
+        0,
+        0,
+        0,
+        0,
+        0,
+        10,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        284,
+        0,
+        36,
+        0,
+        5,
+        12,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        878,
+        18,
+        0,
+        13,
+        1,
+        0,
+        0,
+        2
+      ],
+      [
+        1,
+        18,
+        5,
+        6001,
+        1,
+        7,
+        212,
+        3,
+        23,
+        36
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        344,
+        0,
+        0,
+        0,
+        0,
+        8
+      ],
+      [
+        0,
+        0,
+        7,
+        5,
+        0,
+        2504,
+        2,
+        0,
+        0,
+        48
+      ],
+      [
+        3,
+        18,
+        0,
+        230,
+        0,
+        25,
+        1902,
+        2,
+        0,
+        77
+      ],
+      [
+        0,
+        0,
+        1,
+        2,
+        0,
+        1,
+        6,
+        777,
+        6,
+        3
+      ],
+      [
+        0,
+        0,
+        0,
+        59,
+        0,
+        0,
+        0,
+        11,
+        285,
+        2
+      ],
+      [
+        0,
+        0,
+        5,
+        10,
+        8,
+        56,
+        28,
+        1,
+        0,
+        5963
+      ]
+    ]
+  },
+  "predictions_proof": {
+    "archive_sha256": "2106cfe8d3e627472f2e7694305cc7a68d5b83de577ef294a9dea5637fc535b3",
+    "ids_array_sha256": "7f99cc238c27a241c49c8d055064b85d327b5948214d3b213cceb51c2bb43f53",
+    "labels_array_sha256": "ae779b5c6975517839b0db8319bbbd9cdbdf046ca1b0aa6bfda1a622ce7696c2"
+  }
+}

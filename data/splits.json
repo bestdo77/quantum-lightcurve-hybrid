@@ -13,13 +13,7 @@
   ],
   "feature_dim": 359,
   "preprocessing": "median/scale standardisation frozen from the original 50K training subset, non-finite values replaced by the median, clipped to [-10,10], float32",
-  "development_cohorts": {
-    "report": 5000,
-    "extra": 20000,
-    "previously_unused": 40631
-  },
-  "sealed_confirmation_set": "confirmation2 is NOT included: no features, labels, ids or predictions. It remains sealed for the final independent check.",
-  "id_meaning": "ids are row indices into the authors internal feature bank; for provenance only.",
+  "test_scope": "Exactly one fixed test cohort; all reported test rows use these same IDs and labels.",
   "splits": [
     {
       "split": "fit",
@@ -38,7 +32,8 @@
         24967,
         11098,
         192114
-      ]
+      ],
+      "download_url": "https://github.com/bestdo77/quantum-lightcurve-hybrid/releases/download/v1.0.0/fit.npz"
     },
     {
       "split": "validation",
@@ -57,26 +52,30 @@
         4087,
         1922,
         32260
-      ]
+      ],
+      "download_url": "https://github.com/bestdo77/quantum-lightcurve-hybrid/releases/download/v1.0.0/validation.npz"
     },
     {
-      "split": "development",
-      "objects": 65631,
+      "split": "test",
+      "objects": 20000,
       "features": 359,
-      "archive": "development.npz",
-      "sha256": "d9353457271a7e2dc1bcdf6abf874b5be923d1cc84712574882247551cf65727",
+      "archive": "test.npz",
+      "sha256": "0b39fa65d5252e38b86f82c85ba5b8fb2a8878f3de0b9ec09e2389221732e096",
       "class_counts": [
-        148,
-        1107,
-        2992,
-        20696,
-        1154,
-        8420,
-        7407,
-        2612,
-        1172,
-        19923
-      ]
+        45,
+        337,
+        912,
+        6307,
+        352,
+        2566,
+        2257,
+        796,
+        357,
+        6071
+      ],
+      "download_url": "https://github.com/bestdo77/quantum-lightcurve-hybrid/releases/download/v1.1.0/test.npz"
     }
-  ]
+  ],
+  "sealed_confirmation_set": "Not included or evaluated.",
+  "id_meaning": "ids are row indices into the authors internal feature bank; for provenance only."
 }

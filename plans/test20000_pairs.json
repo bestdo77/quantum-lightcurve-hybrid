@@ -1,0 +1,362 @@
+[
+  {
+    "key": "s42_best_acc_frozen_quantum_test20000",
+    "seed": 42,
+    "selection": "best_acc",
+    "control_family": "frozen_quantum",
+    "quantum": "quantum_s42_best_acc",
+    "control": "frozen_quantum_s42_best_acc"
+  },
+  {
+    "key": "s42_best_acc_lightgbm_test20000",
+    "seed": 42,
+    "selection": "best_acc",
+    "control_family": "lightgbm",
+    "quantum": "quantum_s42_best_acc",
+    "control": "lgbm359_full_balanced_seed42_alpha0.5"
+  },
+  {
+    "key": "s42_best_acc_matched_mlp_test20000",
+    "seed": 42,
+    "selection": "best_acc",
+    "control_family": "matched_mlp",
+    "quantum": "quantum_s42_best_acc",
+    "control": "matched_mlp_s42_best_acc"
+  },
+  {
+    "key": "s42_best_acc_no_cnot_test20000",
+    "seed": 42,
+    "selection": "best_acc",
+    "control_family": "no_cnot",
+    "quantum": "quantum_s42_best_acc",
+    "control": "no_cnot_s42_best_acc"
+  },
+  {
+    "key": "s42_best_acc_pure_mlp_test20000",
+    "seed": 42,
+    "selection": "best_acc",
+    "control_family": "pure_mlp",
+    "quantum": "quantum_s42_best_acc",
+    "control": "pure_mlp_s42_lr0p001_best_acc"
+  },
+  {
+    "key": "s42_best_acc_quadratic_test20000",
+    "seed": 42,
+    "selection": "best_acc",
+    "control_family": "quadratic",
+    "quantum": "quantum_s42_best_acc",
+    "control": "quadratic_s42_best_acc"
+  },
+  {
+    "key": "s42_best_acc_rf_test20000",
+    "seed": 42,
+    "selection": "best_acc",
+    "control_family": "rf",
+    "quantum": "quantum_s42_best_acc",
+    "control": "rf359_full_unweighted_seed42_alpha0.0"
+  },
+  {
+    "key": "s42_best_acc_strong_mlp_test20000",
+    "seed": 42,
+    "selection": "best_acc",
+    "control_family": "strong_mlp",
+    "quantum": "quantum_s42_best_acc",
+    "control": "strong_mlp_s42_best_acc"
+  },
+  {
+    "key": "s42_best_macro_frozen_quantum_test20000",
+    "seed": 42,
+    "selection": "best_macro",
+    "control_family": "frozen_quantum",
+    "quantum": "quantum_s42_best_macro",
+    "control": "frozen_quantum_s42_best_macro"
+  },
+  {
+    "key": "s42_best_macro_lightgbm_test20000",
+    "seed": 42,
+    "selection": "best_macro",
+    "control_family": "lightgbm",
+    "quantum": "quantum_s42_best_macro",
+    "control": "lgbm359_full_balanced_seed42_alpha0.5"
+  },
+  {
+    "key": "s42_best_macro_matched_mlp_test20000",
+    "seed": 42,
+    "selection": "best_macro",
+    "control_family": "matched_mlp",
+    "quantum": "quantum_s42_best_macro",
+    "control": "matched_mlp_s42_best_macro"
+  },
+  {
+    "key": "s42_best_macro_no_cnot_test20000",
+    "seed": 42,
+    "selection": "best_macro",
+    "control_family": "no_cnot",
+    "quantum": "quantum_s42_best_macro",
+    "control": "no_cnot_s42_best_macro"
+  },
+  {
+    "key": "s42_best_macro_pure_mlp_test20000",
+    "seed": 42,
+    "selection": "best_macro",
+    "control_family": "pure_mlp",
+    "quantum": "quantum_s42_best_macro",
+    "control": "pure_mlp_s42_lr0p001_best_macro"
+  },
+  {
+    "key": "s42_best_macro_quadratic_test20000",
+    "seed": 42,
+    "selection": "best_macro",
+    "control_family": "quadratic",
+    "quantum": "quantum_s42_best_macro",
+    "control": "quadratic_s42_best_macro"
+  },
+  {
+    "key": "s42_best_macro_rf_test20000",
+    "seed": 42,
+    "selection": "best_macro",
+    "control_family": "rf",
+    "quantum": "quantum_s42_best_macro",
+    "control": "rf359_full_unweighted_seed42_alpha0.0"
+  },
+  {
+    "key": "s42_best_macro_strong_mlp_test20000",
+    "seed": 42,
+    "selection": "best_macro",
+    "control_family": "strong_mlp",
+    "quantum": "quantum_s42_best_macro",
+    "control": "strong_mlp_s42_best_macro"
+  },
+  {
+    "key": "s44_best_acc_frozen_quantum_test20000",
+    "seed": 44,
+    "selection": "best_acc",
+    "control_family": "frozen_quantum",
+    "quantum": "quantum_s44_best_acc",
+    "control": "frozen_quantum_s44_best_acc"
+  },
+  {
+    "key": "s44_best_acc_lightgbm_test20000",
+    "seed": 44,
+    "selection": "best_acc",
+    "control_family": "lightgbm",
+    "quantum": "quantum_s44_best_acc",
+    "control": "lgbm359_full_balanced_seed42_alpha0.5"
+  },
+  {
+    "key": "s44_best_acc_matched_mlp_test20000",
+    "seed": 44,
+    "selection": "best_acc",
+    "control_family": "matched_mlp",
+    "quantum": "quantum_s44_best_acc",
+    "control": "matched_mlp_s44_best_acc"
+  },
+  {
+    "key": "s44_best_acc_no_cnot_test20000",
+    "seed": 44,
+    "selection": "best_acc",
+    "control_family": "no_cnot",
+    "quantum": "quantum_s44_best_acc",
+    "control": "no_cnot_s44_best_acc"
+  },
+  {
+    "key": "s44_best_acc_pure_mlp_test20000",
+    "seed": 44,
+    "selection": "best_acc",
+    "control_family": "pure_mlp",
+    "quantum": "quantum_s44_best_acc",
+    "control": "pure_mlp_s44_lr0p001_best_acc"
+  },
+  {
+    "key": "s44_best_acc_quadratic_test20000",
+    "seed": 44,
+    "selection": "best_acc",
+    "control_family": "quadratic",
+    "quantum": "quantum_s44_best_acc",
+    "control": "quadratic_s44_best_acc"
+  },
+  {
+    "key": "s44_best_acc_rf_test20000",
+    "seed": 44,
+    "selection": "best_acc",
+    "control_family": "rf",
+    "quantum": "quantum_s44_best_acc",
+    "control": "rf359_full_unweighted_seed42_alpha0.0"
+  },
+  {
+    "key": "s44_best_macro_frozen_quantum_test20000",
+    "seed": 44,
+    "selection": "best_macro",
+    "control_family": "frozen_quantum",
+    "quantum": "quantum_s44_best_macro",
+    "control": "frozen_quantum_s44_best_macro"
+  },
+  {
+    "key": "s44_best_macro_lightgbm_test20000",
+    "seed": 44,
+    "selection": "best_macro",
+    "control_family": "lightgbm",
+    "quantum": "quantum_s44_best_macro",
+    "control": "lgbm359_full_balanced_seed42_alpha0.5"
+  },
+  {
+    "key": "s44_best_macro_matched_mlp_test20000",
+    "seed": 44,
+    "selection": "best_macro",
+    "control_family": "matched_mlp",
+    "quantum": "quantum_s44_best_macro",
+    "control": "matched_mlp_s44_best_macro"
+  },
+  {
+    "key": "s44_best_macro_no_cnot_test20000",
+    "seed": 44,
+    "selection": "best_macro",
+    "control_family": "no_cnot",
+    "quantum": "quantum_s44_best_macro",
+    "control": "no_cnot_s44_best_macro"
+  },
+  {
+    "key": "s44_best_macro_pure_mlp_test20000",
+    "seed": 44,
+    "selection": "best_macro",
+    "control_family": "pure_mlp",
+    "quantum": "quantum_s44_best_macro",
+    "control": "pure_mlp_s44_lr0p003_best_macro"
+  },
+  {
+    "key": "s44_best_macro_quadratic_test20000",
+    "seed": 44,
+    "selection": "best_macro",
+    "control_family": "quadratic",
+    "quantum": "quantum_s44_best_macro",
+    "control": "quadratic_s44_best_macro"
+  },
+  {
+    "key": "s44_best_macro_rf_test20000",
+    "seed": 44,
+    "selection": "best_macro",
+    "control_family": "rf",
+    "quantum": "quantum_s44_best_macro",
+    "control": "rf359_full_unweighted_seed42_alpha0.0"
+  },
+  {
+    "key": "s45_best_acc_lightgbm_test20000",
+    "seed": 45,
+    "selection": "best_acc",
+    "control_family": "lightgbm",
+    "quantum": "quantum_s45_best_acc",
+    "control": "lgbm359_full_balanced_seed42_alpha0.5"
+  },
+  {
+    "key": "s45_best_acc_matched_mlp_test20000",
+    "seed": 45,
+    "selection": "best_acc",
+    "control_family": "matched_mlp",
+    "quantum": "quantum_s45_best_acc",
+    "control": "matched_mlp_s45_best_acc"
+  },
+  {
+    "key": "s45_best_acc_pure_mlp_test20000",
+    "seed": 45,
+    "selection": "best_acc",
+    "control_family": "pure_mlp",
+    "quantum": "quantum_s45_best_acc",
+    "control": "pure_mlp_s45_lr0p003_best_acc"
+  },
+  {
+    "key": "s45_best_acc_quadratic_test20000",
+    "seed": 45,
+    "selection": "best_acc",
+    "control_family": "quadratic",
+    "quantum": "quantum_s45_best_acc",
+    "control": "quadratic_s45_best_acc"
+  },
+  {
+    "key": "s45_best_acc_rf_test20000",
+    "seed": 45,
+    "selection": "best_acc",
+    "control_family": "rf",
+    "quantum": "quantum_s45_best_acc",
+    "control": "rf359_full_unweighted_seed42_alpha0.0"
+  },
+  {
+    "key": "s45_best_macro_lightgbm_test20000",
+    "seed": 45,
+    "selection": "best_macro",
+    "control_family": "lightgbm",
+    "quantum": "quantum_s45_best_macro",
+    "control": "lgbm359_full_balanced_seed42_alpha0.5"
+  },
+  {
+    "key": "s45_best_macro_matched_mlp_test20000",
+    "seed": 45,
+    "selection": "best_macro",
+    "control_family": "matched_mlp",
+    "quantum": "quantum_s45_best_macro",
+    "control": "matched_mlp_s45_best_macro"
+  },
+  {
+    "key": "s45_best_macro_pure_mlp_test20000",
+    "seed": 45,
+    "selection": "best_macro",
+    "control_family": "pure_mlp",
+    "quantum": "quantum_s45_best_macro",
+    "control": "pure_mlp_s45_lr0p003_best_macro"
+  },
+  {
+    "key": "s45_best_macro_quadratic_test20000",
+    "seed": 45,
+    "selection": "best_macro",
+    "control_family": "quadratic",
+    "quantum": "quantum_s45_best_macro",
+    "control": "quadratic_s45_best_macro"
+  },
+  {
+    "key": "s45_best_macro_rf_test20000",
+    "seed": 45,
+    "selection": "best_macro",
+    "control_family": "rf",
+    "quantum": "quantum_s45_best_macro",
+    "control": "rf359_full_unweighted_seed42_alpha0.0"
+  },
+  {
+    "key": "fixed_s42_quantum_vs_classical_test20000",
+    "seed": 42,
+    "control_family": "fixed_classical_fusion",
+    "selection": "frozen_fusion",
+    "quantum": "quantum_plus_mlp_fixed_s42",
+    "control": "mlp_plus_mlp_fixed_s42"
+  },
+  {
+    "key": "fixed_s17_quantum_vs_classical_test20000",
+    "seed": 17,
+    "control_family": "fixed_classical_fusion",
+    "selection": "frozen_fusion",
+    "quantum": "quantum_plus_mlp_fixed_s17",
+    "control": "mlp_plus_mlp_fixed_s17"
+  },
+  {
+    "key": "fixed_s2026_quantum_vs_classical_test20000",
+    "seed": 2026,
+    "control_family": "fixed_classical_fusion",
+    "selection": "frozen_fusion",
+    "quantum": "quantum_plus_mlp_fixed_s2026",
+    "control": "mlp_plus_mlp_fixed_s2026"
+  },
+  {
+    "key": "fixed_s42_budget_lightgbm_test20000",
+    "seed": 42,
+    "selection": "frozen_fusion",
+    "control_family": "budget_lightgbm",
+    "quantum": "quantum_plus_mlp_fixed_s42",
+    "control": "lgbm_leaf_budget"
+  },
+  {
+    "key": "fixed_s42_full_lightgbm_test20000",
+    "seed": 42,
+    "selection": "frozen_fusion",
+    "control_family": "full_lightgbm",
+    "quantum": "quantum_plus_mlp_fixed_s42",
+    "control": "lgbm_full_original_validation"
+  }
+]

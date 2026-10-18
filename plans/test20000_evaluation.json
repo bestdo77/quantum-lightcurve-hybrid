@@ -1,0 +1,41 @@
+{
+  "status": "post_hoc_reporting_scope_frozen_before_paired_recomputation",
+  "test_objects": 20000,
+  "selection": "Keep the existing validation-selected checkpoints, learning rates, corrections, and fusion coefficients. No training or selection on test objects.",
+  "subset": "Exact ID and label matching to the original extra evaluation cohort; all class members retained.",
+  "source_audit": "Original prediction-file SHA256 checked before subset extraction; cached predictions, not new neural inference.",
+  "draws": 10000,
+  "rng_rule": "20261018 xor first16hex(SHA256(comparison key with _test20000 replaced by _extra20000))",
+  "bootstrap": "Ordinary paired-object multinomial resampling of joint true-label and both prediction counts; class proportions fluctuate.",
+  "interval": "Pointwise 95% percentile; conditional on fitted models. No training-seed, model-search or multiplicity correction.",
+  "disclosure": "The test cohort was examined in prior exploratory analyses. It is the final reported test cohort, not an unopened confirmation cohort.",
+  "test_archive_sha256": "0b39fa65d5252e38b86f82c85ba5b8fb2a8878f3de0b9ec09e2389221732e096",
+  "predictions_archive_sha256": "2106cfe8d3e627472f2e7694305cc7a68d5b83de577ef294a9dea5637fc535b3",
+  "classes": [
+    "CEP",
+    "DSCT",
+    "EA",
+    "EW",
+    "M",
+    "Non-var",
+    "ROT",
+    "RRAB",
+    "RRC",
+    "SR"
+  ],
+  "class_counts": [
+    45,
+    337,
+    912,
+    6307,
+    352,
+    2566,
+    2257,
+    796,
+    357,
+    6071
+  ],
+  "confirmation_accessed": false,
+  "ids_array_sha256": "7f99cc238c27a241c49c8d055064b85d327b5948214d3b213cceb51c2bb43f53",
+  "labels_array_sha256": "ae779b5c6975517839b0db8319bbbd9cdbdf046ca1b0aa6bfda1a622ce7696c2"
+}

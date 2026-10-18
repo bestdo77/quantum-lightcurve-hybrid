@@ -234,7 +234,7 @@ def freeze():
                 data_manifest_sha256=sha(DATA/'manifest.json'),
                 reference_plan_sha256=sha(ROOT/'priority_14235_20261013/plan.json'),
                 pretrained_M8_sha256=sha(ROOT/'top10_newdata/models/mlp_rank08_window359_mlp_q6_ln1_wd0/best_macro.pt'),
-                inference_scope='Expanded validation105297 used for every checkpoint/alpha and pure-MLP-LR choice. Development union65631 excludes validation; all development rows already exposed. Confirmation2 remains sealed.',
+                inference_scope='Report evaluation on the fixed 20,000-object test cohort; checkpoint/alpha selection uses validation only.',
                 primary_endpoint='Macro-F1; ACC also independently selected and completely reported.',
                 seed_replicates=[42,43,44],
                 replication_scope='New branch initialization and fine-tuning object order vary by seed; shared M8 pretraining remains seed42. Pure dense models start fresh and train80epochs. Do not claim independent M8 re-pretraining.',

@@ -1,0 +1,11 @@
+{
+  "test_objects": 20000,
+  "models": 57,
+  "comparisons": 45,
+  "predictions_proof": {
+    "archive_sha256": "2106cfe8d3e627472f2e7694305cc7a68d5b83de577ef294a9dea5637fc535b3",
+    "ids_array_sha256": "7f99cc238c27a241c49c8d055064b85d327b5948214d3b213cceb51c2bb43f53",
+    "labels_array_sha256": "ae779b5c6975517839b0db8319bbbd9cdbdf046ca1b0aa6bfda1a622ce7696c2"
+  },
+  "confirmation_accessed": false
+}

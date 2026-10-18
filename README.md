@@ -1,92 +1,63 @@
-# Hybrid Quantum–Classical Light-Curve Classification
+# HyQ-LC: Improving Light-Curve Classification with Hybrid Quantum–Classical Learning
 
-Data, code, and audited results accompanying the preprint
-*"Positive but Bounded Evidence for a Hybrid Quantum–Classical Light-Curve Classifier:
-Matched-Parameter Comparisons, Error Complementarity, and Mechanism Probes"* (arXiv link TBD).
+Data, code, per-object predictions, and audited comparisons for ten-class variable-star light-curve classification. Every reported test result in this version uses the **same 20,000 unique objects**. Training uses 633,034 objects and 359 preprocessed features.
 
-**Task.** Multi-class classification of variable stars from survey light curves
-(ZTF/LSST-style photometry) into 10 classes: CEP, DSCT, EA, EW, M, Non-var, ROT,
-RRAB, RRC, SR. Each object is represented by 359 handcrafted, preprocessed features.
-The released training pool contains 633,034 objects.
+The existing validation-selected models are retained. The main models use 105,297 validation objects; the older fixed-fusion comparisons use 10,000 validation objects. The test cohort had been inspected in prior exploratory analyses. It is the final reported test cohort, and is not an unopened independent confirmation sample. No sealed confirmation data are included or evaluated.
 
-**Headline result — and its boundary.** A hybrid model with a 540-parameter quantum
-readout (9 qubits, 12 layers, angle re-uploading; 44,238 parameters in total) beats a
-same-parameter pure MLP and a 500-tree random forest on the 65,631-object development
-set, with paired bootstrap intervals excluding zero on two audited seeds. A separate
-fixed-fusion configuration (55,581 parameters) beats an approximately
-leaf-budget-matched LightGBM on validation Macro-F1 and ACC, and on extra-split
-Macro-F1; it also beats the same-architecture classical fusion on the official
-report+extra merged-test Macro-F1 by +0.2831 pp. The budget-matched LightGBM itself
-is slightly ahead on that merged test, and the strongest full-budget LightGBM remains
-ahead on the expanded development set, so these gains are split- and seed-dependent.
-In short, the hybrid model shows reproducible advantages in several matched-parameter
-and approximately budget-matched comparisons, including a same-parameter pure MLP,
-selected same-architecture classical replacements, and an approximately
-budget-matched LightGBM on specific splits.
-**No general quantum advantage is claimed.** All experiments are exact
-classical state-vector simulations (CPU/GPU); no quantum hardware was used.
+## Strictly parameter-matched pure MLP
 
-## Repository layout
+Both models have 44,238 parameters. F1 and ACC are percentages; differences are percentage points (pp).
 
-| Path | Content |
-|---|---|
-| `data/` | Split metadata, class list, checksums. The feature/label archives themselves are distributed as **GitHub Release assets** (`fit.npz`, `validation.npz`, `development.npz`). |
-| `src/quantum_readout.py` | Clean, standalone PyTorch implementation of the 9-qubit, 12-layer quantum readout (540 parameters). No data, credentials, or network access required. |
-| `verification/` | Portable, data-free reproductions of the mechanism checks: the exact interaction form / CNOT witness, and the 16-pair projection-separability witness with audited seed-44 readouts. |
-| `experiments/` | The exact training/evaluation scripts used in the audited runs, copied unmodified for transparency (see `experiments/README.md` for their environment requirements). |
-| `results/` | Audited per-checkpoint result JSONs, paired bootstrap comparison JSONs, and consolidated CSV tables. |
-| `plans/` | Frozen pre-registered training/evaluation plans and their SHA-256 checksums. |
+| Seed | Hybrid F1 | Pure-MLP F1 | ΔF1 (pp) | F1 difference 95% interval (pp) | ΔACC (pp) |
+|---|---:|---:|---:|---|---:|
+| 42 | 92.2913 | 91.4637 | +0.8276 | [-0.0650, +1.6945] | +0.6000 |
+| 44 | 92.3005 | 91.0611 | +1.2393 | [+0.5153, +2.0053] | +0.8450 |
 
-## Quickstart (mechanism verification, no data needed)
+Macro-F1 point estimates favour the hybrid on both seeds. The seed-42 F1 interval includes zero; the seed-44 interval is positive.
+
+## Classical branch replacements
+
+| Comparison | Seed | ΔF1 (pp) | 95% interval (pp) |
+|---|---:|---:|---|
+| Same-parameter MLP replacement | 42 | +0.0205 | [-0.3299, +0.3726] |
+| Same-parameter MLP replacement | 44 | +0.2965 | [-0.0333, +0.6982] |
+| Fixed quantum+MLP vs MLP+MLP | 42 | +0.1860 | [-0.2869, +0.6740] |
+
+These branch comparisons have positive F1 point differences, with intervals spanning zero. Fixed fusion has 55,581 quantum+MLP parameters versus 54,631 MLP+MLP parameters, an approximate capacity comparison.
+
+## LightGBM controls
+
+| Model | Capacity | Test Macro-F1 (%) | Test ACC (%) |
+|---|---|---:|---:|
+| Fixed quantum+MLP | 55,581 parameters | 92.3371 | 94.7450 |
+| Budget-matched LightGBM | 55,500 scalar leaf outputs | 92.2204 | 94.8650 |
+| Full-budget LightGBM | 112,220 scalar leaf outputs | 92.9681 | 95.1100 |
+
+Against budget-matched LightGBM, the fixed hybrid has slightly higher F1 (+0.1166 pp) and lower ACC (−0.1200 pp). The largest positive class-level F1 differences are in CEP, RRC, and ROT; full-budget LightGBM remains stronger overall. Scalar leaf-output counts are an approximate capacity proxy, not an exact equivalence to neural-network parameters.
+
+## Reproduce the reported test results
 
 ```bash
-pip install numpy torch            # pennylane optional, for the independent physical check
-cd verification/mechanism
-python verify_mechanism.py         # interaction-form + CNOT/local-information witness
-
-cd ../projection_witness
-python verify_projection_information.py
+pip install numpy
+python experiments/evaluate_test20000.py --predictions data/predictions_test.npz
 ```
 
-## Data
+This checks the released prediction vectors and recomputes 57 model rows and 45 paired comparisons. It does not fit, retune, or select models. All intervals use 10,000 ordinary paired-object bootstrap resamples, conditional on each fitted pair, with no training-seed/search uncertainty or multiplicity correction. Negative results and all previously reported successful checkpoint variants are included. The hybrid seed-43 checkpoint failed the original numerical audit and has no valid test-result row.
 
-Download the three archives from the
-[v1.0.0 release page](https://github.com/bestdo77/quantum-lightcurve-hybrid/releases/tag/v1.0.0)
-and verify against `data/data_checksums.csv`:
+## Files
 
-| Archive | Objects | Arrays |
-|---|---|---|
-| `fit.npz` | 633,034 | `x` (float32, N×359), `y` (int64), `ids`, `classes` |
-| `validation.npz` | 105,297 | same; used for *all* model selection |
-| `development.npz` | 65,631 | same, plus `cohort` (`report` 5,000 / `extra` 20,000 / `previously_unused` 40,631) |
+| Path | Contents |
+|---|---|
+| `data/test.npz` | Exactly 20,000 objects: `x` (float32, N×359), `y`, `ids`, and class names. |
+| `data/predictions_test.npz` | The same ordered `ids`, `y`, and one named prediction vector per audited model. |
+| `data/test_model_catalog.json` | Frozen model choices, checkpoint/source-prediction hashes, and test-vector hashes. |
+| `results/` | Only the reported test cohort: model JSONs, paired comparison JSONs, and CSV tables. |
+| `plans/` | The explicit post-hoc test-recomputation scope and fixed comparison list. |
+| `models/lgbm_budget.txt` | The validation-selected 15-leaf, 370-round LightGBM checkpoint. |
+| `src/` and `verification/` | Standalone quantum readout and data-free mechanism checks. |
+| `experiments/` | Portable test evaluator and training implementation references. |
+| `paper/` | Matching manuscript source, architecture image, class file, and PDF. |
 
-```python
-import numpy as np
-d = np.load('fit.npz')
-x, y = d['x'], d['y']
-```
+The current [v1.1.0 release](https://github.com/bestdo77/quantum-lightcurve-hybrid/releases/tag/v1.1.0) contains the test package. Training and validation archives retain their original checksums and download links in `data/splits.json`.
 
-The sealed confirmation set (`confirmation2`) is **not** included in any form
-(features, labels, ids, or predictions); it remains sealed for the final
-independent check. See `data/README.md` for details.
-
-## Results
-
-`results/tables/main_results.csv` collects every audited model (scores as
-fractions); `results/tables/paired_comparisons.csv` collects every paired
-comparison (deltas and 95% bootstrap intervals in **percentage points**, 10,000
-resamples, conditional on the fixed models; no seed/search/multiplicity
-correction). Every comparison JSON links both sides to checkpoint and prediction
-SHA-256 proofs. Negative results and the failed seed-43 audit are retained.
-
-## Status
-
-Seed-45 replication and the full-input classical-interaction controls
-(`quadratic_s44/s45`) have completed under the frozen plans in `plans/`; their
-audited results are included in `results/`. The sealed-set final confirmation has
-not been performed.
-
-## License
-
-Code: MIT (see `LICENSE`). Data: CC BY 4.0. If you use this package, please cite
-the preprint (citation block to be added once the arXiv id is available).
+All quantum circuits were evaluated with classical state-vector simulation. No hardware or general computational quantum advantage is claimed. Code: MIT; data: CC BY 4.0.

@@ -53,7 +53,7 @@ def freeze():
                 primary_comparisons=['quantum_s44 vs quadratic_s44','quantum_s45 vs quadratic_s45'],
                 design='Retain all359 inputs for fixed bilinear features with540 learned weights; no fixed26-dimensional linear input projection. Replicate the original seed42 quadratic control at predeclared seeds44 and45.',
                 rationale='Synthetic projection example identified an alternative explanation for the matched-MLP branch comparison. This stronger rival explanation must be tested, not treated as quantum-specific benefit.',
-                inference_scope='Same expanded validation105297 and exposed development65631; checkpoint/alpha selection uses validation only. Both endpoints and all attempted outcomes reported.',
+                inference_scope='Report evaluation on the fixed 20,000-object test cohort; checkpoint/alpha selection uses validation only.',
                 training_protocol='Same M8, paired shared tensors, optimizer groups, class weights, 40epochs, and same-seed source ordering as quantum reference.',
                 interaction_scope='Fixed randomly sampled normalized pair products cover all359 inputs; does not assert that every possible interaction is present or that the mapping is information preserving.',
                 launch_gate='Wait for preceding six-job supplement to be terminal and all same-user GPU2 contexts to clear before GPU preflight or launch.',

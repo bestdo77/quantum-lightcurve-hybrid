@@ -1,6 +1,8 @@
 __pycache__/
 *.pyc
 .DS_Store
-# Large data archives are distributed as release assets, not in git:
+# Training/validation archives remain release assets. Commit the current test package:
 *.npz
 *.npy
+!data/test.npz
+!data/predictions_test.npz

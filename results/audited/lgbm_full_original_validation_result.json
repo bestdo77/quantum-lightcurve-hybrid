@@ -1,0 +1,159 @@
+{
+  "name": "lgbm359_full_unweighted_seed42",
+  "kind": "lightgbm",
+  "test_objects": 20000,
+  "status": "passed",
+  "selection": "Original validation Macro-F1 selected; full budget",
+  "trees": 3620,
+  "leaf_values": 112220,
+  "checkpoint_sha256": "6b24b15cd97f066b61c0befa9a60b8ee1be4f36c226255fa6109ff3677cde7c5",
+  "source_predictions_sha256": "60a57634dc14c1fe3098446394cb1231ab2c21dd55a2411c1ca8554a979e26fe",
+  "test_prediction_array_sha256": "9c2b7cb12a7d27e48235c317c3028844922e36d85d54e12a9321896b69e2ac81",
+  "prediction_key": "lgbm_full_original_validation",
+  "cohort": "test20000",
+  "metrics": {
+    "objects": 20000,
+    "correct": 19022,
+    "macro_f1": 0.9296811985323362,
+    "accuracy": 0.9511,
+    "class_f1": [
+      0.8809523809523809,
+      0.8732824427480916,
+      0.970702045328911,
+      0.9470606826801518,
+      0.9786628733997155,
+      0.9724699495928655,
+      0.8649618663077613,
+      0.9811794228356336,
+      0.8478581979320532,
+      0.9796821235457972
+    ],
+    "confusion_matrix": [
+      [
+        37,
+        0,
+        0,
+        0,
+        0,
+        0,
+        8,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        286,
+        0,
+        35,
+        0,
+        4,
+        11,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        878,
+        18,
+        0,
+        11,
+        1,
+        0,
+        0,
+        4
+      ],
+      [
+        0,
+        15,
+        8,
+        5993,
+        1,
+        7,
+        220,
+        3,
+        28,
+        32
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        344,
+        0,
+        0,
+        0,
+        0,
+        8
+      ],
+      [
+        0,
+        0,
+        6,
+        5,
+        0,
+        2508,
+        2,
+        0,
+        0,
+        45
+      ],
+      [
+        2,
+        17,
+        0,
+        224,
+        0,
+        19,
+        1928,
+        2,
+        0,
+        65
+      ],
+      [
+        0,
+        0,
+        0,
+        4,
+        0,
+        1,
+        3,
+        782,
+        5,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        59,
+        0,
+        1,
+        0,
+        9,
+        287,
+        1
+      ],
+      [
+        0,
+        0,
+        5,
+        11,
+        6,
+        41,
+        28,
+        1,
+        0,
+        5979
+      ]
+    ]
+  },
+  "predictions_proof": {
+    "archive_sha256": "2106cfe8d3e627472f2e7694305cc7a68d5b83de577ef294a9dea5637fc535b3",
+    "ids_array_sha256": "7f99cc238c27a241c49c8d055064b85d327b5948214d3b213cceb51c2bb43f53",
+    "labels_array_sha256": "ae779b5c6975517839b0db8319bbbd9cdbdf046ca1b0aa6bfda1a622ce7696c2"
+  }
+}
