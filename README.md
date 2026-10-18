@@ -77,6 +77,7 @@ This checks the released prediction vectors and recomputes 57 model rows and 45 
 | `data/test.npz` | Exactly 20,000 objects: `x` (float32, N×359), `y`, `ids`, and class names. |
 | `data/predictions_test.npz` | The same ordered `ids`, `y`, and one named prediction vector per audited model. |
 | `data/test_model_catalog.json` | Frozen model choices, checkpoint/source-prediction hashes, and test-vector hashes. |
+| `data/feature_manifest.csv` and `data/feature_groups.json` | All 359 input-column names in order, their seven groups, dimensions, and provenance checksums. |
 | `results/` | Only the reported test cohort: model JSONs, paired comparison JSONs, and CSV tables. |
 | `plans/` | The explicit post-hoc test-recomputation scope and fixed comparison list. |
 | `models/lgbm_budget.txt` | The validation-selected 15-leaf, 370-round LightGBM checkpoint. |
@@ -84,6 +85,6 @@ This checks the released prediction vectors and recomputes 57 model rows and 45 
 | `experiments/` | Portable test evaluator and training implementation references. |
 | `paper/` | Matching manuscript source, editable SVG and vector PDF diagram, diagram generator, class file, and paper PDF. |
 
-The current [v1.1.2 release](https://github.com/bestdo77/quantum-lightcurve-hybrid/releases/tag/v1.1.2) contains the test package and manuscript with classwise results. Training and validation archives retain their original checksums and download links in `data/splits.json`. The portable evaluator reproduces statistics from released predictions; the original training references require the authors' cluster environment and do not provide portable end-to-end retraining.
+The current [v1.1.3 release](https://github.com/bestdo77/quantum-lightcurve-hybrid/releases/tag/v1.1.3) contains the test package, manuscript, and ordered 359-feature manifest. Training and validation archives retain their original checksums and download links in `data/splits.json`. The portable evaluator reproduces statistics from released predictions; the original training references require the authors' cluster environment and do not provide portable end-to-end retraining.
 
 All quantum circuits were evaluated with classical state-vector simulation. No hardware or general computational quantum advantage is claimed. Code: MIT; data: CC BY 4.0.

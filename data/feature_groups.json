@@ -1,0 +1,51 @@
+{
+  "feature_dim": 359,
+  "index_base": 0,
+  "order": "Original feature-matrix column order retained by every model.",
+  "source_feature_matrix_sha256": "d5b5fc4a07e60b6c410fb6541c400ffa1dbdcbe2b3a3f65396a2a6f80aa8927a",
+  "feature_manifest_sha256": "1c6eae58d219389724116f0f8a338f8bfc34089f5d1f167bc0759d51452b56fc",
+  "groups": [
+    {
+      "key": "base81",
+      "name": "Base and time-scale statistics",
+      "dimensions": 81,
+      "description": "Mean, standard deviation, multiscale variability, recent statistics, and adjacent changes."
+    },
+    {
+      "key": "global17",
+      "name": "Global, sampling, and error statistics",
+      "dimensions": 17,
+      "description": "Skewness, kurtosis, trends, observation count/span, and measurement-error descriptors."
+    },
+    {
+      "key": "hist32",
+      "name": "Histogram distribution summaries",
+      "dimensions": 32,
+      "description": "Approximate quantiles, robust widths, median, tail shape, and asymmetry."
+    },
+    {
+      "key": "pair49",
+      "name": "Observation-lag pair statistics",
+      "dimensions": 49,
+      "description": "Seven descriptors at each of seven observation-index lags."
+    },
+    {
+      "key": "tri63",
+      "name": "Three-point temporal patterns",
+      "dimensions": 63,
+      "description": "Six ordinal patterns and three curvature descriptors at each of seven lags."
+    },
+    {
+      "key": "time64",
+      "name": "Physical-time-bin differences",
+      "dimensions": 64,
+      "description": "Four difference descriptors in each of 16 physical-time bins."
+    },
+    {
+      "key": "bank53",
+      "name": "Cached periodicity descriptors",
+      "dimensions": 53,
+      "description": "Candidate periods, powers, harmonic amplitudes, and frequency-pool summaries."
+    }
+  ]
+}

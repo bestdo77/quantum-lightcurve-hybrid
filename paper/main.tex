@@ -5,6 +5,7 @@
 
 \usepackage{amsmath,amssymb}
 \usepackage{booktabs}
+\usepackage{array}
 \usepackage{graphicx}
 \usepackage{placeins}
 \usepackage{xcolor}
@@ -56,6 +57,39 @@ Preprocessing uses frozen training-derived medians and scales, median replacemen
 
 
 We formulate classification as a map from a preprocessed feature vector $\mathbf{x}_i\in\mathbb{R}^{359}$ to a label $y_i\in\{1,\ldots,C\}$, with $C=10$. The networks receive engineered features rather than raw sequences of observation times and magnitudes. Consequently, the windows below operate over entries of the feature vector; they do not denote consecutive time intervals in a light curve. This common input representation allows direct comparisons with dense MLPs and gradient-boosted trees.
+
+\subsection{Composition of the 359-feature representation}
+
+The input is a fixed statistical feature representation of each light curve, organised into seven disjoint groups (Table~\ref{tab:featuregroups}). Their dimensions sum to $81+17+32+49+63+64+53=359$. We retain the complete input and its original column order for every model. The ordered feature names and group assignments are released as \texttt{data/feature\_manifest.csv}~\cite{artifacts}.
+
+The base group contains 81 descriptors: mean and standard deviation; four families of variability statistics at 16 time scales from 0.02 to 655.36 days; recent mean and variance at four time scales; and seven additional variability descriptors. The additional 17 global descriptors capture distribution moments, trends, sampling, and measurement errors. The 32 histogram-derived descriptors summarise quantiles, robust widths, and tail shape. These histogram summaries approximate distribution information rather than retaining an exactly sorted light curve.
+
+Local temporal structure is represented in two complementary ways. At observation-index lags $1,2,4,8,16,32,64$, seven pair descriptors give 49 features, and six ordinal patterns plus three curvature descriptors give 63 three-point features. Another 64 features summarise differences in 16 physical-time bins. Index lags count intervening observations; physical-time bins describe elapsed time, which varies under irregular sampling.
+
+The final 53 features describe a cached candidate-frequency pool. They contain six descriptors for each of four leading peaks, three for each of eight frequency bands, and five pool-level summaries, giving $4\times6+8\times3+5=53$. These include candidate periods, powers, fundamental and second-harmonic amplitudes, harmonic ratios, and power-distribution summaries. They encode periodicity evidence from the candidate pool rather than asserting recovery of the true stellar period. The present study evaluates classifiers on the resulting feature vectors; it does not evaluate the online update cost of their extractor.
+
+\begin{table}[htbp]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\caption{Composition of the shared 359-dimensional input. Groups partition the feature vector; all columns are retained. The released manifest records the exact zero-based index, feature name, and group.}
+\label{tab:featuregroups}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.27\linewidth}r>{\raggedright\arraybackslash}p{0.62\linewidth}@{}}
+\toprule
+Feature group & Dim. & Representative information \\
+\midrule
+Base and time-scale statistics & 81 & Mean, standard deviation, multiscale variability, recent statistics, and adjacent changes. \\
+Global, sampling, and error statistics & 17 & Skewness, kurtosis, trends, observation count/span, and measurement-error descriptors. \\
+Histogram distribution summaries & 32 & Approximate quantiles, robust widths, median, tail shape, and asymmetry. \\
+Observation-lag pair statistics & 49 & Seven descriptors at each of seven observation-index lags. \\
+Three-point temporal patterns & 63 & Six ordinal patterns and three curvature descriptors at each of seven lags. \\
+Physical-time-bin differences & 64 & Four difference descriptors in each of 16 physical-time bins. \\
+Cached periodicity descriptors & 53 & Candidate periods, powers, harmonic amplitudes, and frequency-pool summaries. \\
+\midrule
+Total & 359 & The same input representation is used by all compared models. \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \subsection{Classical backbone and model overview}
 
