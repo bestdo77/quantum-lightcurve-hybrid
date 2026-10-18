@@ -103,14 +103,14 @@ The quoted backbone parameter count includes its classifier. The quantum branch 
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\textwidth]{fig_architecture.pdf}
-\caption{Two distinct hybrid configurations. (a) The main model adds a residual prediction from classical features and a global nine-qubit readout to the backbone logits. The quantum input combines normalised amplitudes and grouped angles. (b) Fixed fusion averages the corrected logits of two independently trained classifiers. Its classical control instead mixes Window MLP and Dense MLP probabilities. The fixed-fusion scalar budgets include one fixed mixing coefficient.}
+\includegraphics[width=\textwidth]{fig_overview.png}
+\caption{HyQ-LC model overview. (a) The main model combines a 120-dimensional Window MLP representation with 27 features from a global nine-qubit readout. Separately normalised features enter a $147\!\to\!128\!\to\!10$ residual MLP, whose logits are added to the backbone prediction before class-weight correction. (b) The separate fixed-fusion configuration averages the corrected logits of independently trained token-wise quantum and Window MLP classifiers. Its 55{,}581-scalar budget includes one fixed mixing coefficient. Light curves are schematic illustrations, not measured examples; the tokens group feature entries rather than time samples.}
 \label{fig:arch}
 \end{figure}
 
 \subsection{Quantum encoding, circuit, and measurement}
 
-The quantum input combines amplitude encoding with grouped angle re-uploading. Define $\bar r_k=r_k$ for $0\leq k<359$ and $\bar r_k=0$ for $359\leq k<512$, and let $\bar{\mathbf r}$ collect these 512 entries. Since $2^9=512$, the encoded state is
+The quantum input combines amplitude encoding with grouped angle re-uploading (Figure~\ref{fig:quantum}a). Define $\bar r_k=r_k$ for $0\leq k<359$ and $\bar r_k=0$ for $359\leq k<512$, and let $\bar{\mathbf r}$ collect these 512 entries. Since $2^9=512$, the encoded state is
 \begin{equation}
 |\psi_0(\mathbf{x})\rangle=
 \begin{cases}
@@ -128,7 +128,7 @@ This encoding uses no learned projection. Normalisation preserves the direction 
 \end{equation}
 Thus, the grouped angles provide a second input path in addition to the normalised amplitudes. Data re-uploading repeatedly introduces these angles into the trainable circuit~\cite{reuploading}.
 
-The readout has twelve layers. In layer $\ell$, each qubit receives an Euler rotation, followed by a ring of CNOT gates and a data-dependent $R_z$ rotation:
+The readout has twelve layers (Figure~\ref{fig:quantum}b). In layer $\ell$, each qubit receives an Euler rotation, followed by a ring of CNOT gates and a data-dependent $R_z$ rotation:
 \begin{align}
 |\psi_\ell\rangle&=D_\ell(\boldsymbol\varphi)\,E\,R_\ell|\psi_{\ell-1}\rangle,
 \qquad \ell=1,\ldots,12,\label{eq:circuit}\\
@@ -139,7 +139,7 @@ D_\ell(\boldsymbol\varphi)&=\prod_{j=0}^{8}
 \end{align}
 Here $R_{\nu,j}(t)=\exp(-it\sigma_{\nu,j}/2)$ acts on qubit $j$. The entangler $E$ applies $\mathrm{CNOT}_{j\to(j+1)\bmod9}$ in order $j=0,\ldots,8$, and qubit zero is the least significant basis bit. The trainable $\theta$, $\omega$, and $b$ tensors contain $12\times9\times3=324$, $12\times9=108$, and $108$ parameters, respectively. The complete quantum readout therefore has 540 parameters. Its frequency parameters $\omega$ start at one and its shifts $b$ at zero.
 
-The final state is converted to classical features through single-qubit Pauli expectations. Writing $\langle\sigma_j\rangle=\langle\psi_{12}|\sigma_j|\psi_{12}\rangle$, we use
+The final state is converted to classical features through single-qubit Pauli expectations (Figure~\ref{fig:quantum}c). Writing $\langle\sigma_j\rangle=\langle\psi_{12}|\sigma_j|\psi_{12}\rangle$, we use
 \begin{equation}
 \mathbf{q}(\mathbf{x})=
 \bigl(\langle X_0\rangle,\ldots,\langle X_8\rangle,
@@ -149,6 +149,13 @@ The final state is converted to classical features through single-qubit Pauli ex
 \label{eq:measurement}
 \end{equation}
 These bounded observables provide a compact representation for the classical classifier~\cite{huang2021}. Input-dependent phases and the entangling gates change the measured features jointly; the classification experiments test whether this particular representation is useful. Encoding affects the accessible function class~\cite{encoding2021}, but circuit depth and expressivity alone do not establish predictive performance~\cite{wang2025}. All expectations are computed by classical state-vector simulation, and gradients are obtained by automatic differentiation through the simulated circuit.
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=\textwidth]{fig_quantum_circuit.png}
+\caption{Nine-qubit readout in the residual HyQ-LC model. (a) The bounded input supplies 512 normalised amplitudes and nine grouped angles. The amplitude formula shown applies to nonzero inputs; Eq.~\eqref{eq:amplitude} specifies the zero-norm fallback. (b) State preparation is performed once. Each of twelve layers applies trainable $R_z$--$R_y$--$R_z$ rotations, the ordered CNOT ring $0\!\to\!1,\ldots,7\!\to\!8,8\!\to\!0$, and angle re-uploading. The 324 rotation, 108 frequency, and 108 shift parameters sum to 540; qubit zero is the least significant basis bit. (c) Nine expectations for each of $X$, $Y$, and $Z$ form the 27-dimensional output. All expectations are computed by classical state-vector simulation.}
+\label{fig:quantum}
+\end{figure}
 
 \subsection{Residual fusion and matched classical controls}
 

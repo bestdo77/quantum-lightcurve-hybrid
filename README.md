@@ -83,8 +83,8 @@ This checks the released prediction vectors and recomputes 57 model rows and 45 
 | `models/lgbm_budget.txt` | The validation-selected 15-leaf, 370-round LightGBM checkpoint. |
 | `src/` and `verification/` | Standalone quantum readout and data-free mechanism checks. |
 | `experiments/` | Portable test evaluator and training implementation references. |
-| `paper/` | Matching manuscript source, editable SVG and vector PDF diagram, diagram generator, class file, and paper PDF. |
+| `paper/` | Matching manuscript source and PDF, two current PNG schematics with generation records, the earlier editable vector diagram and generator, and the class file. |
 
-The current [v1.1.3 release](https://github.com/bestdo77/quantum-lightcurve-hybrid/releases/tag/v1.1.3) contains the test package, manuscript, and ordered 359-feature manifest. Training and validation archives retain their original checksums and download links in `data/splits.json`. The portable evaluator reproduces statistics from released predictions; the original training references require the authors' cluster environment and do not provide portable end-to-end retraining.
+The [v1.1.3 data release](https://github.com/bestdo77/quantum-lightcurve-hybrid/releases/tag/v1.1.3) contains the test package, a manuscript snapshot, and ordered 359-feature manifest. The [current manuscript PDF](paper/HyQ-LC.pdf) includes the two updated schematics. Training and validation archives retain their original checksums and download links in `data/splits.json`. The portable evaluator reproduces statistics from released predictions; the original training references require the authors' cluster environment and do not provide portable end-to-end retraining.
 
 All quantum circuits were evaluated with classical state-vector simulation. No hardware or general computational quantum advantage is claimed. Code: MIT; data: CC BY 4.0.
