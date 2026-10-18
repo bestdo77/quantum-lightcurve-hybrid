@@ -6,6 +6,7 @@
 \usepackage{amsmath,amssymb}
 \usepackage{booktabs}
 \usepackage{graphicx}
+\usepackage{placeins}
 \usepackage{xcolor}
 % quantumarticle loads hyperref at \begin{document}; loading it here avoids
 % the late nameref hook-rule error in recent LaTeX kernels.
@@ -40,21 +41,31 @@ Time-domain surveys generate large collections of light curves that require scal
 
 Hybrid quantum--classical learning combines classical processing with trainable quantum representations~\cite{mari2020}. Peters et al. demonstrated quantum-kernel classification of supernova spectral features on a noisy processor~\cite{peters2021}. Architecture comparisons on tabular data also motivate studying how quantum branches interact with classical networks~\cite{chenkuo2026}. However, expressive circuits alone do not guarantee predictive improvements. Bowles et al. showed that classical baselines and entanglement-removal controls can substantially change the interpretation of quantum-learning benchmarks~\cite{bowles2024}.
 
+The distinction between a useful hybrid classifier and a useful quantum branch is central to this evaluation. A hybrid can improve on a dense network because of its feature topology, pre-training, or residual head, even when a classical replacement supplies similar information. Parameter matching controls model size but does not remove these alternatives. Handcrafted light-curve features also define a tabular learning problem, making a strong tree-based reference relevant alongside neural controls.
+
 Here we ask whether a hybrid representation improves stellar light-curve classification under controlled parameter budgets. We distinguish comparisons with a parameter-matched pure MLP from replacements of the quantum branch within a shared network. A separate fixed-fusion configuration supports comparisons with classical fusion and an approximately budget-matched LightGBM. Every reported test comparison uses the same 20{,}000 objects.
 
 \section{Models and Evaluation}
 
-\subsection{Data and test cohort}
+\subsection{Data and task formulation}
+
 
 We use handcrafted features derived from the LEAVES light-curve dataset~\cite{leaves2024,leavesdata}. The task contains nine variable-star categories and one non-variable category. The labels are CEP, DSCT, EA, EW, M, Non-var, ROT, RRAB, RRC, and SR; Non-var denotes non-variable objects. Each object has 359 precomputed handcrafted features. The training pool contains 633{,}034 objects, and the reported test cohort contains 20{,}000 unique objects. EW and SR together account for 61.89\% of the test cohort; CEP has only 45 objects. Class counts and classwise scores are listed in Table~\ref{tab:classwise} and provided with the released data~\cite{artifacts}.
 
 Preprocessing uses frozen training-derived medians and scales, median replacement of non-finite values, and clipping to $[-10,10]$. The main models use 105{,}297 validation objects; the fixed-fusion and leaf-budget LightGBM experiments use 10{,}000. We retain their existing validation-selected checkpoints and hyperparameters. Test predictions are extracted by exact ID and label matching from saved prediction files. The cohort was previously examined during exploratory development, so it is not an untouched confirmation sample. Separate sealed confirmation data remain unused.
 
-\subsection{Residual hybrid and parameter-matched controls}
 
-The main HyQ-LC model has 44{,}238 parameters (Figure~\ref{fig:arch}a). Its classical backbone is a 23{,}170-parameter window MLP, adapted from the token-based VQC/FQT architectures studied by Chen and Kuo~\cite{chenkuo2026} by using local MLPs in place of quantum blocks. After an elementwise $\arctan$ transform, the features are padded into 120 three-component tokens. Token MLPs and two stages of six-component window mixing produce a 120-dimensional representation and ten base logits.
+We formulate classification as a map from a preprocessed feature vector $\mathbf{x}_i\in\mathbb{R}^{359}$ to a label $y_i\in\{1,\ldots,C\}$, with $C=10$. The networks receive engineered features rather than raw sequences of observation times and magnitudes. Consequently, the windows below operate over entries of the feature vector; they do not denote consecutive time intervals in a light curve. This common input representation allows direct comparisons with dense MLPs and gradient-boosted trees.
 
-The quantum branch also receives the transformed input. It pads the 359 values to 512 entries and normalises them as amplitudes of a nine-qubit state. Group means define nine additional input angles. Each of twelve layers applies trainable single-qubit rotations, a ring of CNOT gates, and angle re-uploading~\cite{reuploading}. The readout contains 324 rotation parameters and 216 re-uploading frequencies and shifts. Measuring single-qubit $X$, $Y$, and $Z$ expectations produces 27 features~\cite{huang2021}. Layer-normalised classical and quantum features enter a $147\!\to\!128\!\to\!10$ MLP whose output is added to the backbone logits. Encoding affects the accessible function class~\cite{encoding2021}, but depth and expressivity do not by themselves establish predictive performance~\cite{wang2025}.
+\subsection{Classical backbone and model overview}
+
+The main HyQ-LC model combines a classical feature extractor with a global quantum readout (Figure~\ref{fig:arch}a). The backbone is a 23{,}170-parameter window MLP, adapted from the token-based VQC/FQT architectures studied by Chen and Kuo~\cite{chenkuo2026} by using local MLPs in place of quantum blocks. Let $\mathbf{r}=\arctan(\mathbf{x})$ denote the elementwise bounded input. Padding $\mathbf{r}$ with one zero produces 120 three-component tokens. Token MLPs and two stages of six-component window mixing yield a 120-dimensional feature vector and ten base logits:
+\begin{equation}
+\mathbf{h}=B_{\eta}(\mathbf{r})\in\mathbb{R}^{120},\qquad
+\mathbf{z}_{\mathrm{base}}=W_{\mathrm{base}}\mathbf{h}+\mathbf{b}_{\mathrm{base}}.
+\label{eq:backbone}
+\end{equation}
+The quoted backbone parameter count includes its classifier. The quantum branch processes all 359 input features in a single nine-qubit register, and its measured features enter a residual classifier alongside $\mathbf{h}$. Retaining $\mathbf{z}_{\mathrm{base}}$ gives the added branch a direct classical prediction to refine. It also makes the complete-model comparison distinct from a test of the quantum readout alone.
 
 \begin{figure}[t]
 \centering
@@ -63,21 +74,132 @@ The quantum branch also receives the transformed input. It pads the 359 values t
 \label{fig:arch}
 \end{figure}
 
-The pure-MLP control has the same 44{,}238 parameters, with hidden widths 73 and 207, LayerNorm, and GELU activations. It is trained from scratch under an 80-epoch budget. The hybrid uses 40 backbone pre-training epochs followed by a 40-epoch branch-training stage. The backbone is frozen for the first ten epochs of that stage; the primary selected hybrid checkpoints occur at epochs two and four. Thus, the budgets match the maximum number of training-object presentations, not training trajectories or computational cost. The two primary fine-tuning seeds, 42 and 44, share the pre-trained backbone but vary added weights and sample order.
+\subsection{Quantum encoding, circuit, and measurement}
 
-For the branch control, a 540-parameter MLP replaces the quantum readout. It receives a fixed 26-dimensional projection of the normalised input and grouped angles. The backbone, normalisation layers, fusion-head initialisation, parameter total, optimiser-group allocation, and sample order are preserved. This comparison tests the two branch constructions within a shared fusion network.
+The quantum input combines amplitude encoding with grouped angle re-uploading. Define $\bar r_k=r_k$ for $0\leq k<359$ and $\bar r_k=0$ for $359\leq k<512$, and let $\bar{\mathbf r}$ collect these 512 entries. Since $2^9=512$, the encoded state is
+\begin{equation}
+|\psi_0(\mathbf{x})\rangle=
+\begin{cases}
+\displaystyle\sum_{k=0}^{511}\frac{\bar r_k}{\|\bar{\mathbf r}\|_2}|k\rangle,
+&\|\bar{\mathbf r}\|_2>10^{-8},\\
+|0\rangle^{\otimes9},&\text{otherwise}.
+\end{cases}
+\label{eq:amplitude}
+\end{equation}
+This encoding uses no learned projection. Normalisation preserves the direction of the transformed feature vector in the amplitudes. The circuit also receives nine angles formed from contiguous groups of 40 padded entries,
+\begin{equation}
+\varphi_j(\mathbf{x})=\frac{2}{40}\sum_{t=0}^{39}\bar r_{40j+t},
+\qquad j=0,\ldots,8.
+\label{eq:angles}
+\end{equation}
+Thus, the grouped angles provide a second input path in addition to the normalised amplitudes. Data re-uploading repeatedly introduces these angles into the trainable circuit~\cite{reuploading}.
 
-\subsection{Fixed fusion and LightGBM controls}
+The readout has twelve layers. In layer $\ell$, each qubit receives an Euler rotation, followed by a ring of CNOT gates and a data-dependent $R_z$ rotation:
+\begin{align}
+|\psi_\ell\rangle&=D_\ell(\boldsymbol\varphi)\,E\,R_\ell|\psi_{\ell-1}\rangle,
+\qquad \ell=1,\ldots,12,\label{eq:circuit}\\
+R_\ell&=\prod_{j=0}^{8}R_{z,j}(\theta_{\ell j3})
+ R_{y,j}(\theta_{\ell j2})R_{z,j}(\theta_{\ell j1}),\nonumber\\
+D_\ell(\boldsymbol\varphi)&=\prod_{j=0}^{8}
+ R_{z,j}(\omega_{\ell j}\varphi_j+b_{\ell j}).\nonumber
+\end{align}
+Here $R_{\nu,j}(t)=\exp(-it\sigma_{\nu,j}/2)$ acts on qubit $j$. The entangler $E$ applies $\mathrm{CNOT}_{j\to(j+1)\bmod9}$ in order $j=0,\ldots,8$, and qubit zero is the least significant basis bit. The trainable $\theta$, $\omega$, and $b$ tensors contain $12\times9\times3=324$, $12\times9=108$, and $108$ parameters, respectively. The complete quantum readout therefore has 540 parameters. Its frequency parameters $\omega$ start at one and its shifts $b$ at zero.
 
-The fixed-fusion configuration combines a 32{,}410-parameter token-wise quantum classifier with the 23{,}170-parameter window MLP (Figure~\ref{fig:arch}b). The quantum classifier also adapts the local three-feature VQC construction of Chen and Kuo~\cite{chenkuo2026} to this task. Their corrected logits are averaged with equal weights. The classical control combines the window MLP with a 31{,}460-parameter Dense MLP, using a 0.6/0.4 probability mixture. Both fusion rules were selected on validation. Reported budgets are 55{,}581 and 54{,}631 scalars, including one fixed mixing coefficient each. Because the fusion rules and parameter totals differ, this is an approximate-budget ensemble comparison, rather than an isolated branch replacement. Each constituent network receives 40 training epochs.
+The final state is converted to classical features through single-qubit Pauli expectations. Writing $\langle\sigma_j\rangle=\langle\psi_{12}|\sigma_j|\psi_{12}\rangle$, we use
+\begin{equation}
+\mathbf{q}(\mathbf{x})=
+\bigl(\langle X_0\rangle,\ldots,\langle X_8\rangle,
+\langle Y_0\rangle,\ldots,\langle Y_8\rangle,
+\langle Z_0\rangle,\ldots,\langle Z_8\rangle\bigr)^{\!\top}
+\in\mathbb{R}^{27}.
+\label{eq:measurement}
+\end{equation}
+These bounded observables provide a compact representation for the classical classifier~\cite{huang2021}. Input-dependent phases and the entangling gates change the measured features jointly; the classification experiments test whether this particular representation is useful. Encoding affects the accessible function class~\cite{encoding2021}, but circuit depth and expressivity alone do not establish predictive performance~\cite{wang2025}. All expectations are computed by classical state-vector simulation, and gradients are obtained by automatic differentiation through the simulated circuit.
 
-The LightGBM~\cite{lightgbm} control targets the fixed hybrid's scalar budget using cumulative leaf outputs across all class trees. The selected model has 15 leaves and 370 boosting rounds, giving 3{,}700 class trees and 55{,}500 leaf values. This proxy excludes split-node features and thresholds and does not equate tree capacity with neural parameters or runtime. A separate full-budget reference has 31 leaves and 362 rounds, with 112{,}220 leaf values. Both references retain their validation-selected settings.
+\subsection{Residual fusion and matched classical controls}
 
-\subsection{Selection, metrics, and uncertainty}
+The classical and quantum features are separately layer-normalised and concatenated. With $\mathrm{GELU}$ denoting the hidden activation, the final logits are
+\begin{align}
+\mathbf{u}&=\bigl[\mathrm{LN}_{c}(\mathbf{h});\mathrm{LN}_{q}(\mathbf{q})\bigr]
+\in\mathbb{R}^{147},\nonumber\\
+\mathbf{z}_{\mathrm{hyb}}&=\mathbf{z}_{\mathrm{base}}+
+W_2\,\mathrm{GELU}(W_1\mathbf{u}+\mathbf{b}_1)+\mathbf{b}_2.
+\label{eq:residual}
+\end{align}
+Here $W_1\in\mathbb{R}^{128\times147}$ and $W_2\in\mathbb{R}^{10\times128}$. The final residual layer is initialised to zero, so the added branch initially leaves the backbone logits unchanged. The two normalisation layers and residual MLP contain 20{,}528 parameters. Together with the backbone and quantum readout, they give $23{,}170+540+20{,}528=44{,}238$ parameters.
 
-Neural models use inverse-frequency class-weighted cross-entropy. Before prediction, class logits are corrected as $z_c-\alpha\log w_c$, where $w_c=N/(10n_c)$ uses training-class counts. Checkpoints and $\alpha\in\{0,0.25,0.5,0.75,1\}$ are selected by validation Macro-F1. For each pure-MLP seed, the learning rate is selected between $10^{-3}$ and $3\times10^{-3}$ using validation only. ACC in the manuscript tables uses the same Macro-F1-selected checkpoint. Circuit evaluations use classical CPU/GPU state-vector simulation, with no quantum hardware.
+The pure-MLP control uses the same bounded input, hidden widths 73 and 207, LayerNorm after each hidden linear layer, GELU activations, and a ten-class output. Including biases and normalisation parameters, its total is also 44{,}238. This comparison asks whether the full hybrid configuration improves performance at a fixed parameter count.
 
-Macro-F1 gives equal weight to the ten classwise F1 scores; accuracy (ACC) is the fraction of correctly classified objects. Differences are hybrid minus control in percentage points (pp). We use 10{,}000 ordinary paired-object bootstrap resamples and percentile 95\% confidence intervals. Each resample uses the same objects for both models, with class proportions allowed to fluctuate. The intervals are conditional on the fitted models and exclude training-seed and model-search variation; no multiplicity correction is applied. The release also includes additional seeded runs and numerical ablations.
+A second control targets the readout itself while preserving the residual architecture in Eq.~\eqref{eq:residual}. Its classical input concatenates the first 359 normalised amplitudes from Eq.~\eqref{eq:amplitude} and the nine grouped angles. A fixed sign projection $P\in\{-1,+1\}^{368\times26}$ maps these values to 26 components, followed by
+\begin{equation}
+\mathbf{q}_{\mathrm{MLP}}=A_2\,\mathrm{GELU}(A_1\mathbf{t}+\mathbf{a}_1),
+\quad
+\mathbf{t}=P^{\top}\bigl[\mathbf{a}_{0:359};\boldsymbol\varphi\bigr].
+\label{eq:matchedreadout}
+\end{equation}
+The vector $\mathbf{a}_{0:359}$ denotes the first 359 state amplitudes, including the fallback in Eq.~\eqref{eq:amplitude}. With $A_1\in\mathbb{R}^{10\times26}$, $\mathbf{a}_1\in\mathbb{R}^{10}$, and a bias-free $A_2\in\mathbb{R}^{27\times10}$, the readout has $260+10+270=540$ learned parameters. The projection is fixed and contributes no learned parameters. The backbone, normalisation layers, fusion-head initialisation, full parameter count, optimiser-group allocation, and sample order match the quantum configuration. This readout replacement is a more specific test than the complete-model comparison with a pure MLP.
+
+\subsection{Fixed score fusion and tree controls}
+
+A separate fixed-fusion configuration combines a 32{,}410-parameter token-wise quantum classifier with the 23{,}170-parameter window MLP (Figure~\ref{fig:arch}b). The quantum classifier adapts the local three-feature VQC construction of Chen and Kuo~\cite{chenkuo2026} to this task. It is a different configuration from the global nine-qubit residual readout. Let $\tilde{\mathbf z}^{(k)}$ denote the class-corrected logits of classifier $k$, as defined below. The quantum fusion uses
+\begin{equation}
+\mathbf{z}_{\mathrm{fixQ}}=
+\tfrac12\tilde{\mathbf z}^{(\mathrm{tokenQ})}+
+\tfrac12\tilde{\mathbf z}^{(\mathrm{window})}.
+\label{eq:fixedquantum}
+\end{equation}
+The classical fusion control combines the window MLP with a 31{,}460-parameter Dense MLP at the probability level:
+\begin{equation}
+\mathbf{p}_{\mathrm{fixC}}=
+0.6\,\mathrm{softmax}(\tilde{\mathbf z}^{(\mathrm{window})})+
+0.4\,\mathrm{softmax}(\tilde{\mathbf z}^{(\mathrm{dense})}).
+\label{eq:fixedclassical}
+\end{equation}
+Predictions select the largest fused logit or probability, respectively. Both fusion rules were selected on validation. Reported budgets are 55{,}581 and 54{,}631 scalars, including one fixed mixing coefficient each; each constituent network receives 40 training epochs. Because both the fusion rule and network sizes differ, this is an approximate-budget ensemble comparison.
+
+The LightGBM~\cite{lightgbm} control targets the fixed hybrid's scalar budget using cumulative leaf outputs across all class trees. For $C$ classes, $T$ boosting rounds, and $L$ leaves per tree, the nominal budget is $CTL$. The selected model has $C=10$, $T=370$, and $L=15$, giving 3{,}700 class trees and 55{,}500 leaf values. A separate full-budget reference uses $T=362$ and $L=31$, with 112{,}220 leaf values. Both retain their validation-selected settings. Leaf counts exclude split-node features and thresholds, so they provide a capacity proxy without equating tree representations, neural parameters, or runtime.
+
+\subsection{Training objective and validation selection}
+
+Class imbalance is addressed during neural-network training with inverse-frequency class weights. If $n_c$ is the number of training objects in class $c$ and $N_{\mathrm{tr}}$ is the training-pool size, set $w_c=N_{\mathrm{tr}}/(C n_c)$. For a minibatch $\mathcal B$, the weighted cross-entropy is
+\begin{equation}
+\mathcal L_{\mathcal B}=-
+\frac{\displaystyle\sum_{i\in\mathcal B}w_{y_i}
+\log\bigl[\mathrm{softmax}(\mathbf z(\mathbf x_i))\bigr]_{y_i}}
+{\displaystyle\sum_{i\in\mathcal B}w_{y_i}}.
+\label{eq:loss}
+\end{equation}
+The weights are computed from training labels only. At validation and inference, logits are adjusted by a separately selected correction strength:
+\begin{equation}
+\tilde z_c=z_c-\alpha\log w_c,\qquad
+\hat y=\mathop{\mathrm{arg\,max}}_{c}\tilde z_c,
+\quad\alpha\in\{0,0.25,0.5,0.75,1\}.
+\label{eq:correction}
+\end{equation}
+This correction controls the decision shift associated with class-weighted training. Checkpoints and $\alpha$ are selected by validation Macro-F1. For each pure-MLP seed, the learning rate is selected between $10^{-3}$ and $3\times10^{-3}$ using validation only. ACC in the manuscript tables is evaluated at the same Macro-F1-selected checkpoint.
+
+The pure MLP starts from scratch and receives an 80-epoch budget. The hybrid uses 40 backbone pre-training epochs followed by a 40-epoch branch-training stage. During the first ten branch-training epochs, the backbone learning rate is zero. The selected primary hybrid checkpoints occur at epochs two and four, so their backbone remains at its pre-trained values. The two primary fine-tuning seeds, 42 and 44, vary added weights and sample order while sharing that pre-trained backbone. Thus, the maximum number of training-object presentations is matched, while initialisation, training trajectory, and computational cost differ. The released implementation references specify the optimiser parameter groups and schedules.
+
+\subsection{Evaluation metrics and paired uncertainty}
+
+For each class $c$, let $\mathrm{TP}_c$, $\mathrm{FP}_c$, and $\mathrm{FN}_c$ be true-positive, false-positive, and false-negative counts on the shared test cohort. The two reported metrics are
+\begin{equation}
+\mathrm{Macro\!\text{-}\!F1}=\frac1C\sum_{c=1}^{C}
+\frac{2\mathrm{TP}_c}{2\mathrm{TP}_c+\mathrm{FP}_c+\mathrm{FN}_c},
+\qquad
+\mathrm{ACC}=\frac{\sum_{c=1}^{C}\mathrm{TP}_c}{N_{\mathrm{test}}},
+\label{eq:metrics}
+\end{equation}
+with $N_{\mathrm{test}}=20{,}000$. Macro-F1 weights every class equally, whereas ACC weights every object equally. They therefore address different aspects of classification on the imbalanced cohort. Table values are percentages, and hybrid-minus-control differences use percentage points.
+
+Uncertainty is evaluated with 10{,}000 ordinary paired-object bootstrap resamples. For metric $M$, the difference in resample $b$ is
+\begin{equation}
+\Delta_M^{*(b)}=100\!\left[
+M(\mathbf y_{I_b},\hat{\mathbf y}^{Q}_{I_b})-
+M(\mathbf y_{I_b},\hat{\mathbf y}^{C}_{I_b})\right],
+\label{eq:bootstrap}
+\end{equation}
+where $I_b$ contains $N_{\mathrm{test}}$ indices sampled with replacement. The same indices are used for both predictions, preserving object-level pairing; class proportions are allowed to fluctuate. The 2.5th and 97.5th percentiles give the reported 95\% intervals. These intervals condition on the fitted models and exclude training-seed and model-search variation; no multiplicity correction is applied. The release also includes additional seeded runs and numerical ablations.
 
 \section{Results}
 
@@ -171,9 +293,16 @@ Total / Macro-F1 & 20{,}000 & 100.000 & 92.3371 & 92.2204 & $+0.1166$ \\
 \end{tabular}
 \end{table}
 
+\FloatBarrier
 \section{Discussion and Conclusion}
 
-HyQ-LC improved the tested parameter-matched pure-MLP comparison, while branch replacement did not resolve a benefit specific to the quantum readout. The fixed-fusion results show a trade-off between class-balanced F1 and accuracy; the full-budget tree scored higher on both metrics. Parameter counts alone therefore provide an incomplete account of performance: architecture, pre-training, fusion rules, and control strength all affect the comparison. Evaluation on previously unexamined objects and independently pre-trained backbones would test how broadly these observations persist. The present simulations establish neither a hardware speed advantage nor a general quantum advantage.
+The comparisons separate performance of the complete classifier from evidence about its quantum component. The residual hybrid improves on the tested parameter-matched pure MLP, yet its shared-architecture readout replacements leave the quantum-specific increment unresolved. Together, these results support the complete configuration as a useful candidate while leaving architecture, pre-training, and branch representation as competing explanations for its gains. This distinction follows the benchmark concerns raised by Bowles et al.~\cite{bowles2024} and complements architecture-level comparisons such as Chen and Kuo~\cite{chenkuo2026}.
+
+The classwise results explain why model ranking depends on the evaluation criterion. Under Eq.~\eqref{eq:metrics}, the F1 score of CEP receives the same weight as that of EW despite their very different sample sizes. The fixed hybrid's improvements in CEP, RRC, and ROT can therefore offset declines in other classes at the Macro-F1 level while total correct predictions decrease. This makes the result relevant to class-balanced classification, but it does not establish a uniform improvement for rare objects. In particular, the CEP estimate rests on only 45 test objects, and classwise F1 changes combine precision and recall rather than measuring recovered objects alone.
+
+The tree comparisons further limit what can be inferred from a scalar budget. Similar leaf-output and neural-parameter counts do not imply equivalent function classes, optimisation effort, or inference cost. The full-budget LightGBM reference scores higher on both metrics, showing that the small F1 advantage over its budget-matched counterpart does not persist across tree budgets. Likewise, the different logit and probability mixtures in Eqs.~\eqref{eq:fixedquantum} and~\eqref{eq:fixedclassical} prevent attributing their ensemble difference solely to the quantum constituent.
+
+The remaining questions concern generalisation and the source of the residual gain. Evaluation on previously unexamined objects would test persistence beyond the explored cohort. Independently pre-trained backbones would distinguish fine-tuning variation from full training variation, while matched fusion rules would sharpen the ensemble comparison. These tests would extend the current evidence rather than change the reported conditional comparisons. All circuits here are classically simulated; neither a quantum-hardware speed advantage nor a general quantum advantage follows from the present results.
 
 \section{Data and Code Availability}
 
@@ -184,6 +313,7 @@ The authors thank the developers of PyTorch, LightGBM, and PennyLane~\cite{penny
 \end{acknowledgments}
 
 \begin{thebibliography}{99}
+\footnotesize
 \bibitem{moriwaki2023} K.~Moriwaki, T.~Nishimichi, and N.~Yoshida, \emph{Machine learning for observational cosmology}, \href{https://doi.org/10.1088/1361-6633/acd2ea}{Reports on Progress in Physics \textbf{86}, 076901 (2023)}.
 \bibitem{alerce2021} P.~S\'anchez-S\'aez \emph{et al.}, \emph{Alert Classification for the ALeRCE Broker System: The Light Curve Classifier}, \href{https://doi.org/10.3847/1538-3881/abd5c1}{The Astronomical Journal \textbf{161}, 141 (2021)}.
 \bibitem{tdlight2026} X.~Yu, C.~Yu, Z.~Shao, C.~Wang, and B.~Yang, \emph{TDLight: A Framework for Incremental Light-curve Management and Continuous Classification Optimization}, \href{https://doi.org/10.3847/1538-4365/ae8300}{The Astrophysical Journal Supplement Series \textbf{285}, 57 (2026)}.
