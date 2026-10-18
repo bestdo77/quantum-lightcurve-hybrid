@@ -46,13 +46,13 @@ Here we ask whether a hybrid representation improves stellar light-curve classif
 
 \subsection{Data and test cohort}
 
-The task contains nine variable-star categories and one non-variable category. The labels are CEP, DSCT, EA, EW, M, Non-var, ROT, RRAB, RRC, and SR; Non-var denotes non-variable objects. Each object has 359 precomputed handcrafted features. The training pool contains 633{,}034 objects, and the reported test cohort contains 20{,}000 unique objects. EW and SR together account for 61.89\% of the test cohort; CEP has only 45 objects. Complete class counts are provided with the released data~\cite{artifacts}.
+We use handcrafted features derived from the LEAVES light-curve dataset~\cite{leaves2024,leavesdata}. The task contains nine variable-star categories and one non-variable category. The labels are CEP, DSCT, EA, EW, M, Non-var, ROT, RRAB, RRC, and SR; Non-var denotes non-variable objects. Each object has 359 precomputed handcrafted features. The training pool contains 633{,}034 objects, and the reported test cohort contains 20{,}000 unique objects. EW and SR together account for 61.89\% of the test cohort; CEP has only 45 objects. Class counts and classwise scores are listed in Table~\ref{tab:classwise} and provided with the released data~\cite{artifacts}.
 
 Preprocessing uses frozen training-derived medians and scales, median replacement of non-finite values, and clipping to $[-10,10]$. The main models use 105{,}297 validation objects; the fixed-fusion and leaf-budget LightGBM experiments use 10{,}000. We retain their existing validation-selected checkpoints and hyperparameters. Test predictions are extracted by exact ID and label matching from saved prediction files. The cohort was previously examined during exploratory development, so it is not an untouched confirmation sample. Separate sealed confirmation data remain unused.
 
 \subsection{Residual hybrid and parameter-matched controls}
 
-The main HyQ-LC model has 44{,}238 parameters (Figure~\ref{fig:arch}a). Its classical backbone is a 23{,}170-parameter window MLP. After an elementwise $\arctan$ transform, the features are padded into 120 three-component tokens. Token MLPs and two stages of six-component window mixing produce a 120-dimensional representation and ten base logits.
+The main HyQ-LC model has 44{,}238 parameters (Figure~\ref{fig:arch}a). Its classical backbone is a 23{,}170-parameter window MLP, adapted from the token-based VQC/FQT architectures studied by Chen and Kuo~\cite{chenkuo2026} by using local MLPs in place of quantum blocks. After an elementwise $\arctan$ transform, the features are padded into 120 three-component tokens. Token MLPs and two stages of six-component window mixing produce a 120-dimensional representation and ten base logits.
 
 The quantum branch also receives the transformed input. It pads the 359 values to 512 entries and normalises them as amplitudes of a nine-qubit state. Group means define nine additional input angles. Each of twelve layers applies trainable single-qubit rotations, a ring of CNOT gates, and angle re-uploading~\cite{reuploading}. The readout contains 324 rotation parameters and 216 re-uploading frequencies and shifts. Measuring single-qubit $X$, $Y$, and $Z$ expectations produces 27 features~\cite{huang2021}. Layer-normalised classical and quantum features enter a $147\!\to\!128\!\to\!10$ MLP whose output is added to the backbone logits. Encoding affects the accessible function class~\cite{encoding2021}, but depth and expressivity do not by themselves establish predictive performance~\cite{wang2025}.
 
@@ -69,7 +69,7 @@ For the branch control, a 540-parameter MLP replaces the quantum readout. It rec
 
 \subsection{Fixed fusion and LightGBM controls}
 
-The fixed-fusion configuration combines a 32{,}410-parameter token-wise quantum classifier with the 23{,}170-parameter window MLP (Figure~\ref{fig:arch}b). Their corrected logits are averaged with equal weights. The classical control combines the window MLP with a 31{,}460-parameter Dense MLP, using a 0.6/0.4 probability mixture. Both fusion rules were selected on validation. Reported budgets are 55{,}581 and 54{,}631 scalars, including one fixed mixing coefficient each. Because the fusion rules and parameter totals differ, this is an approximate-budget ensemble comparison, rather than an isolated branch replacement. Each constituent network receives 40 training epochs.
+The fixed-fusion configuration combines a 32{,}410-parameter token-wise quantum classifier with the 23{,}170-parameter window MLP (Figure~\ref{fig:arch}b). The quantum classifier also adapts the local three-feature VQC construction of Chen and Kuo~\cite{chenkuo2026} to this task. Their corrected logits are averaged with equal weights. The classical control combines the window MLP with a 31{,}460-parameter Dense MLP, using a 0.6/0.4 probability mixture. Both fusion rules were selected on validation. Reported budgets are 55{,}581 and 54{,}631 scalars, including one fixed mixing coefficient each. Because the fusion rules and parameter totals differ, this is an approximate-budget ensemble comparison, rather than an isolated branch replacement. Each constituent network receives 40 training epochs.
 
 The LightGBM~\cite{lightgbm} control targets the fixed hybrid's scalar budget using cumulative leaf outputs across all class trees. The selected model has 15 leaves and 370 boosting rounds, giving 3{,}700 class trees and 55{,}500 leaf values. This proxy excludes split-node features and thresholds and does not equate tree capacity with neural parameters or runtime. A separate full-budget reference has 31 leaves and 362 rounds, with 112{,}220 leaf values. Both references retain their validation-selected settings.
 
@@ -126,7 +126,7 @@ Seed & Quantum readout & MLP readout & $\dF$ (pp) & 95\% interval \\
 
 The fixed quantum fusion achieved 92.3371\% Macro-F1 and 94.7450\% ACC (Table~\ref{tab:leafbudget}). It had a small F1 point gain over classical fusion, with essentially unchanged ACC. Against leaf-budget-matched LightGBM, its F1 was $0.1166\pp$ higher but ACC was $0.1200\pp$ lower, corresponding to 24 fewer correct classifications. The paired F1 intervals spanned zero for both controls. The full-budget LightGBM reference scored higher on both metrics.
 
-The largest positive class-level F1 differences against the budget-matched tree were in CEP ($+1.0040\pp$), RRC ($+1.1429\pp$), and ROT ($+0.5128\pp$). CEP and RRC contain only 45 and 357 test objects. Equal class weighting allows these gains to raise Macro-F1 even when total correct predictions decrease. This is a class-specific pattern, not an improvement across all minority classes.
+The classwise comparison (Table~\ref{tab:classwise}) shows the largest positive F1 differences against the budget-matched tree in CEP ($+1.0040\pp$), RRC ($+1.1429\pp$), and ROT ($+0.5128\pp$). CEP and RRC contain only 45 and 357 test objects. Equal class weighting allows these gains to raise Macro-F1 even when total correct predictions decrease. This is a class-specific pattern, not an improvement across all minority classes.
 
 \begin{table}[htbp]
 \centering
@@ -141,6 +141,32 @@ Control & F1/ACC (\%) & $\dF$ (pp), 95\% interval & $\dA$ (pp) \\
 Classical fusion & 92.1510 / 94.7500 & $+0.1860$ $[-0.2869,+0.6740]$ & $-0.0050$ \\
 Budget-matched LightGBM & 92.2204 / 94.8650 & $+0.1166$ $[-0.8111,+1.0763]$ & $-0.1200$ \\
 Full-budget LightGBM & 92.9681 / 95.1100 & $-0.6311$ $[-1.4192,+0.1197]$ & $-0.3650$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\small
+\setlength{\tabcolsep}{5pt}
+\caption{Class distribution and classwise F1 on the same 20{,}000 test objects. Quantum fusion denotes the fixed-fusion configuration; LightGBM is the 55{,}500-leaf-value control. Shares and F1 scores are percentages; $\dF$ is quantum fusion minus LightGBM in pp. The last row gives total counts and unweighted mean F1.}
+\label{tab:classwise}
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+Class & Objects & Share (\%) & Quantum F1 & LightGBM F1 & $\dF$ (pp) \\
+\midrule
+CEP & 45 & 0.225 & 84.3373 & 83.3333 & $+1.0040$ \\
+DSCT & 337 & 1.685 & 86.3636 & 86.4536 & $-0.0899$ \\
+EA & 912 & 4.560 & 96.8097 & 97.1239 & $-0.3142$ \\
+EW & 6{,}307 & 31.535 & 94.7460 & 94.7427 & $+0.0034$ \\
+M & 352 & 1.760 & 97.5955 & 97.5887 & $+0.0068$ \\
+Non-var & 2{,}566 & 12.830 & 96.0356 & 96.7356 & $-0.7000$ \\
+ROT & 2{,}257 & 11.285 & 86.3818 & 85.8691 & $+0.5128$ \\
+RRAB & 796 & 3.980 & 97.5579 & 97.7358 & $-0.1779$ \\
+RRC & 357 & 1.785 & 86.0908 & 84.9478 & $+1.1429$ \\
+SR & 6{,}071 & 30.355 & 97.4523 & 97.6740 & $-0.2217$ \\
+\midrule
+Total / Macro-F1 & 20{,}000 & 100.000 & 92.3371 & 92.2204 & $+0.1166$ \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -168,6 +194,8 @@ The authors thank the developers of PyTorch, LightGBM, and PennyLane~\cite{penny
 \bibitem{peters2021} E.~Peters \emph{et al.}, \emph{Machine learning of high dimensional data on a noisy quantum processor}, \href{https://doi.org/10.1038/s41534-021-00498-9}{npj Quantum Information \textbf{7}, 161 (2021)}.
 \bibitem{chenkuo2026} C.-S.~Chen and E.-J.~Kuo, \emph{Do Quantum Transformers Help? A Systematic VQC Architecture Comparison on Tabular Benchmarks}, \href{https://arxiv.org/abs/2604.23931}{arXiv:2604.23931 (2026)}.
 \bibitem{bowles2024} J.~Bowles, S.~Ahmed, and M.~Schuld, \emph{Better than classical? The subtle art of benchmarking quantum machine learning models}, \href{https://arxiv.org/abs/2403.07059}{arXiv:2403.07059 (2024)}.
+\bibitem{leaves2024} Y.~Fei \emph{et al.}, \emph{LEAVES: An Expandable Light-curve Data Set for Automatic Classification of Variable Stars}, \href{https://doi.org/10.3847/1538-4365/ad785b}{The Astrophysical Journal Supplement Series \textbf{275}, 10 (2024)}.
+\bibitem{leavesdata} C.~Yu, \emph{An Expandable Light Curve Dataset for Automatic Classification of Variable Stars (LEAVES)}, National Astronomical Data Center of China (2024), \url{https://doi.org/10.12149/100962}.
 \bibitem{artifacts} Project artifacts: data, code, audited results, and verification scripts, \url{https://github.com/bestdo77/quantum-lightcurve-hybrid} (2026).
 \bibitem{reuploading} A.~P\'erez-Salinas, A.~Cervera-Lierta, E.~Gil-Fuster, and J.~I.~Latorre, \emph{Data re-uploading for a universal quantum classifier}, \href{https://doi.org/10.22331/q-2020-02-06-226}{Quantum \textbf{4}, 226 (2020)}.
 \bibitem{huang2021} H.-Y.~Huang \emph{et al.}, \emph{Power of data in quantum machine learning}, \href{https://doi.org/10.1038/s41467-021-22539-9}{Nature Communications \textbf{12}, 2631 (2021)}.

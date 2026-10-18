@@ -1,5 +1,7 @@
 # Data
 
+The light curves originate from **LEAVES**: Ya Fei et al., *LEAVES: An Expandable Light-curve Data Set for Automatic Classification of Variable Stars*, The Astrophysical Journal Supplement Series 275, 10 (2024), [paper DOI](https://doi.org/10.3847/1538-4365/ad785b). Original data: Ce Yu (2024), National Astronomical Data Center of China, [LEAVES dataset DOI](https://doi.org/10.12149/100962). The archives here contain the feature representation and fixed splits used by this study.
+
 All test results use exactly the same 20,000 unique object IDs and labels. `test.npz` contains the corresponding 359-dimensional float32 features (`x`), integer class labels (`y`), IDs, and class names. `predictions_test.npz` stores those IDs and labels in the same order, plus one prediction vector per audited model. Class order: CEP, DSCT, EA, EW, M, Non-var, ROT, RRAB, RRC, SR.
 
 `splits.json` records class counts, archive SHA256 checksums, and training/validation archive links. Training has 633,034 objects; model selection retains the original validation protocols (105,297 objects for the main study, 10,000 for the fixed-fusion controls). Only test-cohort metrics are published in the result tables.
