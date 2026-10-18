@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480pt" height="325pt" viewBox="0 0 480 325">
+<title>Reported residual hybrid and fixed score fusion</title>
+<desc>The main model uses global amplitude encoding with grouped angle re-uploading. The older model combines two independently trained classifiers by fixed score fusion.</desc>
+<rect x="0" y="0" width="480" height="325" fill="white"/>
+<text x="8" y="13" font-family="Arial, Helvetica, sans-serif" font-size="10pt" font-weight="bold" text-anchor="start" fill="#253444">a  Main residual hybrid</text>
+<text x="472" y="13" font-family="Arial, Helvetica, sans-serif" font-size="8pt" font-weight="normal" text-anchor="end" fill="#253444">44,238 parameters</text>
+<g id="a-input"><rect x="8" y="87" width="65" height="50" rx="4" fill="#F1F4F7" stroke="#596C7E" stroke-width="0.8"/></g>
+<text x="40.5" y="109.2" font-family="Arial, Helvetica, sans-serif" font-size="8pt" font-weight="bold" text-anchor="middle" fill="#253444">359 features</text>
+<text x="40.5" y="120.2" font-family="Arial, Helvetica, sans-serif" font-size="8pt" font-weight="normal" text-anchor="middle" fill="#253444">atan inputs</text>
+<g id="a-backbone"><rect x="95" y="43" width="95" height="42" rx="4" fill="#F1F4F7" stroke="#596C7E" stroke-width="0.8"/></g>
+<text x="142.5" y="61.2" font-family="Arial, Helvetica, sans-serif" font-size="8pt" font-weight="bold" text-anchor="middle" fill="#253444">Window MLP</text>
+<text x="142.5" y="72.2" font-family="Arial, Helvetica, sans-serif" font-size="8pt" font-weight="normal" text-anchor="middle" fill="#253444">120 features</text>
+<g id="a-encoding"><rect x="95" y="126" width="95" height="55" rx="4" fill="#F1F4F7" stroke="#596C7E" stroke-width="0.8"/></g>
+<text x="142.5" y="145.2" font-family="Arial, Helvetica, sans-serif" font-size="8pt" font-weight="bold" text-anchor="middle" fill="#253444">Input encoding</text>
+<text x="142.5" y="156.2" font-family="Arial, Helvetica, sans-serif" font-size="8pt" font-weight="normal" text-anchor="middle" fill="#253444">512 amplitudes</text>
+<text x="142.5" y="167.2" font-family="Arial, Helvetica, sans-serif" font-size="8pt" font-weight="normal" text-anchor="middle" fill="#253444">9 grouped angles</text>
+<g id="a-readout"><rect x="210" y="126" width="110" height="55" rx="4" fill="#EAF4FB" stroke="#1769A5" stroke-width="0.8"/></g>
+<text x="265.0" y="145.2" font-family="Arial, Helvetica, sans-serif" font-size="8pt" font-weight="bold" text-anchor="middle" fill="#1769A5">9-qubit circuit</text>
+<text x="265.0" y="156.2" font-family="Arial, Helvetica, sans-serif" font-size="8pt" font-weight="normal" text-anchor="middle" fill="#253444">12 re-uploading layers</text>
+<text x="265.0" y="167.2" font-family="Arial, Helvetica, sans-serif" font-size="8pt" font-weight="normal" text-anchor="middle" fill="#253444">27 XYZ observables</text>
+<g id="a-concat"><rect x="210" y="43" width="100" height="42" rx="4" fill="#F1F4F7" stroke="#596C7E" stroke-width="0.8"/></g>
+<text x="260.0" y="61.2" font-family="Arial, Helvetica, sans-serif" font-size="8pt" font-weight="bold" text-anchor="middle" fill="#253444">Normalise + join</text>
+<text x="260.0" y="72.2" font-family="Arial, Helvetica, sans-serif" font-size="8pt" font-weight="normal" text-anchor="middle" fill="#253444">120 + 27 features</text>
+<g id="a-residual"><rect x="330" y="43" width="95" height="42" rx="4" fill="#F1F4F7" stroke="#596C7E" stroke-width="0.8"/></g>
+<text x="377.5" y="61.2" font-family="Arial, Helvetica, sans-serif" font-size="8pt" font-weight="bold" text-anchor="middle" fill="#253444">Residual MLP</text>
+<text x="377.5" y="72.2" font-family="Arial, Helvetica, sans-serif" font-size="8pt" font-weight="normal" text-anchor="middle" fill="#253444">147 to 128 to 10</text>
+<circle id="a-sum" cx="450" cy="98" r="11" fill="white" stroke="#596C7E"/>
+<text x="450" y="101" font-family="Arial, Helvetica, sans-serif" font-size="12pt" font-weight="normal" text-anchor="middle" fill="#253444">+</text>
+<g id="a-output"><rect x="397" y="137" width="76" height="42" rx="4" fill="#F1F4F7" stroke="#596C7E" stroke-width="0.8"/></g>
+<text x="435.0" y="155.2" font-family="Arial, Helvetica, sans-serif" font-size="8pt" font-weight="bold" text-anchor="middle" fill="#253444">Prior correction</text>
+<text x="435.0" y="166.2" font-family="Arial, Helvetica, sans-serif" font-size="8pt" font-weight="normal" text-anchor="middle" fill="#253444">10-class output</text>
+<g id="a-input-backbone"><polyline points="73,107 83,107 83,64 95,64" fill="none" stroke="#596C7E" stroke-width="1"/><polygon points="95,64 91.3982115905893,65.73986213644493 91.3982115905893,62.26013786355508" fill="#596C7E"/></g>
+<g id="a-input-encoding"><polyline points="83,107 83,153 95,153" fill="none" stroke="#596C7E" stroke-width="1"/><polygon points="95,153 91.3982115905893,154.7398621364449 91.3982115905893,151.2601378635551" fill="#596C7E"/></g>
+<g id="a-hidden"><polyline points="190,64 210,64" fill="none" stroke="#596C7E" stroke-width="1"/><polygon points="210,64 206.39821159058928,65.73986213644493 206.39821159058928,62.26013786355508" fill="#596C7E"/></g>
+<g id="a-quantum-input"><polyline points="190,153 210,153" fill="none" stroke="#1769A5" stroke-width="1"/><polygon points="210,153 206.39821159058928,154.7398621364449 206.39821159058928,151.2601378635551" fill="#1769A5"/></g>
+<g id="a-readout-to-join"><polyline points="320,153 325,153 325,101 260,101 260,85" fill="none" stroke="#1769A5" stroke-width="1"/><polygon points="260,85 261.7398621364449,88.6017884094107 258.2601378635551,88.6017884094107" fill="#1769A5"/></g>
+<g id="a-residual-input"><polyline points="310,64 330,64" fill="none" stroke="#596C7E" stroke-width="1"/><polygon points="330,64 326.3982115905893,65.73986213644493 326.3982115905893,62.26013786355508" fill="#596C7E"/></g>
+<g id="a-residual-to-sum"><polyline points="425,64 435,64 435,98 439,98" fill="none" stroke="#596C7E" stroke-width="1"/><polygon points="439,98 435.3982115905893,99.73986213644493 435.3982115905893,96.26013786355507" fill="#596C7E"/></g>
+<g id="a-base-logits"><polyline points="142.5,43 142.5,28 450,28 450,87" fill="none" stroke="#596C7E" stroke-width="1"/><polygon points="450,87 448.2601378635551,83.3982115905893 451.7398621364449,83.3982115905893" fill="#596C7E"/></g>
+<text x="307" y="25" font-family="Arial, Helvetica, sans-serif" font-size="7.5pt" font-weight="normal" text-anchor="middle" fill="#253444">Backbone classifier: 120 to 10 logits</text>
+<g id="a-predict"><polyline points="450,109 450,126 435,126 435,137" fill="none" stroke="#596C7E" stroke-width="1"/><polygon points="435,137 433.2601378635551,133.39821159058928 436.7398621364449,133.39821159058928" fill="#596C7E"/></g>
+<text x="95" y="194" font-family="Arial, Helvetica, sans-serif" font-size="7.5pt" font-weight="normal" text-anchor="start" fill="#253444">Quantum branch: 324 rotation parameters + 216 re-uploading parameters</text>
+<line x1="8" y1="204" x2="472" y2="204" stroke="#D7DFE5" stroke-width="0.6"/>
+<text x="8" y="219" font-family="Arial, Helvetica, sans-serif" font-size="10pt" font-weight="bold" text-anchor="start" fill="#253444">b  Fixed score fusion</text>
+<text x="472" y="219" font-family="Arial, Helvetica, sans-serif" font-size="8pt" font-weight="normal" text-anchor="end" fill="#253444">55,581 reported scalars</text>
+<g id="b-input"><rect x="8" y="252" width="65" height="35" rx="4" fill="#F1F4F7" stroke="#596C7E" stroke-width="0.8"/></g>
+<text x="40.5" y="272.2" font-family="Arial, Helvetica, sans-serif" font-size="8pt" font-weight="bold" text-anchor="middle" fill="#253444">359 features</text>
+<g id="b-quantum"><rect x="95" y="232" width="118" height="31" rx="4" fill="#EAF4FB" stroke="#1769A5" stroke-width="0.8"/></g>
+<text x="154.0" y="244.7" font-family="Arial, Helvetica, sans-serif" font-size="8pt" font-weight="bold" text-anchor="middle" fill="#1769A5">Token-wise quantum</text>
+<text x="154.0" y="255.7" font-family="Arial, Helvetica, sans-serif" font-size="8pt" font-weight="normal" text-anchor="middle" fill="#253444">32,410 parameters</text>
+<g id="b-classical"><rect x="95" y="275" width="118" height="31" rx="4" fill="#F1F4F7" stroke="#596C7E" stroke-width="0.8"/></g>
+<text x="154.0" y="287.7" font-family="Arial, Helvetica, sans-serif" font-size="8pt" font-weight="bold" text-anchor="middle" fill="#253444">Window MLP</text>
+<text x="154.0" y="298.7" font-family="Arial, Helvetica, sans-serif" font-size="8pt" font-weight="normal" text-anchor="middle" fill="#253444">23,170 parameters</text>
+<g id="b-mean"><rect x="250" y="248" width="106" height="42" rx="4" fill="#F1F4F7" stroke="#596C7E" stroke-width="0.8"/></g>
+<text x="303.0" y="266.2" font-family="Arial, Helvetica, sans-serif" font-size="8pt" font-weight="bold" text-anchor="middle" fill="#253444">Prior-correct logits</text>
+<text x="303.0" y="277.2" font-family="Arial, Helvetica, sans-serif" font-size="8pt" font-weight="normal" text-anchor="middle" fill="#253444">0.5 / 0.5 mean</text>
+<g id="b-output"><rect x="382" y="248" width="91" height="42" rx="4" fill="#F1F4F7" stroke="#596C7E" stroke-width="0.8"/></g>
+<text x="427.5" y="271.7" font-family="Arial, Helvetica, sans-serif" font-size="8pt" font-weight="bold" text-anchor="middle" fill="#253444">10-class prediction</text>
+<g id="b-input-q"><polyline points="73,269 83,269 83,247.5 95,247.5" fill="none" stroke="#596C7E" stroke-width="1"/><polygon points="95,247.5 91.3982115905893,249.2398621364449 91.3982115905893,245.7601378635551" fill="#596C7E"/></g>
+<g id="b-input-c"><polyline points="83,269 83,290.5 95,290.5" fill="none" stroke="#596C7E" stroke-width="1"/><polygon points="95,290.5 91.3982115905893,292.2398621364449 91.3982115905893,288.7601378635551" fill="#596C7E"/></g>
+<g id="b-q-mean"><polyline points="213,247.5 230,247.5 230,259 250,259" fill="none" stroke="#1769A5" stroke-width="1"/><polygon points="250,259 246.39821159058928,260.7398621364449 246.39821159058928,257.2601378635551" fill="#1769A5"/></g>
+<g id="b-c-mean"><polyline points="213,290.5 230,290.5 230,280 250,280" fill="none" stroke="#596C7E" stroke-width="1"/><polygon points="250,280 246.39821159058928,281.7398621364449 246.39821159058928,278.2601378635551" fill="#596C7E"/></g>
+<g id="b-mean-output"><polyline points="356,269 382,269" fill="none" stroke="#596C7E" stroke-width="1"/><polygon points="382,269 378.3982115905893,270.7398621364449 378.3982115905893,267.2601378635551" fill="#596C7E"/></g>
+<text x="95" y="316" font-family="Arial, Helvetica, sans-serif" font-size="7.5pt" font-weight="normal" text-anchor="start" fill="#253444">Classical fusion control: Window MLP + Dense MLP; 0.6 / 0.4 probability mixture</text>
+</svg>
