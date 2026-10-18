@@ -1,0 +1,430 @@
+{
+  "test_data": {
+    "shape": [
+      20000,
+      359
+    ],
+    "unique_ids": 20000,
+    "class_counts": [
+      45,
+      337,
+      912,
+      6307,
+      352,
+      2566,
+      2257,
+      796,
+      357,
+      6071
+    ],
+    "EW_SR_share_percent": 61.89,
+    "sha256": "0b39fa65d5252e38b86f82c85ba5b8fb2a8878f3de0b9ec09e2389221732e096",
+    "ids_scope": "ids are row indices into the authors internal feature bank; for provenance only."
+  },
+  "independent_model_metrics": {
+    "models": 57,
+    "confusion_matrices_match": true,
+    "class_f1_match": true,
+    "archive_sha256": "2106cfe8d3e627472f2e7694305cc7a68d5b83de577ef294a9dea5637fc535b3"
+  },
+  "audited": {
+    "recomputed_records": 57,
+    "exact_structured_match": true
+  },
+  "comparisons": {
+    "recomputed_records": 45,
+    "exact_structured_match": true
+  },
+  "tables": {
+    "table_count": 5,
+    "all_four_result_tables_checked": true,
+    "classwise_rows": 10,
+    "fixed_fusion_minus_budget_correct": -24
+  },
+  "headline_comparisons": [
+    {
+      "comparison": "hybrid - pure MLP",
+      "seed": 42,
+      "delta_f1_pp": 0.8275915610234996,
+      "f1_interval95_pp": [
+        -0.0649576013034189,
+        1.6945035672657114
+      ],
+      "delta_accuracy_pp": 0.6000000000000005
+    },
+    {
+      "comparison": "quantum - matched MLP readout",
+      "seed": 42,
+      "delta_f1_pp": 0.020541595351575292,
+      "f1_interval95_pp": [
+        -0.329852347786892,
+        0.37260805991290724
+      ]
+    },
+    {
+      "comparison": "hybrid - pure MLP",
+      "seed": 44,
+      "delta_f1_pp": 1.2393411983175562,
+      "f1_interval95_pp": [
+        0.5152791258600334,
+        2.005333787483086
+      ],
+      "delta_accuracy_pp": 0.8449999999999958
+    },
+    {
+      "comparison": "quantum - matched MLP readout",
+      "seed": 44,
+      "delta_f1_pp": 0.2965393279551476,
+      "f1_interval95_pp": [
+        -0.03329899976360379,
+        0.6981809738163388
+      ]
+    },
+    {
+      "comparison": "fixed quantum fusion - Classical fusion",
+      "delta_f1_pp": 0.18603082805408455,
+      "f1_interval95_pp": [
+        -0.28690589163492985,
+        0.6739673455502805
+      ],
+      "delta_accuracy_pp": -0.004999999999999449
+    },
+    {
+      "comparison": "fixed quantum fusion - Budget-matched LightGBM",
+      "delta_f1_pp": 0.11661385113593825,
+      "f1_interval95_pp": [
+        -0.8110833307295562,
+        1.076344654122292
+      ],
+      "delta_accuracy_pp": -0.11999999999999789
+    },
+    {
+      "comparison": "fixed quantum fusion - Full-budget LightGBM",
+      "delta_f1_pp": -0.6310583463286279,
+      "f1_interval95_pp": [
+        -1.4192119732880994,
+        0.11968493225377039
+      ],
+      "delta_accuracy_pp": -0.3649999999999931
+    }
+  ],
+  "features": {
+    "dimensions": 359,
+    "groups": {
+      "base81": 81,
+      "global17": 17,
+      "hist32": 32,
+      "pair49": 49,
+      "tri63": 63,
+      "time64": 64,
+      "bank53": 53
+    },
+    "manifest_sha256": "1c6eae58d219389724116f0f8a338f8bfc34089f5d1f167bc0759d51452b56fc"
+  },
+  "parameters": {
+    "pure_mlp_formula": 44238,
+    "quantum_formula": 540,
+    "norm_and_residual_head": 20528,
+    "hybrid_total": 44238,
+    "fixed_reported_total": 55581,
+    "budget_tree_count": 3700,
+    "budget_leaf_values": 55500,
+    "scope": "Arithmetic and static released-source checks; no full neural-model instantiation or checkpoint inference."
+  },
+  "references_and_cleanup": {
+    "bibliography_entries": 19,
+    "cited_keys": 19,
+    "uncited_entries": [],
+    "undefined_citations": [],
+    "duplicate_labels": false,
+    "old_test_scope_matches": []
+  },
+  "status": "passed",
+  "reference_records": [
+    {
+      "number": 1,
+      "key": "moriwaki2023",
+      "reference": "Moriwaki, Nishimichi & Yoshida (2023)",
+      "title": "Machine learning for observational cosmology",
+      "current_entry": "K.~Moriwaki, T.~Nishimichi, and N.~Yoshida, \\emph{Machine learning for observational cosmology}, \\href{https://doi.org/10.1088/1361-6633/acd2ea}{Reports on Progress in Physics \\textbf{86}, 076901 (2023)}.",
+      "metadata_status": "verified",
+      "citation_use_status": "supported_with_stated_scope",
+      "purpose": "巡天数据量与自动分析背景；不作为本稿分类分数证据。",
+      "verification_evidence": "Crossref 作者、题名、86/076901/2023；arXiv:2303.15794 作者与摘要。",
+      "primary_source": "https://arxiv.org/abs/2303.15794",
+      "doi_or_citation_url": "https://doi.org/10.1088/1361-6633/acd2ea",
+      "action": "保留；背景引用。"
+    },
+    {
+      "number": 2,
+      "key": "alerce2021",
+      "reference": "Sánchez-Sáez et al. (2021), ALeRCE",
+      "title": "Alert Classification for the ALeRCE Broker System: The Light Curve Classifier",
+      "current_entry": "P.~S\\'anchez-S\\'aez \\emph{et al.}, \\emph{Alert Classification for the ALeRCE Broker System: The Light Curve Classifier}, \\href{https://doi.org/10.3847/1538-3881/abd5c1}{The Astronomical Journal \\textbf{161}, 141 (2021)}.",
+      "metadata_status": "verified",
+      "citation_use_status": "supported_with_stated_scope",
+      "purpose": "人工特征光变曲线分类与 broker 系统。",
+      "verification_evidence": "Crossref AJ 161/141/2021；arXiv:2008.03311 作者、题名与摘要。",
+      "primary_source": "https://arxiv.org/abs/2008.03311",
+      "doi_or_citation_url": "https://doi.org/10.3847/1538-3881/abd5c1",
+      "action": "保留；用途直接对应。"
+    },
+    {
+      "number": 3,
+      "key": "tdlight2026",
+      "reference": "Yu, Yu, Shao, Wang & Yang (2026), TDLight",
+      "title": "TDLight: A Framework for Incremental Light-curve Management and Continuous Classification Optimization",
+      "current_entry": "X.~Yu, C.~Yu, Z.~Shao, C.~Wang, and B.~Yang, \\emph{TDLight: A Framework for Incremental Light-curve Management and Continuous Classification Optimization}, \\href{https://doi.org/10.3847/1538-4365/ae8300}{The Astrophysical Journal Supplement Series \\textbf{285}, 57 (2026)}.",
+      "metadata_status": "verified",
+      "citation_use_status": "supported_with_stated_scope",
+      "purpose": "增量光变数据管理和触发式分类。",
+      "verification_evidence": "Crossref 正式发表题名、五名作者顺序、ApJS 285/57/2026；arXiv:2511.18784。",
+      "primary_source": "https://arxiv.org/abs/2511.18784",
+      "doi_or_citation_url": "https://doi.org/10.3847/1538-4365/ae8300",
+      "action": "保留正式出版版本；未退回旧版题名。"
+    },
+    {
+      "number": 4,
+      "key": "astromer2023",
+      "reference": "Donoso-Oliva et al. (2023), ASTROMER",
+      "title": "ASTROMER: A transformer-based embedding for the representation of light curves",
+      "current_entry": "C.~Donoso-Oliva \\emph{et al.}, \\emph{ASTROMER: A transformer-based embedding for the representation of light curves}, \\href{https://doi.org/10.1051/0004-6361/202243928}{Astronomy \\& Astrophysics \\textbf{670}, A54 (2023)}.",
+      "metadata_status": "verified",
+      "citation_use_status": "supported_with_stated_scope",
+      "purpose": "学习光变曲线的 embedding。",
+      "verification_evidence": "Crossref 主标题与副标题合并后匹配，A&A 670/A54/2023；arXiv:2205.01677。",
+      "primary_source": "https://arxiv.org/abs/2205.01677",
+      "doi_or_citation_url": "https://doi.org/10.1051/0004-6361/202243928",
+      "action": "保留；未与本稿直接比分。"
+    },
+    {
+      "number": 5,
+      "key": "starembed2026",
+      "reference": "Li et al. (2026), StarEmbed",
+      "title": "StarEmbed: Benchmarking Time Series Foundation Models on Astronomical Observations of Variable Stars",
+      "current_entry": "W.~Li \\emph{et al.}, \\emph{StarEmbed: Benchmarking Time Series Foundation Models on Astronomical Observations of Variable Stars}, \\href{https://proceedings.mlr.press/v306/li26t.html}{Proceedings of the 43rd International Conference on Machine Learning, PMLR \\textbf{306}, 66289--66329 (2026)}.",
+      "metadata_status": "verified",
+      "citation_use_status": "supported_with_stated_scope",
+      "purpose": "天文时序基础模型评估背景。",
+      "verification_evidence": "PMLR 正式页面及其 BibTeX：ICML 2026，306，66289–66329。",
+      "primary_source": "https://proceedings.mlr.press/v306/li26t.html",
+      "doi_or_citation_url": "https://proceedings.mlr.press/v306/li26t.html",
+      "action": "保留；未将 359 维说成该文标准特征。"
+    },
+    {
+      "number": 6,
+      "key": "shao2026",
+      "reference": "Shao, Yu, Yang & Chen (2026)",
+      "title": "Reframing Variable Star Classification as Structured Sequence Modeling with Large Language Models",
+      "current_entry": "Z.~Shao, C.~Yu, B.~Yang, and X.~Chen, \\emph{Reframing Variable Star Classification as Structured Sequence Modeling with Large Language Models}, \\href{https://doi.org/10.3847/1538-4357/ae8ade}{The Astrophysical Journal \\textbf{1007}, 82 (2026)}.",
+      "metadata_status": "verified",
+      "citation_use_status": "supported_with_stated_scope",
+      "purpose": "用大语言模型作结构化光变序列分类。",
+      "verification_evidence": "Crossref 出版社存入的作者、完整题名、ApJ 1007/82/2026 与摘要；出版社正文抓取失败。",
+      "primary_source": "https://api.crossref.org/works/10.3847/1538-4357/ae8ade",
+      "doi_or_citation_url": "https://doi.org/10.3847/1538-4357/ae8ade",
+      "action": "元数据与当前用途通过；不声称已阅读全文。"
+    },
+    {
+      "number": 7,
+      "key": "mari2020",
+      "reference": "Mari et al. (2020)",
+      "title": "Transfer learning in hybrid classical-quantum neural networks",
+      "current_entry": "A.~Mari, T.~R.~Bromley, J.~Izaac, M.~Schuld, and N.~Killoran, \\emph{Transfer learning in hybrid classical-quantum neural networks}, \\href{https://doi.org/10.22331/q-2020-10-09-340}{Quantum \\textbf{4}, 340 (2020)}.",
+      "metadata_status": "verified",
+      "citation_use_status": "supported_with_stated_scope",
+      "purpose": "经典表示与可训练量子模块结合的先例。",
+      "verification_evidence": "Crossref 五名作者、Quantum 4/340/2020；arXiv:1912.08278 摘要。",
+      "primary_source": "https://arxiv.org/abs/1912.08278",
+      "doi_or_citation_url": "https://doi.org/10.22331/q-2020-10-09-340",
+      "action": "保留；不声称直接复现其图像实验。"
+    },
+    {
+      "number": 8,
+      "key": "peters2021",
+      "reference": "Peters et al. (2021)",
+      "title": "Machine learning of high dimensional data on a noisy quantum processor",
+      "current_entry": "E.~Peters \\emph{et al.}, \\emph{Machine learning of high dimensional data on a noisy quantum processor}, \\href{https://doi.org/10.1038/s41534-021-00498-9}{npj Quantum Information \\textbf{7}, 161 (2021)}.",
+      "metadata_status": "verified",
+      "citation_use_status": "supported_with_stated_scope",
+      "purpose": "超新星光谱特征的量子核分类先例。",
+      "verification_evidence": "Crossref npj Quantum Information 7/161/2021；原文/作者 arXiv:2101.09581 明确是 supernova spectral features。",
+      "primary_source": "https://www.nature.com/articles/s41534-021-00498-9",
+      "doi_or_citation_url": "https://doi.org/10.1038/s41534-021-00498-9",
+      "action": "保留；没有误写成变星光变分类。"
+    },
+    {
+      "number": 9,
+      "key": "chenkuo2026",
+      "reference": "Chen & Kuo (2026), Do Quantum Transformers Help?",
+      "title": "Do Quantum Transformers Help? A Systematic VQC Architecture Comparison on Tabular Benchmarks",
+      "current_entry": "C.-S.~Chen and E.-J.~Kuo, \\emph{Do Quantum Transformers Help? A Systematic VQC Architecture Comparison on Tabular Benchmarks}, \\href{https://arxiv.org/abs/2604.23931v2}{arXiv:2604.23931v2 (2026)}.",
+      "metadata_status": "verified",
+      "citation_use_status": "supported_with_stated_scope",
+      "purpose": "三维 token、局部 VQC 与架构比较来源。",
+      "verification_evidence": "arXiv:2604.23931v2 作者、题名；III-A 明确补零后按三维分 token，III-B–E 描述 VQC/FQT。",
+      "primary_source": "https://arxiv.org/html/2604.23931v2",
+      "doi_or_citation_url": "https://arxiv.org/abs/2604.23931v2",
+      "action": "保留并固定 v2；澄清本文经典窗口模块，不把九比特全局读出归给该文。"
+    },
+    {
+      "number": 10,
+      "key": "bowles2024",
+      "reference": "Bowles, Ahmed & Schuld (2024)",
+      "title": "Better than classical? The subtle art of benchmarking quantum machine learning models",
+      "current_entry": "J.~Bowles, S.~Ahmed, and M.~Schuld, \\emph{Better than classical? The subtle art of benchmarking quantum machine learning models}, \\href{https://arxiv.org/abs/2403.07059}{arXiv:2403.07059 (2024)}.",
+      "metadata_status": "verified",
+      "citation_use_status": "supported_with_stated_scope",
+      "purpose": "经典基线、量子分支替换与去纠缠比较的解释边界。",
+      "verification_evidence": "arXiv:2403.07059v2 作者、题名、摘要和 V.3/VI.1；保留预印本身份。",
+      "primary_source": "https://arxiv.org/html/2403.07059v2",
+      "doi_or_citation_url": "https://arxiv.org/abs/2403.07059",
+      "action": "保留；未推广其结果为所有任务结论。"
+    },
+    {
+      "number": 11,
+      "key": "leaves2024",
+      "reference": "Fei et al. (2024), LEAVES 论文",
+      "title": "LEAVES: An Expandable Light-curve Data Set for Automatic Classification of Variable Stars",
+      "current_entry": "Y.~Fei \\emph{et al.}, \\emph{LEAVES: An Expandable Light-curve Data Set for Automatic Classification of Variable Stars}, \\href{https://doi.org/10.3847/1538-4365/ad785b}{The Astrophysical Journal Supplement Series \\textbf{275}, 10 (2024)}.",
+      "metadata_status": "verified",
+      "citation_use_status": "supported_with_stated_scope",
+      "purpose": "原始光变数据集的来源。",
+      "verification_evidence": "Crossref 完整作者与题名，ApJS 275/10/2024；NADC 数据记录独立核对十类标签与数据来源。",
+      "primary_source": "https://nadc.china-vo.org/res/r100962/",
+      "doi_or_citation_url": "https://doi.org/10.3847/1538-4365/ad785b",
+      "action": "保留；不将本文 359 维特征或切分冒称为 LEAVES 官方协议。"
+    },
+    {
+      "number": 12,
+      "key": "leavesdata",
+      "reference": "Ce Yu (2024), LEAVES 数据记录",
+      "title": "An Expandable Light Curve Dataset for Automatic Classification of Variable Stars (LEAVES)",
+      "current_entry": "C.~Yu, \\emph{An Expandable Light Curve Dataset for Automatic Classification of Variable Stars (LEAVES)}, National Astronomical Data Center of China (2024), \\url{https://doi.org/10.12149/100962}.",
+      "metadata_status": "verified",
+      "citation_use_status": "supported_with_stated_scope",
+      "purpose": "数据集本体与获取入口。",
+      "verification_evidence": "NADC 官方页面直接列出作者 Ce Yu、日期 2024-08-03、DOI 10.12149/100962、十类标签和 CC BY 4.0。",
+      "primary_source": "https://nadc.china-vo.org/res/r100962/",
+      "doi_or_citation_url": "https://doi.org/10.12149/100962",
+      "action": "保留；Crossref/DataCite 未收录不是假 DOI。"
+    },
+    {
+      "number": 13,
+      "key": "artifacts",
+      "reference": "Project artifacts (2026)",
+      "title": "Project artifacts",
+      "current_entry": "Project artifacts: data, code, audited results, and verification scripts, \\url{https://github.com/bestdo77/quantum-lightcurve-hybrid} (2026).",
+      "metadata_status": "verified",
+      "citation_use_status": "supported_with_stated_scope",
+      "purpose": "本稿公开数据、预测与重算代码。",
+      "verification_evidence": "GitHub master 与本地审计基线 HEAD 一致；公开仓库可访问，实际运行重算入口。",
+      "primary_source": "https://github.com/bestdo77/quantum-lightcurve-hybrid",
+      "doi_or_citation_url": "https://github.com/bestdo77/quantum-lightcurve-hybrid",
+      "action": "保留；它是项目资料引用，不算一篇外部论文。"
+    },
+    {
+      "number": 14,
+      "key": "reuploading",
+      "reference": "Pérez-Salinas et al. (2020)",
+      "title": "Data re-uploading for a universal quantum classifier",
+      "current_entry": "A.~P\\'erez-Salinas, A.~Cervera-Lierta, E.~Gil-Fuster, and J.~I.~Latorre, \\emph{Data re-uploading for a universal quantum classifier}, \\href{https://doi.org/10.22331/q-2020-02-06-226}{Quantum \\textbf{4}, 226 (2020)}.",
+      "metadata_status": "verified",
+      "citation_use_status": "supported_with_stated_scope",
+      "purpose": "重复输入数据的量子编码依据。",
+      "verification_evidence": "Crossref 四名作者、Quantum 4/226/2020；arXiv:1907.02085 摘要。",
+      "primary_source": "https://arxiv.org/abs/1907.02085",
+      "doi_or_citation_url": "https://doi.org/10.22331/q-2020-02-06-226",
+      "action": "保留；没有把其普适性结果直接当作本文分类优势证明。"
+    },
+    {
+      "number": 15,
+      "key": "huang2021",
+      "reference": "Huang et al. (2021)",
+      "title": "Power of data in quantum machine learning",
+      "current_entry": "H.-Y.~Huang \\emph{et al.}, \\emph{Power of data in quantum machine learning}, \\href{https://doi.org/10.1038/s41467-021-22539-9}{Nature Communications \\textbf{12}, 2631 (2021)}.",
+      "metadata_status": "verified",
+      "citation_use_status": "supported_with_stated_scope",
+      "purpose": "局部 Pauli 期望值的经典表示。",
+      "verification_evidence": "Crossref Nature Communications 12/2631/2021；arXiv:2011.01938v2 附录 L.2 式 (119) 明确使用逐比特 X/Y/Z 期望值。",
+      "primary_source": "https://arxiv.org/html/2011.01938v2",
+      "doi_or_citation_url": "https://doi.org/10.1038/s41467-021-22539-9",
+      "action": "保留；只对应读出表示，不继承该文量子优势或核方法结论。"
+    },
+    {
+      "number": 16,
+      "key": "encoding2021",
+      "reference": "Schuld, Sweke & Meyer (2021)",
+      "title": "Effect of data encoding on the expressive power of variational quantum-machine-learning models",
+      "current_entry": "M.~Schuld, R.~Sweke, and J.~J.~Meyer, \\emph{Effect of data encoding on the expressive power of variational quantum-machine-learning models}, \\href{https://doi.org/10.1103/PhysRevA.103.032430}{Physical Review A \\textbf{103}, 032430 (2021)}.",
+      "metadata_status": "verified",
+      "citation_use_status": "supported_with_stated_scope",
+      "purpose": "数据编码影响可表达函数类。",
+      "verification_evidence": "Crossref 三名作者、Phys. Rev. A 103/032430/2021；arXiv:2008.08605。",
+      "primary_source": "https://arxiv.org/abs/2008.08605",
+      "doi_or_citation_url": "https://doi.org/10.1103/PhysRevA.103.032430",
+      "action": "保留；不把表达能力等同于预测增益。"
+    },
+    {
+      "number": 17,
+      "key": "wang2025",
+      "reference": "Wang, Tao & Wu (2025)",
+      "title": "Predictive Performance of Deep Quantum Data Re-uploading Models",
+      "current_entry": "X.~Wang, H.~Tao, and R.~Wu, \\emph{Predictive Performance of Deep Quantum Data Re-uploading Models}, \\href{https://proceedings.mlr.press/v267/wang25cw.html}{Proceedings of the 42nd International Conference on Machine Learning, PMLR \\textbf{267}, 64491--64524 (2025)}.",
+      "metadata_status": "verified",
+      "citation_use_status": "supported_with_stated_scope",
+      "purpose": "重上传深度不自动保证预测性能。",
+      "verification_evidence": "PMLR 正式题名、三名作者、267/64491–64524/2025 和摘要。",
+      "primary_source": "https://proceedings.mlr.press/v267/wang25cw.html",
+      "doi_or_citation_url": "https://proceedings.mlr.press/v267/wang25cw.html",
+      "action": "保留；没有把其特定理论条件套成本稿退化证明。"
+    },
+    {
+      "number": 18,
+      "key": "lightgbm",
+      "reference": "Ke et al. (2017), LightGBM",
+      "title": "LightGBM: A Highly Efficient Gradient Boosting Decision Tree",
+      "current_entry": "G.~Ke \\emph{et al.}, \\emph{LightGBM: A Highly Efficient Gradient Boosting Decision Tree}, \\href{https://proceedings.neurips.cc/paper_files/paper/2017/hash/6449f44a102fde848669bdd9eb6b76fa-Abstract.html}{Advances in Neural Information Processing Systems \\textbf{30}, 3146--3154 (2017)}.",
+      "metadata_status": "verified",
+      "citation_use_status": "supported_with_stated_scope",
+      "purpose": "树模型算法来源。",
+      "verification_evidence": "NeurIPS 官方作者、题名、卷 30/2017；官方 Metadata.json 明确 page_first=3146，page_last=3154。",
+      "primary_source": "https://proceedings.neurips.cc/paper_files/paper/2017/file/6449f44a102fde848669bdd9eb6b76fa-Metadata.json",
+      "doi_or_citation_url": "https://proceedings.neurips.cc/paper_files/paper/2017/hash/6449f44a102fde848669bdd9eb6b76fa-Abstract.html",
+      "action": "保留；页码已核对官方数据。"
+    },
+    {
+      "number": 19,
+      "key": "pennylane",
+      "reference": "Bergholm et al. (2018), PennyLane",
+      "title": "PennyLane: Automatic differentiation of hybrid quantum-classical computations",
+      "current_entry": "V.~Bergholm \\emph{et al.}, \\emph{PennyLane: Automatic differentiation of hybrid quantum-classical computations}, \\href{https://arxiv.org/abs/1811.04968}{arXiv:1811.04968 (2018)}.",
+      "metadata_status": "verified",
+      "citation_use_status": "supported_with_stated_scope",
+      "purpose": "软件致谢及独立电路核验工具。",
+      "verification_evidence": "arXiv:1811.04968 首次提交 2018，现 v4；公开 verification/mechanism/verify_mechanism.py 与其他核验脚本实际调用 qml。",
+      "primary_source": "https://arxiv.org/abs/1811.04968",
+      "doi_or_citation_url": "https://arxiv.org/abs/1811.04968",
+      "action": "保留；主读出训练是自定义 PyTorch，不冒称主训练由 PennyLane 完成。"
+    }
+  ],
+  "document_checks": {
+    "pages": 11,
+    "figure_pages": {
+      "Figure 1:": 4,
+      "Figure 2:": 6
+    },
+    "overleaf_source_images_match": true,
+    "no_unresolved_references": true,
+    "main_tex_sha256": "d8c0d7c1236eb2a4689e32255fa35b2e43650f40f554f9b6134becb463a23f23",
+    "pdf_sha256": "8c1c60e867a84e12a86d4b15b348c7fefe5adb77c95bdc33ffeead569f6e137d"
+  },
+  "audit_date": "2026-10-19",
+  "baseline_commit": "1e9306b23a092803e7c2c6a46b999ac3420131d9",
+  "scope_limits": [
+    "No neural checkpoint inference or retraining in this audit.",
+    "Catalogue-level crossmatch and astrophysical-source uniqueness cannot be established from feature-bank row IDs.",
+    "Feature-extraction computations and preprocessing fits were not rerun on raw observations.",
+    "Some publisher full texts were inaccessible; such citation checks use deposited metadata/abstracts and the separately specified primary sources."
+  ]
+}

@@ -1,6 +1,6 @@
 # HyQ-LC: Improving Light-Curve Classification with Hybrid Quantum–Classical Learning
 
-Data, code, per-object predictions, and audited comparisons for ten-class stellar light-curve classification (nine variable-star categories and one non-variable category). Every reported test result in this version uses the **same 20,000 unique objects**. Training uses 633,034 objects and 359 preprocessed features.
+Data, code, per-object predictions, and audited comparisons for ten-class stellar light-curve classification (nine variable-star categories and one non-variable category). Every reported test result in this version uses the **same 20,000 objects with distinct feature-bank row IDs**. Released IDs are not original survey identifiers. Training uses 633,034 objects and 359 preprocessed features; frozen preprocessing statistics were estimated from an original 50,000-object training subset.
 
 The existing validation-selected models are retained. The main models use 105,297 validation objects; the older fixed-fusion comparisons use 10,000 validation objects. The test cohort had been inspected in prior exploratory analyses. It is the final reported test cohort, and is not an unopened independent confirmation sample. No sealed confirmation data are included or evaluated.
 
@@ -86,5 +86,7 @@ This checks the released prediction vectors and recomputes 57 model rows and 45 
 | `paper/` | Matching manuscript source and PDF, two current PNG schematics with generation records, the earlier editable vector diagram and generator, and the class file. |
 
 The [v1.1.3 data release](https://github.com/bestdo77/quantum-lightcurve-hybrid/releases/tag/v1.1.3) contains the test package, a manuscript snapshot, and ordered 359-feature manifest. The [current manuscript PDF](paper/HyQ-LC.pdf) includes the two updated schematics. Training and validation archives retain their original checksums and download links in `data/splits.json`. The portable evaluator reproduces statistics from released predictions; the original training references require the authors' cluster environment and do not provide portable end-to-end retraining.
+
+The [final fact and citation audit](audit/final_fact_check_20261019.md) records the 57-model/45-comparison recomputation, displayed-number checks, all 19 reference entries, factual wording corrections, and the limits of verification from the public artifacts.
 
 All quantum circuits were evaluated with classical state-vector simulation. No hardware or general computational quantum advantage is claimed. Code: MIT; data: CC BY 4.0.
